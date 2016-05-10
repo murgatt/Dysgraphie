@@ -31,13 +31,13 @@ namespace Dysgraphie.Database
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
             command.ExecuteNonQuery();
         }
-        public object QueryRequest(string query)
+        public SQLiteDataReader QueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 Console.WriteLine("nom: " + reader["Nom"] + "\tPrenom: " + reader["Prenom"]);
-            return reader.Read();
+            return reader;
         }
     }
 }

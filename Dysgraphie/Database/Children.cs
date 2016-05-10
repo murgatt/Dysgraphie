@@ -14,16 +14,16 @@ namespace Dysgraphie.Database
 {
     class Children
     {
-        private int ID;
+        private string ID;
         private string Nom;
         private string Prenom;
-        private int Age;
+        private string Age;
         private string Classe;
         private string Genre;
         private string Lateralite;
         private DbManager dBmanager;
 
-        Children(int ID, string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
+        public Children(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
       {
             this.ID = ID;
             this.Nom = Nom;
@@ -35,6 +35,7 @@ namespace Dysgraphie.Database
 
             this.dBmanager.DBConnexion("myDB");
         }
+        
 
         public void AddChildrenInDB()
         {
