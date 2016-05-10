@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
+
+/* DB IS LIKE 
+ * ID / Nom / Prenom / Age / Classe / Genre / Lateralite
+ * */
+
 namespace Dysgraphie.Database
 {
     class DbManager
@@ -16,17 +21,17 @@ namespace Dysgraphie.Database
             SQLiteConnection.CreateFile("../../"+name+".sqlite");
         }
 
-        private void DBConnexion(string name)
+        public void DBConnexion(string name)
         {
            this.m_dbConnection =new SQLiteConnection("Data Source=../../"+name+".sqlite;Version=3;");
            this.m_dbConnection.Open();
         }
-        private void NoQuery(string query)
+        public void NoQueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
             command.ExecuteNonQuery();
         }
-        private object Query(string query)
+        public object QueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
