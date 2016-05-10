@@ -10,7 +10,7 @@ namespace Dysgraphie.Datas
     {
         public double id { get; }
         private double sn;
-        private double t;
+        public double t { get; }
         public double x { get; }
         public double y { get; }
         public double z { get; }
