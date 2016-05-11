@@ -16,14 +16,17 @@ namespace Dysgraphie.Database
     {
         SQLiteConnection m_dbConnection;
 
-        private void CreateDB(string name)
+        public void CreateDB(string DBName, string TableName)
         {
-            SQLiteConnection.CreateFile("../../"+name+".sqlite");
+            SQLiteConnection.CreateFile("../../Database/"+ DBName + ".sqlite");
+            this.m_dbConnection = new SQLiteConnection("Data Source=../../" + DBName + ".sqlite;Version=3;");
+            this.m_dbConnection.Open();
+            this.NoQueryRequest("CREATE TABLE "+TableName+ " (ID INT PRIMARY KEY NOT NULL, Nom VARCHAR, Prenom VARCHAR, Age VARCHAR, Classe VARCHAR, Genre VARCHAR, Lateralite VARCHAR )");
         }
 
-        public void DBConnexion(string name)
+        public void DBConnexion(string DBName)
         {
-           this.m_dbConnection =new SQLiteConnection("Data Source=../../"+name+".sqlite;Version=3;");
+           this.m_dbConnection =new SQLiteConnection("Data Source=../../Database/"+ DBName + ".sqlite;Version=3;");
            this.m_dbConnection.Open();
         }
         public void NoQueryRequest(string query)

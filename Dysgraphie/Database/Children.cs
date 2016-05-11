@@ -3,44 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dysgraphie.Database;
+using System.Data.SQLite;
 
 /* DB IS LIKE 
  * ID / Nom / Prenom / Age / Classe / Genre / Lateralite
  * */
 
-
 namespace Dysgraphie.Database
 {
     class Children
     {
-        private string ID;
-        private string Nom;
-        private string Prenom;
-        private string Age;
-        private string Classe;
-        private string Genre;
-        private string Lateralite;
+        List<Child> listChildren = new List<Child>();
+
         private DbManager dBmanager;
 
-        public Children(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
-      {
-            this.ID = ID;
-            this.Nom = Nom;
-            this.Prenom = Prenom;
-            this.Age = Age;
-            this.Classe = Classe;
-            this.Genre = Genre;
-            this.Lateralite = Lateralite;
+       
 
-            this.dBmanager.DBConnexion("myDB");
-        }
-        
 
-        public void AddChildrenInDB()
+        //  Methode abstraite ?
+         public void RemoveChild(int ID)
         {
-            string req = "Insert into ListChildren values ('" + this.ID + "','" + this.Nom + "','" + this.Prenom + "','" + this.Age + "','" + this.Classe + "','" + this.Genre + "','" + this.Lateralite + "' );";
-            dBmanager.QueryRequest(req);
+            string req = "DELETE FROM ListChildren WHERE condition ID = " + ID + "; ";
+            dBmanager.NoQueryRequest(req);
+        }
+        public List<Child> GetAllChildren()
+        {
+            string req = "select * from ListChildren";
+            List<Child> tempListChildren = new List<Child>();
+            SQLiteDataReader reader = (dBmanager.QueryRequest(req));
+            while (reader.Read())
+            {
+                Child child = new Child(reader["ID"].ToString(), reader["Nom"].ToString(), reader["Prenom"].ToString(), reader["Age"].ToString(), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
+                tempListChildren.Add(child);
+            }
+            return tempListChildren;
         }
     }
 }

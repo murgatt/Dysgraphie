@@ -1,2 +1,11 @@
 d:\documents\visual studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe.config
 C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe.config
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.pdb
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\System.Data.SQLite.dll
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\System.Data.SQLite.xml
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csprojResolveAssemblyReference.cache
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Properties.Resources.resources
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csproj.GenerateResource.Cache
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.exe
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.pdb
