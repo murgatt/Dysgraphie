@@ -12,12 +12,15 @@ namespace Dysgraphie.Indicators
         private List<AbstractIndicator> indicators;
 
         public List<Double> instantSpeed { get; set; }
+        public List<Double> instantAcceleration { get; set; }
+        public List<Double> instantJerk { get; set; }
         public double averageSpeed { get; set; }
         public double drawLength { get; set; }
         public double drawTime { get; set; }
         public double breakTime { get; set; }
+        public int printNumber{ get; set; }
 
-        protected List<Point> points;
+        public List<Point> points{get; }
         protected List<Point> pointsOnDraw;
         protected List<Point> pointsOverDraw;
 
@@ -32,15 +35,17 @@ namespace Dysgraphie.Indicators
             this.pointsOverDraw.Sort();
 
             this.indicators.Add(new InstantSpeed(this.pointsOnDraw, this));
+            this.indicators.Add(new InstantAcceleration(this.pointsOnDraw, this));
+            this.indicators.Add(new InstantJerk(this.pointsOnDraw, this));
             this.indicators.Add(new AverageSpeed(this.pointsOnDraw, this));
             this.indicators.Add(new DrawLength(this.pointsOnDraw, this));
             this.indicators.Add(new DrawTime(this.pointsOnDraw, this));
             this.indicators.Add(new BreakTime(this.pointsOnDraw, this));
+            this.indicators.Add(new PrintNumber(this.pointsOnDraw, this));
         }
 
         public void addPoint(Point p)
         {
-            Console.Write(this.points.Count+"\n");
             this.points.Add(p);
             if (p.z == 0)
             {

@@ -170,7 +170,7 @@ namespace Dysgraphie.Views
 
         public void MyWTPacketEventHandler(Object sender_I, MessageReceivedEventArgs eventArgs_I)
         {
-            System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
+            //System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
             if (m_wtData == null)
             {
                 return;
@@ -185,10 +185,10 @@ namespace Dysgraphie.Views
                 if (pkt.pkContext != 0)
                 {
 
-                    Datas.Point p = new Datas.Point(this.pointID, 0, DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
+                    Datas.Point p = new Datas.Point(this.pointID, 0, Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
                     acquisition.AddPoint(p);
                     this.pointID++;
-
+                    
                     if (pkt.pkNormalPressure != 0)
                     {
                         
@@ -198,6 +198,8 @@ namespace Dysgraphie.Views
 
                     }
 
+                    textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+                    textBoxTime.Text = (Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
                     TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
                     textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
                     textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
@@ -208,9 +210,8 @@ namespace Dysgraphie.Views
                     textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
                     textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
                     textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
-
-                    // Console.WriteLine(msg);
-                    // AfficherDonnee(msg);
+                    textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+                    
                 }
 
             }

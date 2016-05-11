@@ -116,7 +116,15 @@ namespace Dysgraphie.Acquisition
             return analysis.drawTime;
         }
         
+        public int getNumberOfPrint()
+        {
+            return analysis.printNumber;
+        }
 
+        public double getAverageSpeed()
+        {
+            return analysis.averageSpeed;
+        }
 
         
     }
