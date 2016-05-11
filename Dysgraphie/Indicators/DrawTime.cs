@@ -15,7 +15,18 @@ namespace Dysgraphie.Indicators
 
         public override void calcul()
         {
-            this.analysis.drawTime = this.points.ElementAt(this.points.Count - 1).t - this.points.ElementAt(0).t;
+            Point pp1, p;
+            double sum = 0;
+            for (int i = 0; i < this.points.Count - 2; ++i)
+            {
+                p = this.points.ElementAt(i);
+                pp1 = this.points.ElementAt(i + 1);
+                if (p.id + 1 == pp1.id)
+                {
+                    sum += pp1.t - p.t;
+                }
+            }
+            this.analysis.drawTime = sum;
         }
     }
 }
