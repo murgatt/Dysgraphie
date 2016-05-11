@@ -1,4 +1,5 @@
-﻿namespace Dysgraphie
+﻿using Dysgraphie.Database;
+namespace Dysgraphie
 {
     partial class Form1
     {
@@ -31,6 +32,11 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Text = "Form1";
+
+
+
+            DbManager db = new DbManager();
+            db.CreateDB("DB", "ListeEnfant");
         }
 
         #endregion
