@@ -10,7 +10,7 @@ namespace Dysgraphie.Datas
     {
         public int id { get; }
         private int sn;
-        public long t { get; }
+        public double t { get; }
         public int x { get; }
         public int y { get; }
         public int z { get; }
@@ -20,7 +20,7 @@ namespace Dysgraphie.Datas
         private int twi;
        
 
-        public Point(int id, int sn, long t, int x, int y, int z, uint p, int alt, int azi, int twi)
+        public Point(int id, int sn, double t, int x, int y, int z, uint p, int alt, int azi, int twi)
         {
             if (z <= 20) z = 0;
             this.id = id;
