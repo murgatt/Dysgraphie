@@ -22,7 +22,7 @@ namespace Dysgraphie.Indicators
                 p = this.points.ElementAt(i);
                 if (p.id+1 == pp1.id)
                 {
-                    som += Math.Sqrt(Math.Pow(pp1.x, 2) + Math.Pow(p.x, 2));
+                    som += Math.Sqrt(Math.Pow(pp1.x- p.x, 2) + Math.Pow(pp1.y - p.y, 2));
                     t += (pp1.t - p.t);
                 } 
             }
