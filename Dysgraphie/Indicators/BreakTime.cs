@@ -19,7 +19,7 @@ namespace Dysgraphie.Indicators
             {
                 p = this.points.ElementAt(i);
                 pp1 = this.points.ElementAt(i + 1);
-                if(p.id+1 == pp1.id)
+                if(p.id+1 != pp1.id)
                 {
                     sum += pp1.t - p.t;
                 }

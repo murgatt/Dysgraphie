@@ -21,21 +21,13 @@ namespace Dysgraphie.Indicators
         protected List<Point> pointsOnDraw;
         protected List<Point> pointsOverDraw;
 
-        public Analysis(List<Point> points)
+        public Analysis()
         {
-            this.points = points;
+            this.points = new List<Point>();
             this.indicators = new List<AbstractIndicator>();
             this.pointsOnDraw = new List<Point>();
             this.pointsOverDraw = new List<Point>();
-            foreach(Point p in this.points)
-            {
-                if(p.z == 0)
-                {
-                    this.pointsOnDraw.Add(p);
-                } else {
-                    this.pointsOverDraw.Add(p);
-                }
-            }
+           
             this.pointsOnDraw.Sort();
             this.pointsOverDraw.Sort();
 
@@ -43,7 +35,20 @@ namespace Dysgraphie.Indicators
             this.indicators.Add(new AverageSpeed(this.pointsOnDraw, this));
             this.indicators.Add(new DrawLength(this.pointsOnDraw, this));
             this.indicators.Add(new DrawTime(this.pointsOnDraw, this));
-            this.indicators.Add(new BreakTime(this.pointsOverDraw, this));
+            this.indicators.Add(new BreakTime(this.pointsOnDraw, this));
+        }
+
+        public void addPoint(Point p)
+        {
+            Console.Write(this.points.Count+"\n");
+            this.points.Add(p);
+            if (p.z == 0)
+            {
+                this.pointsOnDraw.Add(p);
+            }
+            else {
+                this.pointsOverDraw.Add(p);
+            }
         }
 
         public void analyse()
