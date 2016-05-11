@@ -8,30 +8,34 @@ namespace Dysgraphie.Datas
 {
     class Point : IComparable<Point>
     {
-        public double id { get; }
-        private double sn;
-        private double t;
-        public double x { get; }
-        public double y { get; }
-        public double z { get; }
-        private double p;
-        private double alt;
-        private double azi;
-        private double twi;
+        public int id { get; }
+        private int sn;
+        public double t { get; }
+        public int x { get; }
+        public int y { get; }
+        public int z { get; }
+        private uint p;
+        private int alt;
+        private int azi;
+        private int twi;
+       
 
-        public Point(String id, String sn, String t, String x, String y, String z, String p, String alt, String azi, String twi)
+        public Point(int id, int sn, double t, int x, int y, int z, uint p, int alt, int azi, int twi)
         {
-            this.id = Convert.ToDouble(id);
-            this.sn = Convert.ToDouble(sn);
-            this.t = Convert.ToDouble(t);
-            this.x = Convert.ToDouble(x);
-            this.y = Convert.ToDouble(y);
-            this.z = Convert.ToDouble(z);
-            this.p = Convert.ToDouble(p);
-            this.alt = Convert.ToDouble(alt);
-            this.azi = Convert.ToDouble(azi);
-            this.twi = Convert.ToDouble(twi);
+            if (z <= 20) z = 0;
+            this.id = id;
+            this.sn = sn;
+            this.t = t;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.p = p;
+            this.alt = alt;
+            this.azi = azi;
+            this.twi = twi;
         }
+
+      
 
         public int CompareTo(Point other)
         {
