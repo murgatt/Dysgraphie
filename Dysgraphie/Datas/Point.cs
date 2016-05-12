@@ -9,18 +9,18 @@ namespace Dysgraphie.Datas
     class Point : IComparable<Point>
     {
         public int id { get; }
-        private int sn;
+        public uint sn { get; }
         public double t { get; }
         public int x { get; }
         public int y { get; }
         public int z { get; }
-        private uint p;
-        private int alt;
-        private int azi;
-        private int twi;
-       
+        public uint p { get; }
+        public int alt { get; }
+        public int azi { get; }
+        public int twi { get; }
 
-        public Point(int id, int sn, double t, int x, int y, int z, uint p, int alt, int azi, int twi)
+
+        public Point(int id, uint sn, double t, int x, int y, int z, uint p, int alt, int azi, int twi)
         {
             if (z <= 20) z = 0;
             this.id = id;

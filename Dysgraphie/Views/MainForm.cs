@@ -11,7 +11,7 @@ using WintabDN;
 using Dysgraphie.Drawing;
 using Dysgraphie.Datas;
 using Dysgraphie.Acquisition;
-
+using Dysgraphie.Utils;
 
 namespace Dysgraphie.Views
 {
@@ -40,7 +40,6 @@ namespace Dysgraphie.Views
             InitializeComponent();
             InitData();
 
-            
             this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
@@ -49,6 +48,7 @@ namespace Dysgraphie.Views
         {
             drawingThread = new DrawingThread(this.picBoard);
             drawingThread.Start();
+            this.acquisition = new AcquisitionPoint();
         }
 
         
@@ -176,7 +176,7 @@ namespace Dysgraphie.Views
                 if (pkt.pkContext != 0)
                 {
 
-                    Datas.Point p = new Datas.Point(this.pointID, 0, Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
+                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
                     acquisition.AddPoint(p);
                     this.pointID++;
                     
@@ -224,24 +224,67 @@ namespace Dysgraphie.Views
             if(this.button1.Text == "Start")
             {
                 Console.WriteLine("passage à Stop");
+                this.picBoard.Invalidate();
                 InitDataCapture(m_TABEXTX, m_TABEXTY, true);
                 m_logContext = OpenTestSystemContext();
                 this.acquisition = new AcquisitionPoint();
+
                 acquisition.Start();
                 button1.Text = "Stop";
+                this.sauvegarderToolStripMenuItem.Enabled = false;
+                this.chargerToolStripMenuItem.Enabled = false;
 
             } else if(this.button1.Text == "Stop")
             {
                 Console.WriteLine("passage à Start");
-                this.picBoard.Invalidate();
+                
                 CloseCurrentContext();
                 button1.Text = "Start";
+                this.sauvegarderToolStripMenuItem.Enabled = true;
+                this.chargerToolStripMenuItem.Enabled = true;
             }
         }
 
         private void MainForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
             CloseCurrentContext();
+        }
+        
+
+        private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSaveTrace.saveTrace(this.acquisition.analysis);
+        }
+
+        private void chargerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.picBoard.Invalidate();
+            this.acquisition.analysis = OpenSaveTrace.openTrace("");
+            textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+            textBoxTime.Text = (Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
+            TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
+            textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
+            textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
+           /* textBoxPression.Text = pkt.pkNormalPressure.ToString();
+            textBoxX.Text = pkt.pkX.ToString();
+            textBoxY.Text = pkt.pkY.ToString();
+            textBoxZ.Text = pkt.pkZ.ToString();
+            textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
+            textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
+            textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
+            textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+
+            foreach(Datas.Point p in acquisition.analysis.points)
+            {
+                double y = Convert.ToDouble(p.y);
+                double x = Convert.ToDouble(p.x);
+                Console.WriteLine(p.p);
+                if (p.p != 0)
+                {
+                    DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p);
+                    drawingThread.AddPoint(dp);
+                }
+            }
         }
     }
 }
