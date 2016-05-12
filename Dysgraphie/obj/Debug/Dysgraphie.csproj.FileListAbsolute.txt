@@ -21,3 +21,6 @@ C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraph
 C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\System.Data.SQLite.dll
 C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\WintabDN.dll
 C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\System.Data.SQLite.xml
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.MainForm.resources
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\WintabDN.dll
+C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\itextsharp.dll

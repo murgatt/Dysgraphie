@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Dysgraphie.Drawing;
 
-namespace Dysgraphie.Utils
+namespace Dysgraphie.Tools
 {
     class CoordinateConverter
     {

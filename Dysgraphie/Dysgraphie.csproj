@@ -33,12 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.79.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +53,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WintabDN">
-      <HintPath>..\..\Projet-Disgraphie\WintabDN.dll</HintPath>
+      <HintPath>..\WintabDN.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +80,10 @@
     <Compile Include="Indicators\InstantJerk.cs" />
     <Compile Include="Indicators\InstantSpeed.cs" />
     <Compile Include="Indicators\PrintNumber.cs" />
+    <Compile Include="OutputFiles\PdfGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\CoordinateConverter.cs" />
+    <Compile Include="Tools\CoordinateConverter.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
