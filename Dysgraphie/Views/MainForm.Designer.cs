@@ -57,6 +57,7 @@
             this.textBoxPrintNumber = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAverageSpeed = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -281,11 +282,22 @@
             this.textBoxAverageSpeed.Size = new System.Drawing.Size(100, 20);
             this.textBoxAverageSpeed.TabIndex = 29;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(49, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1916, 983);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxAverageSpeed);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBoxPrintNumber);
@@ -349,5 +361,6 @@
         private System.Windows.Forms.TextBox textBoxPrintNumber;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxAverageSpeed;
+        private System.Windows.Forms.Button button1;
     }
 }
