@@ -23,7 +23,7 @@ namespace Dysgraphie.Views
 
         private int pointID = 0;
         private DrawingThread drawingThread;
-        DateTime start;
+ 
 
 
 
@@ -40,27 +40,18 @@ namespace Dysgraphie.Views
             InitializeComponent();
             InitData();
 
-            start = DateTime.Now;
-            bool controlSystemCursor = true;
+            
             this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            InitDataCapture(m_TABEXTX, m_TABEXTY, controlSystemCursor);
-
         }
 
         private void InitData()
         {
             drawingThread = new DrawingThread(this.picBoard);
             drawingThread.Start();
-            acquisition = new AcquisitionPoint();
-            acquisition.Start();
-
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Save();
-        }
+        
         
         private void TestForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
@@ -71,7 +62,7 @@ namespace Dysgraphie.Views
         {
             try
             {
-
+                Console.WriteLine("Closing context...\n");
                 if (m_logContext != null)
                 {
                     m_logContext.Close();
@@ -86,7 +77,7 @@ namespace Dysgraphie.Views
             }
         }
 
-       
+
         private void InitDataCapture(int ctxWidth_I = m_TABEXTX, int ctxHeight_I = m_TABEXTY, bool ctrlSysCursor_I = true)
         {
             try
@@ -228,6 +219,29 @@ namespace Dysgraphie.Views
             logContext.OutExtY = -logContext.OutExtY;
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(this.button1.Text == "Start")
+            {
+                Console.WriteLine("passage à Stop");
+                InitDataCapture(m_TABEXTX, m_TABEXTY, true);
+                m_logContext = OpenTestSystemContext();
+                this.acquisition = new AcquisitionPoint();
+                acquisition.Start();
+                button1.Text = "Stop";
+
+            } else if(this.button1.Text == "Stop")
+            {
+                Console.WriteLine("passage à Start");
+                this.picBoard.Invalidate();
+                CloseCurrentContext();
+                button1.Text = "Start";
+            }
+        }
+
+        private void MainForm_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            CloseCurrentContext();
+        }
     }
 }
