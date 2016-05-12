@@ -34,9 +34,7 @@ namespace Dysgraphie
             this.Text = "Form1";
 
 
-
-            DbManager db = new DbManager();
-            db.CreateDB("DB", "ListeEnfant");
+            
         }
 
         #endregion

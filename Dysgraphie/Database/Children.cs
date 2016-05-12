@@ -21,22 +21,32 @@ namespace Dysgraphie.Database
 
 
         //  Methode abstraite ?
-         public void RemoveChild(int ID)
+         public void RemoveChild(string ID)
         {
             string req = "DELETE FROM ListChildren WHERE condition ID = " + ID + "; ";
             dBmanager.NoQueryRequest(req);
         }
+        public void EditChildFromID(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
+        {
+            foreach(Child c in listChildren)
+            {
+                if(c.GetID() == ID)
+                {
+                    c.EditChild( Nom, Prenom, Age, Classe, Genre, Lateralite);
+                }
+            }
+        }
         public List<Child> GetAllChildren()
         {
             string req = "select * from ListChildren";
-            List<Child> tempListChildren = new List<Child>();
             SQLiteDataReader reader = (dBmanager.QueryRequest(req));
             while (reader.Read())
             {
                 Child child = new Child(reader["ID"].ToString(), reader["Nom"].ToString(), reader["Prenom"].ToString(), reader["Age"].ToString(), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
-                tempListChildren.Add(child);
+                listChildren.Add(child);
             }
-            return tempListChildren;
+            return listChildren;
         }
+
     }
 }

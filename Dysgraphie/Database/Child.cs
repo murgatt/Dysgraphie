@@ -32,10 +32,24 @@ namespace Dysgraphie.Database
             this.Classe = Classe;
             this.Genre = Genre;
             this.Lateralite = Lateralite;
-
+            this.dBmanager = new DbManager();
             this.dBmanager.DBConnexion("myDB");
         }
         
+        public void EditChild( string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
+        {
+            this.Nom = Nom;
+            this.Prenom = Prenom;
+            this.Age = Age;
+            this.Classe = Classe;
+            this.Genre = Genre;
+            this.Lateralite = Lateralite;
+        }
+
+        public string GetID()
+        {
+            return this.ID;
+        }
 
         public void AddChildInDB()
         {

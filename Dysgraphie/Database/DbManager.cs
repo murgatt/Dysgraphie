@@ -32,15 +32,32 @@ namespace Dysgraphie.Database
         public void NoQueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
-            command.ExecuteNonQuery();
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("erreur lors de l'execution de NoQueryRequest : " + e);
+            }
         }
         public SQLiteDataReader QueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
-            SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-                Console.WriteLine("nom: " + reader["Nom"] + "\tPrenom: " + reader["Prenom"]);
-            return reader;
+           
+            try
+            {
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                    Console.WriteLine("nom: " + reader["Nom"] + "\tPrenom: " + reader["Prenom"]);
+                return reader;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("erreur lors de l'execution de NoQueryRequest : " + e);
+            }
+
+            return null;
         }
     }
 }
