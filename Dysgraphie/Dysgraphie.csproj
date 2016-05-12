@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IronPdf, Version=4.0.2.32058, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPdf.4.2.2\lib\net40\IronPdf.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="itextsharp">
+      <HintPath>..\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,6 +80,7 @@
     <Compile Include="Indicators\InstantJerk.cs" />
     <Compile Include="Indicators\InstantSpeed.cs" />
     <Compile Include="Indicators\PrintNumber.cs" />
+    <Compile Include="OutputFiles\PdfGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\CoordinateConverter.cs" />
@@ -106,7 +106,6 @@
     <None Include="Database\readme.md" />
     <None Include="Graphics\readme.md" />
     <None Include="OutputFiles\readme.md" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

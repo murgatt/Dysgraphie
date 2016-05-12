@@ -50,6 +50,31 @@ namespace Dysgraphie.Database
         {
             return this.ID;
         }
+        public string GetNom()
+        {
+            return this.Nom;
+        }
+        public string GetPrenom()
+        {
+            return this.Prenom;
+        }
+        public string GetAge()
+        {
+            return this.Age;
+        }
+        public string GetClasse()
+        {
+            return this.Classe;
+        }
+        public string GetGenre()
+        {
+            return this.Genre;
+        }
+        public string GetLateralite()
+        {
+            return this.Lateralite;
+        }
+
 
         public void AddChildInDB()
         {
