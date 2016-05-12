@@ -122,8 +122,8 @@ namespace Dysgraphie.Views
             {
                 // Get the default system context.
                 // Default is to receive data events.
-                //logContext = CWintabInfo.GetDefaultDigitizingContext(ECTXOptionValues.CXO_MESSAGES);
-                logContext = CWintabInfo.GetDefaultSystemContext(ECTXOptionValues.CXO_MESSAGES);
+                logContext = CWintabInfo.GetDefaultDigitizingContext(ECTXOptionValues.CXO_MESSAGES);
+                //logContext = CWintabInfo.GetDefaultSystemContext(ECTXOptionValues.CXO_MESSAGES);
 
                 // Set system cursor if caller wants it.
                 if (ctrlSysCursor)
@@ -191,9 +191,11 @@ namespace Dysgraphie.Views
                     
                     if (pkt.pkNormalPressure != 0)
                     {
+                        double y = Convert.ToDouble(pkt.pkY);
+                        double x = Convert.ToDouble(pkt.pkX);
                         
-                        System.Drawing.Point convertedP = picBoard.PointToClient(new System.Drawing.Point(pkt.pkX, pkt.pkY));
-                        drawingThread.AddPoint(new DrawingPoint(convertedP.X, convertedP.Y, pkt.pkNormalPressure));
+                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), pkt.pkNormalPressure);
+                        drawingThread.AddPoint(dp);
                         
 
                     }
