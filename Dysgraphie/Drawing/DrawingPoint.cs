@@ -2,12 +2,16 @@
 {
     public struct DrawingPoint
     {
-        public int X, Y ;
+        public int X, Y, idPoint ;
         public uint pression;
+        
 
-        public DrawingPoint(int x, int y, uint pression)
+        public DrawingPoint(int x, int y, uint pression, int idPoint)
         {
-            this.X = x; this.Y = y;this.pression = pression;
+            this.X = x;
+            this.Y = y;
+            this.pression = pression;
+            this.idPoint = idPoint;
         }
     }
 }

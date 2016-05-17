@@ -27,14 +27,14 @@ namespace Dysgraphie.Tools
 
         static public ScreenPoint convertScreenToGraphic(ScreenPoint p, int objectPosX, int objectPosY, int objectSizeX, int objectSizeY)
         {
-            ScreenPoint result = new ScreenPoint(0,0);
+            ScreenPoint result = new ScreenPoint(0, 0);
             printPoint(p, "Before ");
 
             float ratioX = (float)objectSizeX / (float)screenSizeX;
             result.X = (int)(p.X * ratioX) + objectPosX;
 
             float ratioY = (float)objectSizeY / (float)screenSizeY;
-            result.Y = (int)(p.Y* ratioY) + objectPosY;
+            result.Y = (int)(p.Y * ratioY) + objectPosY;
 
             printPoint(result, "After ");
             return result;
