@@ -1,4 +1,5 @@
 ﻿using Dysgraphie.Database;
+using Dysgraphie.OutputFiles;
 namespace Dysgraphie
 {
     partial class Form1
@@ -33,10 +34,11 @@ namespace Dysgraphie
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Text = "Form1";
 
-
-
-            DbManager db = new DbManager();
-            db.CreateDB("DB", "ListeEnfant");
+            PdfManager pdf = new PdfManager("toto","../../");
+            pdf.Create();
+            pdf.AddDataChild(new Child("1", "gouttefarde", "david", "25", "cp", "male", "droitier"));
+            pdf.AddFirstComment("Le patient zero est atteint de maladie chronique en faite tu vois il est plutot nul en plus il est roux");
+            pdf.ClosePdf();
         }
 
         #endregion
