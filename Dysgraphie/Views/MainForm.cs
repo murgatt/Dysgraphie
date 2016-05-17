@@ -23,9 +23,9 @@ namespace Dysgraphie.Views
 
         private int pointID = 0;
         private DrawingThread drawingThread;
- 
 
-
+        //Lors d'un tracé, le paramètre Z peut être faible mais non nul alors que stylo reste sur la tablette
+        private int seuilZ = 50;
 
         // These constants can be used to force Wintab X/Y data to map into a
         // a 10000 x 10000 grid, as an example of mapping tablet data to values
@@ -141,10 +141,7 @@ namespace Dysgraphie.Views
                 logContext.InOrgX = 0;
                 logContext.InOrgY = 0;
                 logContext.InExtX = tabletX.axMax;
-                logContext.InExtY = tabletY.axMax;
-
-                // SetSystemExtents() is (almost) a NO-OP redundant if you opened a system context.
-                SetSystemExtents(ref logContext);
+                logContext.InExtY = tabletY.axMax;                
 
                 // Open the context, which will also tell Wintab to send data packets.
                 status = logContext.Open();
@@ -175,8 +172,11 @@ namespace Dysgraphie.Views
 
                 if (pkt.pkContext != 0)
                 {
+                    if(pkt.pkZ < this.seuilZ)
+                    {
 
-                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
+                    }
+                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
                     acquisition.AddPoint(p);
                     this.pointID++;
                     
@@ -185,14 +185,14 @@ namespace Dysgraphie.Views
                         double y = Convert.ToDouble(pkt.pkY);
                         double x = Convert.ToDouble(pkt.pkX);
                         
-                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), pkt.pkNormalPressure);
+                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
                         drawingThread.AddPoint(dp);
                         
 
                     }
 
                     textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
-                    textBoxTime.Text = (Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
+                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
                     TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
                     textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
                     textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
@@ -213,11 +213,8 @@ namespace Dysgraphie.Views
                 throw new Exception("FAILED to get packet data: " + ex.ToString());
             }
         }
-        private void SetSystemExtents(ref CWintabContext logContext)
-        {
-            
-            logContext.OutExtY = -logContext.OutExtY;
-        }
+        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -233,6 +230,7 @@ namespace Dysgraphie.Views
                 button1.Text = "Stop";
                 this.sauvegarderToolStripMenuItem.Enabled = false;
                 this.chargerToolStripMenuItem.Enabled = false;
+                this.pointID = 0;
 
             } else if(this.button1.Text == "Stop")
             {
@@ -253,38 +251,62 @@ namespace Dysgraphie.Views
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenSaveTrace.saveTrace(this.acquisition.analysis);
+            saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Sauvegarder";
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                OpenSaveTrace.saveTrace(this.acquisition.analysis, saveFileDialog1.FileName);
+            }
         }
 
         private void chargerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.picBoard.Invalidate();
-            this.acquisition.analysis = OpenSaveTrace.openTrace("");
-            textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
-            textBoxTime.Text = (Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
-            TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
-            textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
-            textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
-           /* textBoxPression.Text = pkt.pkNormalPressure.ToString();
-            textBoxX.Text = pkt.pkX.ToString();
-            textBoxY.Text = pkt.pkY.ToString();
-            textBoxZ.Text = pkt.pkZ.ToString();
-            textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
-            textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
-            textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
-            textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Charger un fichier";
 
-            foreach(Datas.Point p in acquisition.analysis.points)
+            // Show the Dialog.
+            // If the user clicked OK in the dialog and
+            // a .CUR file was selected, open it.
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                double y = Convert.ToDouble(p.y);
-                double x = Convert.ToDouble(p.x);
-                Console.WriteLine(p.p);
-                if (p.p != 0)
+                this.picBoard.Invalidate();
+                this.acquisition.analysis = OpenSaveTrace.openTrace(openFileDialog1.FileName);
+                Console.WriteLine(openFileDialog1.FileName);
+                textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+                
+                textBoxTime.Text = (Convert.ToDouble(DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
+                TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
+                textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
+                textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
+                /* textBoxPression.Text = pkt.pkNormalPressure.ToString();
+                 textBoxX.Text = pkt.pkX.ToString();
+                 textBoxY.Text = pkt.pkY.ToString();
+                 textBoxZ.Text = pkt.pkZ.ToString();
+                 textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
+                 textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
+                 textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
+                textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+                int i = 0;
+                DrawingPoint dp;
+                foreach (Datas.Point p in acquisition.analysis.points)
                 {
-                    DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p);
-                    drawingThread.AddPoint(dp);
+                    double y = Convert.ToDouble(p.y);
+                    double x = Convert.ToDouble(p.x);
+
+
+
+                    if (p.p > 0)
+                    {
+
+                        dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                        drawingThread.AddPoint(dp);
+                    }
+                    ++i;
                 }
             }
+
+           
+            
         }
     }
 }

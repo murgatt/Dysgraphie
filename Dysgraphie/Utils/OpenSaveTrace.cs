@@ -18,17 +18,21 @@ namespace Dysgraphie.Utils
             try
             {
                 int i = 0;
-                string[] lines = System.IO.File.ReadAllLines(@"Trace.txt");
+                string[] lines = System.IO.File.ReadAllLines(url);
                 foreach (string line in lines)
                 {
-                    if(i !=0)
+                    String[] datas = line.Split('\t');
+
+                    int val;
+                    if (Int32.TryParse(datas[0], out val))
                     {
-                        String[] datas = line.Split('\t');
                         
                         Datas.Point p = new Datas.Point(Int32.Parse(datas[0]), UInt32.Parse(datas[1]), Double.Parse(datas[2]), Int32.Parse(datas[3]), Int32.Parse(datas[4]), Int32.Parse(datas[5]), UInt32.Parse(datas[6]), Int32.Parse(datas[7]), Int32.Parse(datas[8]), Int32.Parse(datas[9]));
                         a.addPoint(p);
+                        
+                        
                     }
-                    ++i;
+                    
                 }
                 a.analyse();
                 i = 0;
@@ -42,20 +46,17 @@ namespace Dysgraphie.Utils
             return null;
         }
 
-        public static void saveTrace(Analysis a)
+        public static void saveTrace(Analysis a, String url)
         {
 
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Trace.txt", false))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(url, false))
             {
                 String str = "N°Pt\tSN\tT\tX\tY\tZ\tP\tAlt\tAzi\tTwi";
                 file.WriteLine(str);
-                int i = 0;
                 foreach (Point p in a.points)
                 {
-                    Console.WriteLine(i);
                     str = p.id + "\t" + p.sn + "\t" + p.t + "\t" + p.x + "\t" + p.y + "\t" + p.z + "\t" + p.p + "\t" + p.alt + "\t" + p.azi + "\t" + p.twi;
                     file.WriteLine(str);
-                    ++i;
                 }
             }
             

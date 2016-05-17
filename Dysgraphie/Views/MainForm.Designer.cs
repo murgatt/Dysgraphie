@@ -62,6 +62,8 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sauvegarderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -320,16 +322,20 @@
             // 
             this.sauvegarderToolStripMenuItem.Enabled = false;
             this.sauvegarderToolStripMenuItem.Name = "sauvegarderToolStripMenuItem";
-            this.sauvegarderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sauvegarderToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.sauvegarderToolStripMenuItem.Text = "Sauvegarder";
             this.sauvegarderToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderToolStripMenuItem_Click);
             // 
             // chargerToolStripMenuItem
             // 
             this.chargerToolStripMenuItem.Name = "chargerToolStripMenuItem";
-            this.chargerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chargerToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.chargerToolStripMenuItem.Text = "Charger";
             this.chargerToolStripMenuItem.Click += new System.EventHandler(this.chargerToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -409,5 +415,7 @@
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sauvegarderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chargerToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

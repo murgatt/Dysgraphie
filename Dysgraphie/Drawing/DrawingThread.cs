@@ -18,15 +18,18 @@ namespace Dysgraphie.Drawing
         private List<DrawingPoint> synchronizedList;
 
         //Graphical datas
+        private PictureBox picBox;
         private Graphics g;
         private int drawSpeed = 50;
         private Point previousP = Point.Empty;
         private long previousTime = 0;
         private long pauseTime = 20;
         private Pen pen;
+        private int previousID;
 
         public DrawingThread(PictureBox pictureBox)
         {
+            this.picBox = pictureBox;
             this.g = pictureBox.CreateGraphics();
         }
 
@@ -100,14 +103,15 @@ namespace Dysgraphie.Drawing
 
         private void DrawSinglePoint(DrawingPoint p)
         {
-            Point currentP = new Point(p.X, p.Y);
-            if (previousP != Point.Empty)
+            Point currentP = new Point(p.X, this.picBox.Height - p.Y);
+            if (previousP != Point.Empty && previousID == p.idPoint-1)
             {
                 pen.Width = (float)Math.Sqrt(p.pression/2)/4;
                 this.g.DrawLine(pen, previousP, currentP);
             }
             previousP = currentP;
             previousTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+            this.previousID = p.idPoint;
         }
 
         public void AddPoint(DrawingPoint p)
