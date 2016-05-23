@@ -10,7 +10,7 @@ namespace Dysgraphie.Indicators
     class Analysis
     {
         private List<AbstractIndicator> indicators;
-        private int initTime;
+        
 
         public List<Double> instantSpeed { get; set; }
         public List<Double> instantAcceleration { get; set; }
@@ -20,6 +20,8 @@ namespace Dysgraphie.Indicators
         public double drawTime { get; set; }
         public double breakTime { get; set; }
         public int printNumber{ get; set; }
+        public double lettersHeight { get; set; }
+        public double lettersWidth { get; set; }
 
         public List<Point> points{get; }
         protected List<Point> pointsOnDraw;
@@ -44,6 +46,8 @@ namespace Dysgraphie.Indicators
             this.indicators.Add(new DrawTime(this.pointsOnDraw, this));
             this.indicators.Add(new BreakTime(this.pointsOnDraw, this));
             this.indicators.Add(new PrintNumber(this.pointsOnDraw, this));
+            this.indicators.Add(new LettersHeight(this.pointsOnDraw, this));
+            this.indicators.Add(new LettersWidth(this.pointsOnDraw, this));
         }
 
         public void addPoint(Point p)

@@ -98,7 +98,7 @@ namespace Dysgraphie.Views
             }
             catch (Exception ex)
             {
-               // Console.Write(ex.ToString());
+               Console.Write(ex.ToString());
             }
         }
 
@@ -190,7 +190,7 @@ namespace Dysgraphie.Views
                         double y = Convert.ToDouble(pkt.pkY);
                         double x = Convert.ToDouble(pkt.pkX);
                         
-                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
+                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
                         drawingThread.AddPoint(dp);
                         
 
@@ -209,7 +209,10 @@ namespace Dysgraphie.Views
                     textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
                     textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
                     textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
-                    
+                    textBoxLettersHeight.Text = acquisition.analysis.lettersHeight.ToString();
+                    textBoxLettersWidth.Text = acquisition.analysis.lettersWidth.ToString();
+
+
                 }
                 if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
                 {
@@ -330,5 +333,6 @@ namespace Dysgraphie.Views
            
             
         }
+
     }
 }

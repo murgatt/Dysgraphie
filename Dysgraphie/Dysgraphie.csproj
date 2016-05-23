@@ -80,6 +80,8 @@
     <Compile Include="Indicators\InstantAcceleration.cs" />
     <Compile Include="Indicators\InstantJerk.cs" />
     <Compile Include="Indicators\InstantSpeed.cs" />
+    <Compile Include="Indicators\LettersWidth.cs" />
+    <Compile Include="Indicators\LettersHeight.cs" />
     <Compile Include="Indicators\PrintNumber.cs" />
     <Compile Include="OutputFiles\PdfGenerator.cs" />
     <Compile Include="Program.cs" />

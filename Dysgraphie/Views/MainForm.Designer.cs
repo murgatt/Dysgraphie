@@ -64,6 +64,10 @@
             this.chargerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxLettersHeight = new System.Windows.Forms.TextBox();
+            this.textBoxLettersWidth = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -337,11 +341,47 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(19, 654);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(86, 13);
+            this.label14.TabIndex = 33;
+            this.label14.Text = "Hauteur de lettre";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(22, 691);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 13);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "Largeur de lettre";
+            // 
+            // textBoxLettersHeight
+            // 
+            this.textBoxLettersHeight.Location = new System.Drawing.Point(135, 654);
+            this.textBoxLettersHeight.Name = "textBoxLettersHeight";
+            this.textBoxLettersHeight.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLettersHeight.TabIndex = 35;
+            // 
+            // textBoxLettersWidth
+            // 
+            this.textBoxLettersWidth.Location = new System.Drawing.Point(135, 688);
+            this.textBoxLettersWidth.Name = "textBoxLettersWidth";
+            this.textBoxLettersWidth.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLettersWidth.TabIndex = 36;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1916, 983);
+            this.Controls.Add(this.textBoxLettersWidth);
+            this.Controls.Add(this.textBoxLettersHeight);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxAverageSpeed);
             this.Controls.Add(this.label13);
@@ -417,5 +457,9 @@
         private System.Windows.Forms.ToolStripMenuItem chargerToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxLettersHeight;
+        private System.Windows.Forms.TextBox textBoxLettersWidth;
+        private System.Windows.Forms.Label label14;
     }
 }
