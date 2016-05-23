@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Dysgraphie.Indicators
 {
+    //Temps de pause en seconde
     class BreakTime : AbstractIndicator
     {
         public BreakTime(List<Point> points, Analysis analysis) : base(points, analysis) {}
@@ -24,6 +26,8 @@ namespace Dysgraphie.Indicators
                     sum += pp1.t - p.t;
                 }
             }
+            //convertion en secondes
+            sum = sum / 1000;
             this.analysis.breakTime = sum;
         }
     }

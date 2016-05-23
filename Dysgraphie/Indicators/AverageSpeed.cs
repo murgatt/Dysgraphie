@@ -9,6 +9,7 @@ namespace Dysgraphie.Indicators
 {
     class AverageSpeed : AbstractIndicator
     {
+        // vitesse moyenne d'écriture en cm/s
         public AverageSpeed(List<Point> points, Analysis analysis) : base(points, analysis)
         {}
 
@@ -26,6 +27,9 @@ namespace Dysgraphie.Indicators
                     t += (pp1.t - p.t);
                 } 
             }
+            //convertion de pts/ms en cm/s
+            som = som / 2000;
+            t = t / 1000;
             this.analysis.averageSpeed = som / t;
         }
     }

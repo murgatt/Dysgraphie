@@ -32,8 +32,7 @@ namespace Dysgraphie.Views
         // that make sense for your application.
         private const Int32 m_TABEXTX = 10000;
         private const Int32 m_TABEXTY = 10000;
-
-        
+        private uint initTime;
 
         public MainForm()
         {
@@ -45,7 +44,7 @@ namespace Dysgraphie.Views
         }
 
         private void InitData()
-        {
+        {            
             drawingThread = new DrawingThread(this.picBoard);
             drawingThread.Start();
             this.acquisition = new AcquisitionPoint();
@@ -170,13 +169,19 @@ namespace Dysgraphie.Views
 
                 WintabPacket pkt = m_wtData.GetDataPacket((uint)eventArgs_I.Message.LParam, pktID);
 
+                if(this.pointID == 0)
+                {
+                    Console.WriteLine("temps "+pkt.pkTime);
+                    this.initTime = pkt.pkTime;
+                }
+
                 if (pkt.pkContext != 0)
                 {
                     if(pkt.pkZ < this.seuilZ)
                     {
 
                     }
-                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime)/1000, pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
+                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime-this.initTime), pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
                     acquisition.AddPoint(p);
                     this.pointID++;
                     
@@ -192,7 +197,7 @@ namespace Dysgraphie.Views
                     }
 
                     textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
-                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime) / 1000 - acquisition.analysis.points.ElementAt(0).t).ToString();
+                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime - this.initTime)/1000).ToString();
                     TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
                     textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
                     textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
@@ -206,6 +211,23 @@ namespace Dysgraphie.Views
                     textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
                     
                 }
+                if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
+                {
+                    double som = 0;
+                    foreach (double v in this.acquisition.analysis.instantSpeed)
+                    {
+                        som += v;
+                    }
+                    Console.WriteLine("Vitesse calculée : " + som / this.acquisition.analysis.instantSpeed.Count);
+
+                    som = 0;
+                    foreach (double v in this.acquisition.analysis.instantAcceleration)
+                    {
+                        som += v;
+                    }
+                    Console.WriteLine("Accélération calculée : " + som / this.acquisition.analysis.instantAcceleration.Count);
+                }
+                
 
             }
             catch (Exception ex)

@@ -9,7 +9,7 @@ namespace Dysgraphie.Indicators
 {
     class DrawTime : AbstractIndicator
     {
-
+        //Temps du tracé en secondes
         public DrawTime(List<Point> points, Analysis analysis) : base(points, analysis) { }
 
 
@@ -26,6 +26,9 @@ namespace Dysgraphie.Indicators
                     sum += pp1.t - p.t;
                 }
             }
+
+            //convertion en secondes
+            sum = sum / 1000;
             this.analysis.drawTime = sum;
         }
     }

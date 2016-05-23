@@ -9,7 +9,7 @@ namespace Dysgraphie.Indicators
 {
     class DrawLength : AbstractIndicator
     {
-
+        //Longueur de tracé en cm
         public DrawLength(List<Point> points, Analysis analysis) : base(points, analysis) {}
 
 
@@ -26,6 +26,8 @@ namespace Dysgraphie.Indicators
                     sum += Math.Sqrt(Math.Pow(pp1.x- p.x, 2) + Math.Pow(pp1.y - p.y, 2));
                 }
             }
+            //convertion de points en cm
+            sum = sum / 2000;
             this.analysis.drawLength = sum;
         }
     }

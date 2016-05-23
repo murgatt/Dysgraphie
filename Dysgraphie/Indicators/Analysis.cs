@@ -10,6 +10,7 @@ namespace Dysgraphie.Indicators
     class Analysis
     {
         private List<AbstractIndicator> indicators;
+        private int initTime;
 
         public List<Double> instantSpeed { get; set; }
         public List<Double> instantAcceleration { get; set; }
@@ -26,6 +27,7 @@ namespace Dysgraphie.Indicators
 
         public Analysis()
         {
+
             this.points = new List<Point>();
             this.indicators = new List<AbstractIndicator>();
             this.pointsOnDraw = new List<Point>();
