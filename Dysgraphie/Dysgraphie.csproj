@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Acquisition\AcquisitionPoint.cs" />
     <Compile Include="Database\Child.cs" />
+    <Compile Include="Database\ChildDatas.cs" />
     <Compile Include="Database\Children.cs" />
     <Compile Include="Database\DbManager.cs" />
     <Compile Include="Datas\Point.cs" />

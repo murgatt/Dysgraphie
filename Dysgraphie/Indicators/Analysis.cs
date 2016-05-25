@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -68,6 +69,19 @@ namespace Dysgraphie.Indicators
             {
                 i.calcul();
             }
+        }
+
+        public double mean(String propertyName)
+        {
+            if (this.pointsOnDraw.Count == 0) return 0;
+            int sum = 0;
+            Type myType = typeof(Point);
+            PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+            foreach (Point p in this.pointsOnDraw)
+            {
+                sum += Convert.ToInt32(myPropInfo.GetValue(p, null));
+            }
+            return sum / this.pointsOnDraw.Count;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Dysgraphie
 
             PdfManager pdf = new PdfManager("toto","../../");
             pdf.Create();
-            pdf.AddDataChild(new Child("1", "gouttefarde", "david", "25", "cp", "male", "droitier"));
+            pdf.AddDataChild(new Child(1, "gouttefarde", "david", 25, "cp", "male", "droitier"));
             pdf.AddFirstComment("Le patient zero est atteint de maladie chronique en faite tu vois il est plutot nul en plus il est roux");
             pdf.ClosePdf();
         }

@@ -1,4 +1,5 @@
-﻿using Dysgraphie.Views;
+﻿using Dysgraphie.Database;
+using Dysgraphie.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace Dysgraphie
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            //DbManager manager = new DbManager("kikouDB");
+            //manager.CreateDB();
         }
     }
 }

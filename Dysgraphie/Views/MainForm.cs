@@ -12,6 +12,7 @@ using Dysgraphie.Drawing;
 using Dysgraphie.Datas;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Utils;
+using Dysgraphie.Database;
 
 namespace Dysgraphie.Views
 {
@@ -311,28 +312,21 @@ namespace Dysgraphie.Views
                  textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
                  textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
                 textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
-                int i = 0;
-                DrawingPoint dp;
-                foreach (Datas.Point p in acquisition.analysis.points)
-                {
-                    double y = Convert.ToDouble(p.y);
-                    double x = Convert.ToDouble(p.x);
-
-
-
-                    if (p.p > 0)
-                    {
-
-                        dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
-                        drawingThread.AddPoint(dp);
-                    }
-                    ++i;
-                }
+                
             }
+  
+        }        
 
-           
+        private void buttonAjoutBDD_Click(object sender, EventArgs e)
+        {
+            DbManager manager = new DbManager("kikouDB");
+            int IdChild = manager.getCurrentChildID()+1;
+            Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, Convert.ToInt32(this.numericUpDownAge.Value), this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
+            if (!c.alreadySaved(manager)) c.AddChildInDB(manager);
             
+            
+            ChildDatas cd = new ChildDatas(c.GetID(), Convert.ToChar(this.comboBoxSymbole.Text), this.acquisition.analysis);
+            cd.saveDatas(manager);
         }
-
     }
 }

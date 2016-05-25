@@ -13,20 +13,25 @@ namespace Dysgraphie.Database
 {
     class Children
     {
-        List<Child> listChildren = new List<Child>();
-
+        List<Child> listChildren;
         private DbManager dBmanager;
 
-       
+        public Children(DbManager dbmanager)
+        {
+            listChildren = new List<Child>();
+            this.dBmanager = dbmanager;
+        }
 
 
         //  Methode abstraite ?
-         public void RemoveChild(string ID)
+         public void RemoveChild(int ID)
         {
-            string req = "DELETE FROM ListChildren WHERE condition ID = " + ID + "; ";
+            dBmanager.DBConnexion();
+            string req = "DELETE FROM Children WHERE condition ID = " + ID + "; ";
             dBmanager.NoQueryRequest(req);
+            dBmanager.DBDeconnexion();
         }
-        public void EditChildFromID(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
+        public void EditChildFromID(int ID, string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
         {
             foreach(Child c in listChildren)
             {
@@ -38,13 +43,15 @@ namespace Dysgraphie.Database
         }
         public List<Child> GetAllChildren()
         {
-            string req = "select * from ListChildren";
+            dBmanager.DBConnexion();
+            string req = "select * from Children";
             SQLiteDataReader reader = (dBmanager.QueryRequest(req));
             while (reader.Read())
             {
-                Child child = new Child(reader["ID"].ToString(), reader["Nom"].ToString(), reader["Prenom"].ToString(), reader["Age"].ToString(), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
+                Child child = new Child(Convert.ToInt32(reader["ID"]), reader["Nom"].ToString(), reader["Prenom"].ToString(), Convert.ToInt32(reader["Age"]), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
                 listChildren.Add(child);
             }
+            dBmanager.DBDeconnexion();
             return listChildren;
         }
 

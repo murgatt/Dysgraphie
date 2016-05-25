@@ -14,21 +14,54 @@ namespace Dysgraphie.Database
 {
     class DbManager
     {
-        SQLiteConnection m_dbConnection;
+        public SQLiteConnection m_dbConnection { get; set; }
 
-        public void CreateDB(string DBName, string TableName)
+        public DbManager(String DBname)
         {
-            SQLiteConnection.CreateFile("../../Database/"+ DBName + ".sqlite");
-            this.m_dbConnection = new SQLiteConnection("Data Source=../../" + DBName + ".sqlite;Version=3;");
-            this.m_dbConnection.Open();
-            this.NoQueryRequest("CREATE TABLE "+TableName+ " (ID INT PRIMARY KEY NOT NULL, Nom VARCHAR, Prenom VARCHAR, Age VARCHAR, Classe VARCHAR, Genre VARCHAR, Lateralite VARCHAR )");
+            this.m_dbConnection = new SQLiteConnection("Data Source=Database/" + DBname + ".sqlite;Version=3;");
         }
 
-        public void DBConnexion(string DBName)
+        public void CreateDB()
+        {          
+            this.m_dbConnection.Open();
+            this.NoQueryRequest("CREATE TABLE Children (ID INT PRIMARY KEY NOT NULL, Nom VARCHAR, Prenom VARCHAR, Age VARCHAR, Classe VARCHAR, Genre VARCHAR, Lateralite VARCHAR )");
+            this.NoQueryRequest("CREATE TABLE Datas (ChildID INT, Symbole VARCHAR, VitesseMoyenne NUMERIC, TempsTrace NUMERIC, TempsPause NUMERIC, LongueurTrace NUMERIC, HauteurLettre NUMERIC, LargeurLettre NUMERIC, NbBlocs INTEGER, PressionMoyenne NUMERIC, AltitudeMoyenne NUMERIC, AzimuthMoyen NUMERIC, TwistMoyen NUMERIC)");
+            this.m_dbConnection.Close();
+        }
+
+        public void DBConnexion()
         {
-           this.m_dbConnection =new SQLiteConnection("Data Source=../../Database/"+ DBName + ".sqlite;Version=3;");
            this.m_dbConnection.Open();
         }
+
+        public void DBDeconnexion()
+        {
+            this.m_dbConnection.Close();
+        }
+
+        public int getCurrentChildID()
+        {
+            string req = "SELECT max(ID) FROM Children";
+            SQLiteCommand myCommand= new SQLiteCommand(req, this.m_dbConnection); ;
+            this.m_dbConnection.Open();
+
+            if (myCommand.ExecuteScalar().ToString() != "")
+            {
+                int maxId = Convert.ToInt32(myCommand.ExecuteScalar());
+                this.m_dbConnection.Close();
+                return maxId;
+            }
+
+            else {
+                this.m_dbConnection.Close();
+                return 0;
+            }
+            
+
+            
+
+        }
+
         public void NoQueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
@@ -54,7 +87,7 @@ namespace Dysgraphie.Database
             }
             catch (Exception e)
             {
-                Console.WriteLine("erreur lors de l'execution de NoQueryRequest : " + e);
+                Console.WriteLine("erreur lors de l'execution de QueryRequest : " + e);
             }
 
             return null;
