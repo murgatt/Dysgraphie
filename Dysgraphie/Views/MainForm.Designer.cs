@@ -86,6 +86,9 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonAjoutBDD = new System.Windows.Forms.Button();
+            this.bDDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerUneBaseDeDonnéeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.Données.SuspendLayout();
@@ -328,7 +331,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fichierToolStripMenuItem});
+            this.fichierToolStripMenuItem,
+            this.bDDToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1916, 24);
@@ -636,13 +640,34 @@
             // 
             // buttonAjoutBDD
             // 
-            this.buttonAjoutBDD.Location = new System.Drawing.Point(40, 887);
+            this.buttonAjoutBDD.Location = new System.Drawing.Point(141, 31);
             this.buttonAjoutBDD.Name = "buttonAjoutBDD";
-            this.buttonAjoutBDD.Size = new System.Drawing.Size(177, 23);
+            this.buttonAjoutBDD.Size = new System.Drawing.Size(100, 23);
             this.buttonAjoutBDD.TabIndex = 38;
             this.buttonAjoutBDD.Text = "Ajouter à la BDD";
             this.buttonAjoutBDD.UseVisualStyleBackColor = true;
             this.buttonAjoutBDD.Click += new System.EventHandler(this.buttonAjoutBDD_Click);
+            // 
+            // bDDToolStripMenuItem
+            // 
+            this.bDDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem,
+            this.créerUneBaseDeDonnéeToolStripMenuItem});
+            this.bDDToolStripMenuItem.Name = "bDDToolStripMenuItem";
+            this.bDDToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.bDDToolStripMenuItem.Text = "BDD";
+            // 
+            // séléctionnerUneBaseDeDonnéesToolStripMenuItem
+            // 
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Name = "séléctionnerUneBaseDeDonnéesToolStripMenuItem";
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Text = "Séléctionner une base de données";
+            // 
+            // créerUneBaseDeDonnéeToolStripMenuItem
+            // 
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Name = "créerUneBaseDeDonnéeToolStripMenuItem";
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Text = "Créer une base de donnée";
             // 
             // MainForm
             // 
@@ -729,5 +754,8 @@
         private System.Windows.Forms.ComboBox comboBoxLateralite;
         private System.Windows.Forms.ComboBox comboBoxGenre;
         private System.Windows.Forms.Button buttonAjoutBDD;
+        private System.Windows.Forms.ToolStripMenuItem bDDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem séléctionnerUneBaseDeDonnéesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem créerUneBaseDeDonnéeToolStripMenuItem;
     }
 }
