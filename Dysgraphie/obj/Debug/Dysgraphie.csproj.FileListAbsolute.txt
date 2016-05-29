@@ -1,1 +1,10 @@
 d:\documents\visual studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe.config
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.pdb
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Properties.Resources.resources
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.exe
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.pdb
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.Main.resources
+D:\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.New.resources
