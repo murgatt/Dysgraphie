@@ -26,7 +26,7 @@ namespace Dysgraphie.Database
             string req = "DELETE FROM ListChildren WHERE condition ID = " + ID + "; ";
             dBmanager.NoQueryRequest(req);
         }
-        public void EditChildFromID(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
+        public void EditChildFromID(string ID, string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
         {
             foreach(Child c in listChildren)
             {
@@ -42,7 +42,7 @@ namespace Dysgraphie.Database
             SQLiteDataReader reader = (dBmanager.QueryRequest(req));
             while (reader.Read())
             {
-                Child child = new Child(reader["ID"].ToString(), reader["Nom"].ToString(), reader["Prenom"].ToString(), reader["Age"].ToString(), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
+                Child child = new Child(reader["ID"].ToString(), reader["Nom"].ToString(), reader["Prenom"].ToString(), int.Parse(reader["Age"].ToString()), reader["Classe"].ToString(), reader["Genre"].ToString(), reader["Lateralite"].ToString());
                 listChildren.Add(child);
             }
             return listChildren;

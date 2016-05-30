@@ -1,0 +1,485 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Timers;
+using Dysgraphie.Drawing;
+using WintabDN;
+using Dysgraphie.Acquisition;
+using Dysgraphie.Database;
+
+namespace Dysgraphie.Views
+{
+    public partial class Main : Form
+    {
+        private String state = "stopped";
+        private System.Timers.Timer timer = new System.Timers.Timer(1000);
+        private TimeSpan temps;
+        private System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+        private Char[] characters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        private List<char> sequence = new List<Char>();
+        private int nbTxt = 0;
+        private Child child;
+        private String path;
+        private Boolean basicMode = true;
+
+        public Main()
+        {
+            InitializeComponent();
+            timer.Elapsed += new ElapsedEventHandler(TimerIncrement);
+
+            InitData();
+            this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+
+            InitDataCapture(m_TABEXTX, m_TABEXTY, true);
+            m_logContext = OpenTestSystemContext();
+            this.acquisition = new AcquisitionPoint();
+            acquisition.Start();
+        }
+
+        private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            New n = new New();
+            DialogResult result = n.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                child = n.child;
+                path = n.path;
+                Init();
+            }
+        }
+
+        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog1.FileName);
+                MessageBox.Show(sr.ReadToEnd());
+                sr.Close();
+            }
+        }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            switch (state)
+            {
+                case "stopped":
+                    Start();
+                    break;
+                case "started":
+                    Pause();
+                    break;
+                case "paused":
+                    Continue();
+                    break;
+            }
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            Stop();
+        }
+
+        private void nextBtn_Click(object sender, EventArgs e)
+        {
+            nextTxt();
+        }
+
+        private void restartBtn_Click(object sender, EventArgs e)
+        {
+            restart();
+        }
+
+        private void basiqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.basiqueToolStripMenuItem.Checked)
+            {
+                this.basiqueToolStripMenuItem.Checked = true;
+                this.analyseToolStripMenuItem.Checked = false;
+                basicMode = true;
+                if (child != null)
+                {
+                    this.infoPanel.Visible = true;
+                }
+                this.analysePanel.Visible = false;
+            }
+        }
+
+        private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.analyseToolStripMenuItem.Checked)
+            {
+                this.basiqueToolStripMenuItem.Checked = false;
+                this.analyseToolStripMenuItem.Checked = true;
+                basicMode = false;
+                this.infoPanel.Visible = false;
+                this.analysePanel.Visible = true;
+            }
+        }
+
+        private void TimerIncrement(object source, ElapsedEventArgs e)
+        {
+            temps += TimeSpan.FromMilliseconds(timer.Interval);
+            this.timerLabel.Text = temps.ToString();
+        }
+
+        private void Init()
+        {
+            Random r = new Random();
+            List<char> c = new List<Char>();
+            sequence.Clear();
+            for (int i = 0; i < characters.Length; i++)
+            {
+                c.Add(characters[i]);
+            }
+            for (int i = 0; i < characters.Length; i++)
+            {
+                int nb = r.Next(c.Count - 1);
+                sequence.Add(c[nb]);
+                c.RemoveAt(nb);
+            }
+            this.textLabel.Text = "";
+            this.nameLabel.Text = child.GetNom();
+            this.forenameLabel.Text = child.GetPrenom();
+            this.birthLabel.Text = child.GetDateN().ToString();
+            this.ageLabel.Text = child.GetAge().ToString();
+            this.gradeLabel.Text = child.GetClasse();
+            this.lateralityLabel.Text = child.GetLateralite();
+            this.genderLabel.Text = child.GetGenre();
+            if(basicMode)
+            {
+                this.infoPanel.Visible = true;
+            }
+            this.startBtn.Enabled = true;
+        }
+
+        private void Start()
+        {
+            state = "started";
+            this.startBtn.Image = ((System.Drawing.Image)(Properties.Resources.pause));
+            this.startBtn.Text = "Pause";
+            this.stopBtn.Enabled = true;
+            this.nextBtn.Enabled = true;
+            temps = new TimeSpan();
+            timer.Start();
+            this.restartBtn.Enabled = false;
+            this.saveBtn.Enabled = false;
+            this.resultsBtn.Enabled = false;
+            nbTxt = 0;
+            this.textLabel.Text = sequence[nbTxt].ToString();
+        }
+
+        private void Stop()
+        {
+            if(state != "stopped")
+            {
+                state = "stopped";
+                this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
+                this.startBtn.Text = "Démarrer";
+                this.startBtn.Enabled = false;
+                this.eraseBtn.Enabled = false;
+                this.stopBtn.Enabled = false;
+                timer.Stop();
+                this.restartBtn.Enabled = true;
+                this.saveBtn.Enabled = true;
+                this.resultsBtn.Enabled = true;
+                this.nextBtn.Enabled = false;
+            }
+        }
+
+        private void Continue()
+        {
+            state = "started";
+            this.startBtn.Image = ((System.Drawing.Image)(Properties.Resources.pause));
+            this.startBtn.Text = "Pause";
+            timer.Start();
+        }
+
+        private void Pause()
+        {
+            state = "paused";
+            timer.Stop();
+            this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
+            this.startBtn.Text = "Reprendre";
+        }
+
+        private void nextTxt()
+        {
+            nbTxt++;
+            if (nbTxt+1 <= sequence.Count)
+            {
+                this.textLabel.Text = sequence[nbTxt].ToString();
+            }
+            else
+            {
+                end();
+            }
+        }
+
+        private void end()
+        {
+            this.nextBtn.Enabled = false;
+            this.textLabel.Text = "";
+            this.restartBtn.Enabled = true;
+            this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
+            this.startBtn.Text = "Démarrer";
+            this.startBtn.Enabled = false;
+            this.eraseBtn.Enabled = false;
+            this.stopBtn.Enabled = false;
+            this.saveBtn.Enabled = true;
+            this.resultsBtn.Enabled = true;
+            timer.Stop();
+        }
+
+        private void restart()
+        {
+            DialogResult restartResult = MessageBox.Show("Etes-vous sûr de vouloir recommencer ? Les tracés non sauvegardés seront supprimés.", "Recommencer ?", MessageBoxButtons.YesNo);
+            if (restartResult == DialogResult.Yes)
+            {
+                state = "stopped";
+                this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
+                this.startBtn.Text = "Démarrer";
+                this.startBtn.Enabled = true;
+                this.nextBtn.Enabled = false;
+                this.stopBtn.Enabled = false;
+                this.resultsBtn.Enabled = false;
+                this.restartBtn.Enabled = false;
+                this.saveBtn.Enabled = false;
+                this.eraseBtn.Enabled = true;
+                this.timerLabel.Text = "00:00:00";
+            }
+        }
+
+        // Code tablette
+
+        private CWintabContext m_logContext = null;
+        private CWintabData m_wtData = null;
+        private AcquisitionPoint acquisition;
+
+        private int pointID = 0;
+        private DrawingThread drawingThread;
+
+        //Lors d'un tracé, le paramètre Z peut être faible mais non nul alors que stylo reste sur la tablette
+        private int seuilZ = 50;
+
+        // These constants can be used to force Wintab X/Y data to map into a
+        // a 10000 x 10000 grid, as an example of mapping tablet data to values
+        // that make sense for your application.
+        private const Int32 m_TABEXTX = 10000;
+        private const Int32 m_TABEXTY = 10000;
+        private uint initTime;
+
+        
+        private void InitData()
+        {
+            drawingThread = new DrawingThread(this.picBoard);
+            drawingThread.Start();
+            this.acquisition = new AcquisitionPoint();
+        }
+
+
+
+        private void TestForm_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            CloseCurrentContext();
+        }
+
+        private void CloseCurrentContext()
+        {
+            try
+            {
+                Console.WriteLine("Closing context...\n");
+                if (m_logContext != null)
+                {
+                    m_logContext.Close();
+                    m_logContext = null;
+                    m_wtData = null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        private void InitDataCapture(int ctxWidth_I = m_TABEXTX, int ctxHeight_I = m_TABEXTY, bool ctrlSysCursor_I = true)
+        {
+            try
+            {
+                // Close context from any previous test.
+                CloseCurrentContext();
+
+                m_logContext = OpenTestSystemContext(ctxWidth_I, ctxHeight_I, ctrlSysCursor_I);
+
+                if (m_logContext == null)
+                {
+                    Console.Write("Test_DataPacketQueueSize: FAILED OpenTestSystemContext - bailing out...\n");
+                    return;
+                }
+
+                // Create a data object and set its WT_PACKET handler.
+                m_wtData = new CWintabData(m_logContext);
+                m_wtData.SetWTPacketEventHandler(MyWTPacketEventHandler);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+        }
+
+
+        private CWintabContext OpenTestSystemContext(int width_I = m_TABEXTX, int height_I = m_TABEXTY, bool ctrlSysCursor = true)
+        {
+            bool status = false;
+            CWintabContext logContext = null;
+
+            try
+            {
+                // Get the default system context.
+                // Default is to receive data events.
+                logContext = CWintabInfo.GetDefaultDigitizingContext(ECTXOptionValues.CXO_MESSAGES);
+                //logContext = CWintabInfo.GetDefaultSystemContext(ECTXOptionValues.CXO_MESSAGES);
+
+                // Set system cursor if caller wants it.
+                if (ctrlSysCursor)
+                {
+                    logContext.Options |= (uint)ECTXOptionValues.CXO_SYSTEM;
+                }
+                else
+                {
+                    logContext.Options &= ~(uint)ECTXOptionValues.CXO_SYSTEM;
+                }
+
+                if (logContext == null)
+                {
+                    Console.Write("FAILED to get default digitizing context.\n");
+                    return null;
+                }
+
+                // Modify the digitizing region.
+                logContext.Name = "WintabDN Event Data Context";
+
+                WintabAxis tabletX = CWintabInfo.GetTabletAxis(EAxisDimension.AXIS_X);
+                WintabAxis tabletY = CWintabInfo.GetTabletAxis(EAxisDimension.AXIS_Y);
+
+                logContext.InOrgX = 0;
+                logContext.InOrgY = 0;
+                logContext.InExtX = tabletX.axMax;
+                logContext.InExtY = tabletY.axMax;
+
+                // Open the context, which will also tell Wintab to send data packets.
+                status = logContext.Open();
+
+                Console.Write("Context Open: " + (status ? "PASSED [ctx=" + logContext.HCtx + "]" : "FAILED") + "\n");
+            }
+            catch (Exception ex)
+            {
+                Console.Write("OpenTestDigitizerContext ERROR: " + ex.ToString());
+            }
+
+            return logContext;
+        }
+
+        public void MyWTPacketEventHandler(Object sender_I, MessageReceivedEventArgs eventArgs_I)
+        {
+            //System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
+            if (m_wtData == null)
+            {
+                return;
+            }
+
+            try
+            {
+                uint pktID = (uint)eventArgs_I.Message.WParam;
+
+                WintabPacket pkt = m_wtData.GetDataPacket((uint)eventArgs_I.Message.LParam, pktID);
+
+                if (this.pointID == 0)
+                {
+                    Console.WriteLine("temps " + pkt.pkTime);
+                    this.initTime = pkt.pkTime;
+                }
+
+                if (pkt.pkContext != 0)
+                {
+                    if (pkt.pkZ < this.seuilZ)
+                    {
+
+                    }
+                    Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime - this.initTime), pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
+                    acquisition.AddPoint(p);
+                    this.pointID++;
+
+                    if (pkt.pkNormalPressure != 0)
+                    {
+                        double y = Convert.ToDouble(pkt.pkY);
+                        double x = Convert.ToDouble(pkt.pkX);
+
+                        DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
+                        drawingThread.AddPoint(dp);
+
+
+                    }
+
+                    /*
+                    textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime - this.initTime) / 1000).ToString();
+                    TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
+                    textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
+                    textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
+                    textBoxPression.Text = pkt.pkNormalPressure.ToString();
+                    textBoxX.Text = pkt.pkX.ToString();
+                    textBoxY.Text = pkt.pkY.ToString();
+                    textBoxZ.Text = pkt.pkZ.ToString();
+                    textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
+                    textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
+                    textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
+                    textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+                    textBoxLettersHeight.Text = acquisition.analysis.lettersHeight.ToString();
+                    textBoxLettersWidth.Text = acquisition.analysis.lettersWidth.ToString();
+                    */
+
+                }
+                /*
+                if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
+                {
+                    double som = 0;
+                    foreach (double v in this.acquisition.analysis.instantSpeed)
+                    {
+                        som += v;
+                    }
+                    Console.WriteLine("Vitesse calculée : " + som / this.acquisition.analysis.instantSpeed.Count);
+
+                    som = 0;
+                    foreach (double v in this.acquisition.analysis.instantAcceleration)
+                    {
+                        som += v;
+                    }
+                    Console.WriteLine("Accélération calculée : " + som / this.acquisition.analysis.instantAcceleration.Count);
+                }
+                */
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("FAILED to get packet data: " + ex.ToString());
+            }
+        }
+        //-------------------------------------------------------------------------
+
+    }
+}

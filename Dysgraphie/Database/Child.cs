@@ -12,19 +12,20 @@ using Dysgraphie.Database;
 
 namespace Dysgraphie.Database
 {
-    class Child
+    public class Child
     {
         private string ID;
         private string Nom;
         private string Prenom;
-        private string Age;
+        private DateTime DateN;
+        private int Age;
         private string Classe;
         private string Genre;
         private string Lateralite;
         private DbManager dBmanager;
 
-        public Child(string ID, string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
-      {
+        public Child(string ID, string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
+        {
             this.ID = ID;
             this.Nom = Nom;
             this.Prenom = Prenom;
@@ -35,8 +36,24 @@ namespace Dysgraphie.Database
             this.dBmanager = new DbManager();
             this.dBmanager.DBConnexion("myDB");
         }
-        
-        public void EditChild( string Nom, string Prenom, string Age, string Classe, string Genre, string Lateralite)
+
+        public Child(String name, String forename, DateTime birth, String grade, String laterality, String gender)
+        {
+            this.Nom = name;
+            this.Prenom = forename;
+            this.DateN = birth;
+            this.Classe = grade;
+            this.Lateralite = laterality;
+            this.Genre = gender;
+            DateTime today = DateTime.Today;
+            this.Age = today.Year - birth.Year;
+            if (birth > today.AddYears(-this.Age))
+            {
+                Age--;
+            }
+        }
+
+        public void EditChild( string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
         {
             this.Nom = Nom;
             this.Prenom = Prenom;
@@ -58,7 +75,11 @@ namespace Dysgraphie.Database
         {
             return this.Prenom;
         }
-        public string GetAge()
+        public DateTime GetDateN()
+        {
+            return this.DateN;
+        }
+        public int GetAge()
         {
             return this.Age;
         }
@@ -74,7 +95,6 @@ namespace Dysgraphie.Database
         {
             return this.Lateralite;
         }
-
 
         public void AddChildInDB()
         {

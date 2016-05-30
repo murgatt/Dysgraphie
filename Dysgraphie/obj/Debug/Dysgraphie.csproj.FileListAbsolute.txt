@@ -25,3 +25,18 @@ C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.M
 C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\WintabDN.dll
 C:\Users\David\Desktop\GitHub\Dysgraphie\Dysgraphie\bin\Debug\itextsharp.dll
 C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\bin\Debug\itextsharp.dll
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\Dysgraphie.exe.config
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.exe
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.pdb
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.csprojResolveAssemblyReference.cache
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.Properties.Resources.resources
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.Views.Main.resources
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.Views.MainForm.resources
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.Views.New.resources
+D:\Desktop\Dysgraphie-master\Dysgraphie\obj\Debug\Dysgraphie.csproj.GenerateResource.Cache
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\Dysgraphie.exe
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\Dysgraphie.pdb
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\itextsharp.dll
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\System.Data.SQLite.dll
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\WintabDN.dll
+D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\System.Data.SQLite.xml
