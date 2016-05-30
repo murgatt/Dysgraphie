@@ -172,7 +172,6 @@ namespace Dysgraphie.Views
 
                 if(this.pointID == 0)
                 {
-                    Console.WriteLine("temps "+pkt.pkTime);
                     this.initTime = pkt.pkTime;
                 }
 
@@ -215,24 +214,6 @@ namespace Dysgraphie.Views
 
 
                 }
-                if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
-                {
-                    double som = 0;
-                    foreach (double v in this.acquisition.analysis.instantSpeed)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Vitesse calculée : " + som / this.acquisition.analysis.instantSpeed.Count);
-
-                    som = 0;
-                    foreach (double v in this.acquisition.analysis.instantAcceleration)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Accélération calculée : " + som / this.acquisition.analysis.instantAcceleration.Count);
-                }
-                
-
             }
             catch (Exception ex)
             {
@@ -304,14 +285,22 @@ namespace Dysgraphie.Views
                 TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
                 textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
                 textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
-                /* textBoxPression.Text = pkt.pkNormalPressure.ToString();
-                 textBoxX.Text = pkt.pkX.ToString();
-                 textBoxY.Text = pkt.pkY.ToString();
-                 textBoxZ.Text = pkt.pkZ.ToString();
-                 textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
-                 textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
-                 textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
                 textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+
+                 
+                 DrawingPoint dp;
+                 foreach (Datas.Point p in acquisition.analysis.points)
+                 {
+                     double y = Convert.ToDouble(p.y);
+                     double x = Convert.ToDouble(p.x);
+
+                     if (p.p > 0)
+                     {
+ 
+                         dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                         drawingThread.AddPoint(dp);
+                     }
+                 }
                 
             }
   
@@ -327,6 +316,17 @@ namespace Dysgraphie.Views
             
             ChildDatas cd = new ChildDatas(c.GetID(), Convert.ToChar(this.comboBoxSymbole.Text), this.acquisition.analysis);
             cd.saveDatas(manager);
+        }
+
+        private void buttonDiagnostic_Click(object sender, EventArgs e)
+        {
+            DbManager manager = new DbManager("kikouDB");
+            int IdChild = manager.getCurrentChildID() + 1;
+            Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, Convert.ToInt32(this.numericUpDownAge.Value), this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
+            Diagnostic d = new Diagnostic(manager, this.acquisition.analysis, Convert.ToChar(this.comboBoxSymbole.Text), c);
+
+            Console.WriteLine(d.toString());
+
         }
     }
 }

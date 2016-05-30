@@ -11,7 +11,8 @@ namespace Dysgraphie.Indicators
     class Analysis
     {
         private List<AbstractIndicator> indicators;
-        
+
+        public char character { get; }
 
         public List<Double> instantSpeed { get; set; }
         public List<Double> instantAcceleration { get; set; }

@@ -76,11 +76,8 @@ namespace Dysgraphie.Database
         public bool alreadySaved(DbManager dBmanager)
         {
             dBmanager.DBConnexion();
-            string req = "select * from Children WHERE Nom ='"+this.Nom+"' AND Prenom='"+this.Prenom+ "' AND Age='" + this.Age+ "' AND Classe='" + this.Classe+ "' AND Genre='" + this.Genre+ "' AND Lateralite='" + this.Lateralite+"'";
-            SQLiteCommand sqCommand = (SQLiteCommand)dBmanager.m_dbConnection.CreateCommand();
-            sqCommand.CommandText = req;
-            SQLiteDataReader reader = sqCommand.ExecuteReader();
-
+            string req = "select * from Children WHERE Nom ='" + this.Nom + "' AND Prenom='" + this.Prenom + "' AND Age='" + this.Age + "' AND Classe='" + this.Classe + "' AND Genre='" + this.Genre + "' AND Lateralite='" + this.Lateralite + "'";
+            SQLiteDataReader reader = dBmanager.QueryRequest(req);
 
             while (reader.Read())
             {

@@ -25,7 +25,7 @@ namespace Dysgraphie.Database
         {          
             this.m_dbConnection.Open();
             this.NoQueryRequest("CREATE TABLE Children (ID INT PRIMARY KEY NOT NULL, Nom VARCHAR, Prenom VARCHAR, Age VARCHAR, Classe VARCHAR, Genre VARCHAR, Lateralite VARCHAR )");
-            this.NoQueryRequest("CREATE TABLE Datas (ChildID INT, Symbole VARCHAR, VitesseMoyenne NUMERIC, TempsTrace NUMERIC, TempsPause NUMERIC, LongueurTrace NUMERIC, HauteurLettre NUMERIC, LargeurLettre NUMERIC, NbBlocs INTEGER, PressionMoyenne NUMERIC, AltitudeMoyenne NUMERIC, AzimuthMoyen NUMERIC, TwistMoyen NUMERIC)");
+            this.NoQueryRequest("CREATE TABLE Datas (ChildID INT, Symbole VARCHAR, VitesseMoyenne NUMERIC(32), TempsTrace NUMERIC(32), TempsPause NUMERIC(32), LongueurTrace NUMERIC(32), HauteurLettre NUMERIC(32), LargeurLettre NUMERIC(32), NbBlocs INTEGER, PressionMoyenne NUMERIC(32), AltitudeMoyenne NUMERIC(32), AzimuthMoyen NUMERIC(32), TwistMoyen NUMERIC(32))");
             this.m_dbConnection.Close();
         }
 
@@ -56,10 +56,6 @@ namespace Dysgraphie.Database
                 this.m_dbConnection.Close();
                 return 0;
             }
-            
-
-            
-
         }
 
         public void NoQueryRequest(string query)
@@ -76,13 +72,15 @@ namespace Dysgraphie.Database
         }
         public SQLiteDataReader QueryRequest(string query)
         {
-            SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
+
+            
+            string req = query;
+            SQLiteCommand sqCommand = (SQLiteCommand)this.m_dbConnection.CreateCommand();
+            sqCommand.CommandText = req;
            
             try
             {
-                SQLiteDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                    Console.WriteLine("nom: " + reader["Nom"] + "\tPrenom: " + reader["Prenom"]);
+                SQLiteDataReader reader = sqCommand.ExecuteReader();
                 return reader;
             }
             catch (Exception e)

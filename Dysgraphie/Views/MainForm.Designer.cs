@@ -62,6 +62,9 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sauvegarderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bDDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerUneBaseDeDonnéeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label14 = new System.Windows.Forms.Label();
@@ -86,9 +89,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonAjoutBDD = new System.Windows.Forms.Button();
-            this.bDDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.créerUneBaseDeDonnéeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonDiagnostic = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.Données.SuspendLayout();
@@ -362,6 +363,27 @@
             this.chargerToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.chargerToolStripMenuItem.Text = "Charger";
             this.chargerToolStripMenuItem.Click += new System.EventHandler(this.chargerToolStripMenuItem_Click);
+            // 
+            // bDDToolStripMenuItem
+            // 
+            this.bDDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem,
+            this.créerUneBaseDeDonnéeToolStripMenuItem});
+            this.bDDToolStripMenuItem.Name = "bDDToolStripMenuItem";
+            this.bDDToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.bDDToolStripMenuItem.Text = "BDD";
+            // 
+            // séléctionnerUneBaseDeDonnéesToolStripMenuItem
+            // 
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Name = "séléctionnerUneBaseDeDonnéesToolStripMenuItem";
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Text = "Séléctionner une base de données";
+            // 
+            // créerUneBaseDeDonnéeToolStripMenuItem
+            // 
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Name = "créerUneBaseDeDonnéeToolStripMenuItem";
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.créerUneBaseDeDonnéeToolStripMenuItem.Text = "Créer une base de donnée";
             // 
             // openFileDialog1
             // 
@@ -648,26 +670,15 @@
             this.buttonAjoutBDD.UseVisualStyleBackColor = true;
             this.buttonAjoutBDD.Click += new System.EventHandler(this.buttonAjoutBDD_Click);
             // 
-            // bDDToolStripMenuItem
+            // buttonDiagnostic
             // 
-            this.bDDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem,
-            this.créerUneBaseDeDonnéeToolStripMenuItem});
-            this.bDDToolStripMenuItem.Name = "bDDToolStripMenuItem";
-            this.bDDToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.bDDToolStripMenuItem.Text = "BDD";
-            // 
-            // séléctionnerUneBaseDeDonnéesToolStripMenuItem
-            // 
-            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Name = "séléctionnerUneBaseDeDonnéesToolStripMenuItem";
-            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.séléctionnerUneBaseDeDonnéesToolStripMenuItem.Text = "Séléctionner une base de données";
-            // 
-            // créerUneBaseDeDonnéeToolStripMenuItem
-            // 
-            this.créerUneBaseDeDonnéeToolStripMenuItem.Name = "créerUneBaseDeDonnéeToolStripMenuItem";
-            this.créerUneBaseDeDonnéeToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.créerUneBaseDeDonnéeToolStripMenuItem.Text = "Créer une base de donnée";
+            this.buttonDiagnostic.Location = new System.Drawing.Point(87, 827);
+            this.buttonDiagnostic.Name = "buttonDiagnostic";
+            this.buttonDiagnostic.Size = new System.Drawing.Size(75, 23);
+            this.buttonDiagnostic.TabIndex = 39;
+            this.buttonDiagnostic.Text = "Diagnostic";
+            this.buttonDiagnostic.UseVisualStyleBackColor = true;
+            this.buttonDiagnostic.Click += new System.EventHandler(this.buttonDiagnostic_Click);
             // 
             // MainForm
             // 
@@ -675,6 +686,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1916, 983);
+            this.Controls.Add(this.buttonDiagnostic);
             this.Controls.Add(this.buttonAjoutBDD);
             this.Controls.Add(this.Données);
             this.Controls.Add(this.button1);
@@ -757,5 +769,6 @@
         private System.Windows.Forms.ToolStripMenuItem bDDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem séléctionnerUneBaseDeDonnéesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem créerUneBaseDeDonnéeToolStripMenuItem;
+        private System.Windows.Forms.Button buttonDiagnostic;
     }
 }

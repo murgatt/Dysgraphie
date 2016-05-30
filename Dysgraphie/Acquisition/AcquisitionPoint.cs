@@ -11,7 +11,7 @@ namespace Dysgraphie.Acquisition
 {
     class AcquisitionPoint
     {
-        public Analysis analysis;
+        public Analysis analysis { get; set; }
 
         //Thread Properties
         private Thread thread;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,37 @@ namespace Dysgraphie.Database
 {
     class StatTools
     {
-        private DbManager manager;
-
-        public StatTools(DbManager manager)
+        public static double mean(DbManager manager, String query, String propertyName)
         {
-            this.manager = manager;
+            manager.DBConnexion();
+            SQLiteDataReader reader = manager.QueryRequest(query);
+            double sum = 0;
+            int count = 0;
+            while (reader.Read())
+            {
+                sum += Convert.ToDouble(reader[propertyName].ToString());
+                ++count;
+            }
+            manager.DBDeconnexion();
+            return sum/count;
+        }
+
+        public static double standardDeviation(DbManager manager, String query, String propertyName)
+        {
+            double mean = StatTools.mean(manager, query, propertyName);
+            double sum = 0;
+
+            manager.DBConnexion();
+            SQLiteDataReader reader = manager.QueryRequest(query);
+            int count = 0;
+            while (reader.Read())
+            {
+                sum += Math.Pow((Convert.ToDouble(reader[propertyName])-mean),2);
+                ++count;
+            }
+            manager.DBDeconnexion();
+            return sum / count;
+            
         }
     }
 }

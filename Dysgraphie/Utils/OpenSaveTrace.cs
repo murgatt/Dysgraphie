@@ -17,7 +17,7 @@ namespace Dysgraphie.Utils
             Analysis a = new Analysis();
             try
             {
-                int i = 0;
+                
                 string[] lines = System.IO.File.ReadAllLines(url);
                 foreach (string line in lines)
                 {
@@ -35,7 +35,7 @@ namespace Dysgraphie.Utils
                     
                 }
                 a.analyse();
-                i = 0;
+                
                 return a;
             }
 
