@@ -47,6 +47,6 @@ Temporary Items
 .apdisk
 
 # Ignore Fils & Folder
-Dysgraphie/obj/
-Dysgraphie/bin/
-.vs/
+Dysgraphie/obj
+Dysgraphie/bin
+.vs
