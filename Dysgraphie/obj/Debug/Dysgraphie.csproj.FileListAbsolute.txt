@@ -40,3 +40,6 @@ D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\itextsharp.dll
 D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\System.Data.SQLite.dll
 D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\WintabDN.dll
 D:\Desktop\Dysgraphie-master\Dysgraphie\bin\Debug\System.Data.SQLite.xml
+D:\Documents\GitHub\Dysgraphie\Dysgraphie\bin\Debug\Dysgraphie.exe.config
+D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.exe
+D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.pdb
