@@ -49,8 +49,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.startBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.nextBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.eraseBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stopBtn = new System.Windows.Forms.ToolStripButton();
@@ -66,6 +64,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textLabel = new System.Windows.Forms.Label();
+            this.nextBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.genderLabel = new System.Windows.Forms.Label();
@@ -240,8 +239,6 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startBtn,
             this.toolStripSeparator7,
-            this.nextBtn,
-            this.toolStripSeparator1,
             this.eraseBtn,
             this.toolStripSeparator2,
             this.stopBtn,
@@ -274,21 +271,6 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // nextBtn
-            // 
-            this.nextBtn.Enabled = false;
-            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
-            this.nextBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(66, 22);
-            this.nextBtn.Text = "Suivant";
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // eraseBtn
             // 
             this.eraseBtn.Image = ((System.Drawing.Image)(resources.GetObject("eraseBtn.Image")));
@@ -296,6 +278,7 @@
             this.eraseBtn.Name = "eraseBtn";
             this.eraseBtn.Size = new System.Drawing.Size(103, 22);
             this.eraseBtn.Text = "Effacer le texte";
+            this.eraseBtn.Click += new System.EventHandler(this.eraseBtn_Click);
             // 
             // toolStripSeparator2
             // 
@@ -374,7 +357,7 @@
             this.infoPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.infoPanel.Location = new System.Drawing.Point(0, 50);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(231, 475);
+            this.infoPanel.Size = new System.Drawing.Size(231, 487);
             this.infoPanel.TabIndex = 2;
             this.infoPanel.Visible = false;
             // 
@@ -384,7 +367,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 46);
+            this.groupBox3.Size = new System.Drawing.Size(231, 74);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Texte à tracer";
@@ -392,14 +375,16 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.textLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.nextBtn, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 27);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 55);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // textLabel
@@ -413,11 +398,25 @@
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "VALUE";
             // 
+            // nextBtn
+            // 
+            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nextBtn.Enabled = false;
+            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nextBtn.Location = new System.Drawing.Point(75, 29);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(75, 23);
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.Text = "   Suivant";
+            this.nextBtn.UseVisualStyleBackColor = true;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 82);
+            this.groupBox2.Location = new System.Drawing.Point(0, 94);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(231, 156);
             this.groupBox2.TabIndex = 2;
@@ -601,7 +600,7 @@
             // 
             this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 238);
+            this.groupBox1.Location = new System.Drawing.Point(0, 250);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(231, 237);
             this.groupBox1.TabIndex = 0;
@@ -623,7 +622,7 @@
             this.picBoard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBoard.Location = new System.Drawing.Point(231, 50);
             this.picBoard.Name = "picBoard";
-            this.picBoard.Size = new System.Drawing.Size(959, 475);
+            this.picBoard.Size = new System.Drawing.Size(959, 487);
             this.picBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
@@ -637,7 +636,7 @@
             this.analysePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.analysePanel.Location = new System.Drawing.Point(231, 50);
             this.analysePanel.Name = "analysePanel";
-            this.analysePanel.Size = new System.Drawing.Size(231, 475);
+            this.analysePanel.Size = new System.Drawing.Size(231, 487);
             this.analysePanel.TabIndex = 4;
             this.analysePanel.Visible = false;
             // 
@@ -645,7 +644,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 525);
+            this.ClientSize = new System.Drawing.Size(1190, 537);
             this.Controls.Add(this.analysePanel);
             this.Controls.Add(this.picBoard);
             this.Controls.Add(this.infoPanel);
@@ -694,7 +693,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton startBtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton eraseBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton stopBtn;
@@ -732,6 +730,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label textLabel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripButton nextBtn;
+        private System.Windows.Forms.Button nextBtn;
     }
 }
