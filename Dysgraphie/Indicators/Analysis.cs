@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,8 @@ namespace Dysgraphie.Indicators
     class Analysis
     {
         private List<AbstractIndicator> indicators;
-        
+
+        public char character { get; set; }
 
         public List<Double> instantSpeed { get; set; }
         public List<Double> instantAcceleration { get; set; }
@@ -22,6 +24,10 @@ namespace Dysgraphie.Indicators
         public int printNumber{ get; set; }
         public double lettersHeight { get; set; }
         public double lettersWidth { get; set; }
+        public double averagePression { get; set; }
+        public double averageAltitude{ get; set; }
+        public double averageAzimuth { get; set; }
+        public double averageTwist { get; set; }
 
         public List<Point> points{get; }
         protected List<Point> pointsOnDraw;
@@ -68,6 +74,26 @@ namespace Dysgraphie.Indicators
             {
                 i.calcul();
             }
+
+            averagePression = this.mean("p");
+            averageAltitude = this.mean("alt");
+            averageAzimuth = this.mean("azi");
+            averageTwist = this.mean("twi");
+        }
+
+        public double mean(String propertyName)
+        {
+            Point[] pointsList = new Point[this.pointsOnDraw.Count];
+            this.pointsOnDraw.CopyTo(pointsList);
+            if (pointsList.Length == 0) return 0;
+            int sum = 0;
+            Type myType = typeof(Point);
+            PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+            foreach (Point p in pointsList)
+            {
+                sum += Convert.ToInt32(myPropInfo.GetValue(p, null));
+            }
+            return sum / this.pointsOnDraw.Count;
         }
     }
 }

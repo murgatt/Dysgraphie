@@ -21,8 +21,8 @@ namespace Dysgraphie.Views
         private String grade;
         private String laterality;
         private String gender;
-        public String path { get; }
-        public Child child { get; };
+        public String path { get; set; }
+        public Child child { get; set; }
 
         public New()
         {
@@ -76,7 +76,11 @@ namespace Dysgraphie.Views
             {
                 gender = "Garçon";
             }
-            child = new Child(name, forename, birth, grade, laterality, gender);           
+
+            //TO DO : passer en paramètre ou en attribut le DbManager
+            DbManager manager = new DbManager("kikouDB");
+
+            child = new Child(manager.getCurrentChildID()+1, name, forename, birth, grade, laterality, gender);           
             
             path = this.pathInput.Text;
             String date = DateTime.Today.ToString("dd-MM-yyyy");

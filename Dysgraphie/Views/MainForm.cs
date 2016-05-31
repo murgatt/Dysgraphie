@@ -12,6 +12,7 @@ using Dysgraphie.Drawing;
 using Dysgraphie.Datas;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Utils;
+using Dysgraphie.Database;
 
 namespace Dysgraphie.Views
 {
@@ -23,6 +24,7 @@ namespace Dysgraphie.Views
 
         private int pointID = 0;
         private DrawingThread drawingThread;
+        private Diagnostic diagnostic;
 
         //Lors d'un tracé, le paramètre Z peut être faible mais non nul alors que stylo reste sur la tablette
         private int seuilZ = 50;
@@ -41,6 +43,7 @@ namespace Dysgraphie.Views
 
             this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            
         }
 
         private void InitData()
@@ -171,7 +174,6 @@ namespace Dysgraphie.Views
 
                 if(this.pointID == 0)
                 {
-                    Console.WriteLine("temps "+pkt.pkTime);
                     this.initTime = pkt.pkTime;
                 }
 
@@ -214,24 +216,6 @@ namespace Dysgraphie.Views
 
 
                 }
-                if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
-                {
-                    double som = 0;
-                    foreach (double v in this.acquisition.analysis.instantSpeed)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Vitesse calculée : " + som / this.acquisition.analysis.instantSpeed.Count);
-
-                    som = 0;
-                    foreach (double v in this.acquisition.analysis.instantAcceleration)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Accélération calculée : " + som / this.acquisition.analysis.instantAcceleration.Count);
-                }
-                
-
             }
             catch (Exception ex)
             {
@@ -265,6 +249,7 @@ namespace Dysgraphie.Views
                 button1.Text = "Start";
                 this.sauvegarderToolStripMenuItem.Enabled = true;
                 this.chargerToolStripMenuItem.Enabled = true;
+                acquisition.analysis.character = Convert.ToChar(this.comboBoxSymbole.Text);
             }
         }
 
@@ -303,36 +288,56 @@ namespace Dysgraphie.Views
                 TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
                 textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
                 textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
-                /* textBoxPression.Text = pkt.pkNormalPressure.ToString();
-                 textBoxX.Text = pkt.pkX.ToString();
-                 textBoxY.Text = pkt.pkY.ToString();
-                 textBoxZ.Text = pkt.pkZ.ToString();
-                 textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
-                 textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
-                 textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();*/
                 textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
-                int i = 0;
-                DrawingPoint dp;
-                foreach (Datas.Point p in acquisition.analysis.points)
-                {
-                    double y = Convert.ToDouble(p.y);
-                    double x = Convert.ToDouble(p.x);
 
+                 
+                 DrawingPoint dp;
+                 foreach (Datas.Point p in acquisition.analysis.points)
+                 {
+                     double y = Convert.ToDouble(p.y);
+                     double x = Convert.ToDouble(p.x);
 
-
-                    if (p.p > 0)
-                    {
-
-                        dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
-                        drawingThread.AddPoint(dp);
-                    }
-                    ++i;
-                }
+                     if (p.p > 0)
+                     {
+ 
+                         dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                         drawingThread.AddPoint(dp);
+                     }
+                 }
+                
             }
+  
+        }        
 
-           
-            
+        private void buttonAjoutBDD_Click(object sender, EventArgs e)
+        {
+            DbManager manager = new DbManager("kikouDB");
+            int IdChild = manager.getCurrentChildID()+1;
+            Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
+            if (!c.alreadySaved(manager)) c.AddChildInDB(manager);
+            ChildDatas cd = new ChildDatas(c.GetID(), Convert.ToChar(this.comboBoxSymbole.Text), this.acquisition.analysis);
+            cd.saveDatas(manager);
         }
 
+        private void buttonDiagnostic_Click(object sender, EventArgs e)
+        {
+            Dictionary<char, Dictionary<string, bool>> res0 = diagnostic.calcul();
+            Dictionary<string, int> res1 = diagnostic.resultsPerIndicator();
+            Dictionary<char, int> res2 = diagnostic.resultsPerLetter();
+            Console.WriteLine();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            diagnostic.addAnalysis(this.acquisition.analysis);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DbManager manager = new DbManager("kikouDB");            
+            int IdChild = manager.getCurrentChildID() + 1;
+            Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
+            this.diagnostic = new Diagnostic(manager, c);
+        }
     }
 }

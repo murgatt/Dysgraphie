@@ -60,8 +60,13 @@
   <ItemGroup>
     <Compile Include="Acquisition\AcquisitionPoint.cs" />
     <Compile Include="Database\Child.cs" />
+    <Compile Include="Database\ChildDatas.cs" />
     <Compile Include="Database\Children.cs" />
     <Compile Include="Database\DbManager.cs" />
+    <Compile Include="Database\Diagnostic.cs" />
+    <Compile Include="Database\DiagnosticLetter.cs" />
+    <Compile Include="Database\DiagnosticDatas.cs" />
+    <Compile Include="Database\StatTools.cs" />
     <Compile Include="Datas\Point.cs" />
     <Compile Include="Drawing\DrawingPoint.cs" />
     <Compile Include="Drawing\DrawingThread.cs" />
