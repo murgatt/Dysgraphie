@@ -12,7 +12,7 @@ namespace Dysgraphie.Indicators
     {
         private List<AbstractIndicator> indicators;
 
-        public char character { get; }
+        public char character { get; set; }
 
         public List<Double> instantSpeed { get; set; }
         public List<Double> instantAcceleration { get; set; }
@@ -24,6 +24,10 @@ namespace Dysgraphie.Indicators
         public int printNumber{ get; set; }
         public double lettersHeight { get; set; }
         public double lettersWidth { get; set; }
+        public double averagePression { get; set; }
+        public double averageAltitude{ get; set; }
+        public double averageAzimuth { get; set; }
+        public double averageTwist { get; set; }
 
         public List<Point> points{get; }
         protected List<Point> pointsOnDraw;
@@ -70,15 +74,22 @@ namespace Dysgraphie.Indicators
             {
                 i.calcul();
             }
+
+            averagePression = this.mean("p");
+            averageAltitude = this.mean("alt");
+            averageAzimuth = this.mean("azi");
+            averageTwist = this.mean("twi");
         }
 
         public double mean(String propertyName)
         {
-            if (this.pointsOnDraw.Count == 0) return 0;
+            Point[] pointsList = new Point[this.pointsOnDraw.Count];
+            this.pointsOnDraw.CopyTo(pointsList);
+            if (pointsList.Length == 0) return 0;
             int sum = 0;
             Type myType = typeof(Point);
             PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-            foreach (Point p in this.pointsOnDraw)
+            foreach (Point p in pointsList)
             {
                 sum += Convert.ToInt32(myPropInfo.GetValue(p, null));
             }

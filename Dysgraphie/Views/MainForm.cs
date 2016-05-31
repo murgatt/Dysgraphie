@@ -24,6 +24,7 @@ namespace Dysgraphie.Views
 
         private int pointID = 0;
         private DrawingThread drawingThread;
+        private Diagnostic diagnostic;
 
         //Lors d'un tracé, le paramètre Z peut être faible mais non nul alors que stylo reste sur la tablette
         private int seuilZ = 50;
@@ -42,6 +43,7 @@ namespace Dysgraphie.Views
 
             this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            
         }
 
         private void InitData()
@@ -247,6 +249,7 @@ namespace Dysgraphie.Views
                 button1.Text = "Start";
                 this.sauvegarderToolStripMenuItem.Enabled = true;
                 this.chargerToolStripMenuItem.Enabled = true;
+                acquisition.analysis.character = Convert.ToChar(this.comboBoxSymbole.Text);
             }
         }
 
@@ -320,13 +323,23 @@ namespace Dysgraphie.Views
 
         private void buttonDiagnostic_Click(object sender, EventArgs e)
         {
-            DbManager manager = new DbManager("kikouDB");
+            Dictionary<char, Dictionary<string, bool>> res0 = diagnostic.calcul();
+            Dictionary<string, int> res1 = diagnostic.resultsPerIndicator();
+            Dictionary<char, int> res2 = diagnostic.resultsPerLetter();
+            Console.WriteLine();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            diagnostic.addAnalysis(this.acquisition.analysis);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DbManager manager = new DbManager("kikouDB");            
             int IdChild = manager.getCurrentChildID() + 1;
             Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, Convert.ToInt32(this.numericUpDownAge.Value), this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
-            Diagnostic d = new Diagnostic(manager, this.acquisition.analysis, Convert.ToChar(this.comboBoxSymbole.Text), c);
-
-            Console.WriteLine(d.toString());
-
+            this.diagnostic = new Diagnostic(manager, c);
         }
     }
 }

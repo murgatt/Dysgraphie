@@ -64,6 +64,7 @@
     <Compile Include="Database\Children.cs" />
     <Compile Include="Database\DbManager.cs" />
     <Compile Include="Database\Diagnostic.cs" />
+    <Compile Include="Database\DiagnosticLetter.cs" />
     <Compile Include="Database\DiagnosticDatas.cs" />
     <Compile Include="Database\StatTools.cs" />
     <Compile Include="Datas\Point.cs" />

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,137 +11,94 @@ namespace Dysgraphie.Database
     class Diagnostic
     {
         private DbManager manager;
-        private Analysis analysis;
+        private List<Analysis> analysisList;
+        private readonly string[] indicators = {"averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth", "averageTwist"};
+        
+
 
         private Child patient;
 
-        private DiagnosticDatas vitesseMoyenne;
-        private DiagnosticDatas tempsTrace;
-        private DiagnosticDatas tempsPause;
-        private DiagnosticDatas longueurTrace;
-        private DiagnosticDatas hauteurLettre;
-        private DiagnosticDatas largeurLettre;
-        private DiagnosticDatas nbBlocs;
-        private DiagnosticDatas pressionMoyenne;
-        private DiagnosticDatas altitudeMoyenne;
-        private DiagnosticDatas azimuthMoyen;
-        private DiagnosticDatas twistMoyen;
-
-        private char character;
-
-        public Diagnostic(DbManager manager, Analysis analysis, char c, Child patient)
+        public Diagnostic(DbManager manager, Child patient)
         {
             this.patient = patient;
             this.manager = manager;
-            this.analysis = analysis;
-            this.character = c;
-
-            vitesseMoyenne= new DiagnosticDatas();
-            tempsTrace= new DiagnosticDatas();
-            tempsPause= new DiagnosticDatas();
-            longueurTrace= new DiagnosticDatas();
-            hauteurLettre= new DiagnosticDatas();
-            largeurLettre= new DiagnosticDatas();
-            nbBlocs= new DiagnosticDatas();
-            pressionMoyenne= new DiagnosticDatas();
-            altitudeMoyenne= new DiagnosticDatas();
-            azimuthMoyen= new DiagnosticDatas();
-            twistMoyen= new DiagnosticDatas();
-
-            this.calcul();
-
-            this.TwoStandardDeviationFromMean(vitesseMoyenne);
-            this.TwoStandardDeviationFromMean(tempsTrace);
-            this.TwoStandardDeviationFromMean(tempsPause);
-            this.TwoStandardDeviationFromMean(longueurTrace);
-            this.TwoStandardDeviationFromMean(hauteurLettre);
-            this.TwoStandardDeviationFromMean(largeurLettre);
-            this.TwoStandardDeviationFromMean(nbBlocs);
-            this.TwoStandardDeviationFromMean(pressionMoyenne);
-            this.TwoStandardDeviationFromMean(altitudeMoyenne);
-            this.TwoStandardDeviationFromMean(azimuthMoyen);
-            this.TwoStandardDeviationFromMean(twistMoyen);
-
+            this.analysisList = new List<Analysis>();
         }
 
-        public void calcul()
+        public Dictionary<string, int> resultsPerIndicator()
         {
-            String query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Lateralite = '" + this.patient.GetLateralite() + "'";
+            Dictionary<char, Dictionary<string, bool>> results = this.calcul();
+            Dictionary<string, int> res = new Dictionary<string, int>();
+            
 
-            vitesseMoyenne.mean = StatTools.mean(this.manager, query, "VitesseMoyenne");
-            vitesseMoyenne.standardDeviation = StatTools.standardDeviation(manager, query, "VitesseMoyenne");
-            vitesseMoyenne.testValue = analysis.averageSpeed;
-
-            tempsTrace.mean = StatTools.mean(this.manager, query, "TempsTrace");
-            tempsTrace.standardDeviation = StatTools.standardDeviation(manager, query, "TempsTrace");
-            tempsTrace.testValue = analysis.drawTime;
-
-            tempsPause.mean = StatTools.mean(this.manager, query, "TempsPause");
-            tempsPause.standardDeviation = StatTools.standardDeviation(manager, query, "TempsPause");
-            tempsPause.testValue = analysis.breakTime;
-
-            longueurTrace.mean = StatTools.mean(this.manager, query, "LongueurTrace");
-            longueurTrace.standardDeviation = StatTools.standardDeviation(manager, query, "LongueurTrace");
-            longueurTrace.testValue = analysis.drawLength;
-
-            hauteurLettre.mean = StatTools.mean(this.manager, query, "HauteurLettre");
-            hauteurLettre.standardDeviation = StatTools.standardDeviation(manager, query, "HauteurLettre");
-            hauteurLettre.testValue = analysis.lettersHeight;
-
-            largeurLettre.mean = StatTools.mean(this.manager, query, "LargeurLettre");
-            largeurLettre.standardDeviation = StatTools.standardDeviation(manager, query, "LargeurLettre");
-            largeurLettre.testValue = analysis.lettersWidth;
-
-            nbBlocs.mean = StatTools.mean(this.manager, query, "NbBlocs");
-            nbBlocs.standardDeviation = StatTools.standardDeviation(manager, query, "NbBlocs");
-            nbBlocs.testValue = analysis.printNumber;
-
-            pressionMoyenne.mean = StatTools.mean(this.manager, query, "PressionMoyenne");
-            pressionMoyenne.standardDeviation = StatTools.standardDeviation(manager, query, "PressionMoyenne");
-            pressionMoyenne.testValue = analysis.mean("p");
-
-            altitudeMoyenne.mean = StatTools.mean(this.manager, query, "AltitudeMoyenne");
-            altitudeMoyenne.standardDeviation = StatTools.standardDeviation(manager, query, "AltitudeMoyenne");
-            altitudeMoyenne.testValue = analysis.mean("alt");
-
-            azimuthMoyen.mean = StatTools.mean(this.manager, query, "AzimuthMoyen");
-            azimuthMoyen.standardDeviation = StatTools.standardDeviation(manager, query, "AzimuthMoyen");
-            azimuthMoyen.testValue = analysis.mean("azi");
-
-            twistMoyen.mean = StatTools.mean(this.manager, query, "TwistMoyen");
-            twistMoyen.standardDeviation = StatTools.standardDeviation(manager, query, "TwistMoyen");
-            twistMoyen.testValue = analysis.mean("twi");
+            foreach (KeyValuePair<char, Dictionary<string, bool>> keyValPerChar in results)
+            {
+                foreach (KeyValuePair<string, bool> keyValPerIndicator in keyValPerChar.Value)
+                {
+                    if (keyValPerIndicator.Value)
+                    {
+                        if (res.ContainsKey(keyValPerIndicator.Key)) res[keyValPerIndicator.Key]++;
+                        else res.Add(keyValPerIndicator.Key, 1);
+                    } else
+                    {
+                        if (!res.ContainsKey(keyValPerIndicator.Key)) res.Add(keyValPerIndicator.Key, 0);
+                    }
+                }
+            }
+            return res;
         }
-    
 
-        public void TwoStandardDeviationFromMean(DiagnosticDatas dd)
+        public Dictionary<char, int> resultsPerLetter()
         {
-            if(dd.testValue> dd.mean + 2 * dd.standardDeviation || dd.testValue < dd.mean - 2 * dd.standardDeviation) dd.OK = false;
-            else dd.OK = true;
+            Dictionary<char, Dictionary<string, bool>> results = this.calcul();
+            Dictionary<char, int> res = new Dictionary<char, int>();
+            int sum = 0;
+
+            foreach (KeyValuePair<char, Dictionary<string, bool>> keyValPerChar in results)
+            {
+                foreach (KeyValuePair<string, bool> keyValPerIndicator in keyValPerChar.Value)
+                {
+                    if (keyValPerIndicator.Value) ++sum;                    
+                }
+                res.Add(keyValPerChar.Key, sum);
+                sum = 0;
+            }
+            return res;
         }
 
-
-        public String toString()
+        public void addAnalysis(Analysis a) 
         {
-            String str = "";
-            str += "Vitesse Moyenne : " + this.vitesseMoyenne.toString()+"\n";
-            str += "Tenps de tracé : " + this.tempsTrace.toString() + "\n";
-            str += "Temps de pause : " + this.tempsPause.toString() + "\n";
-            str += "Longueur de tracé: " + this.longueurTrace.toString() + "\n";
-            str += "Hauteur de lettre: " + this.hauteurLettre.toString() + "\n";
-            str += "Largeur de lettre: " + this.largeurLettre.toString() + "\n";
-            str += "Nombre de blocs: " + this.nbBlocs.toString() + "\n";
-            str += "Pression moyenne: " + this.pressionMoyenne.toString() + "\n";
-            str += "Altitude moyen: " + this.altitudeMoyenne.toString() + "\n";
-            str += "Azimuth moyen: " + this.azimuthMoyen.toString() + "\n";
-            str += "Twistmoyen: " + this.twistMoyen.toString() + "\n";
-
-            return str;
+            this.analysisList.Add(a);
         }
 
+        public Dictionary<char, Dictionary<string, bool>> calcul()
+        {
+            Dictionary<char, Dictionary<string, bool>> res = new Dictionary<char, Dictionary<string, bool>>();
+            
+            foreach(Analysis a in analysisList)
+            {
+                res.Add(a.character, this.addDiagnosticLetter(a));
+            }
+
+            return res;
+        }
+
+        private Dictionary<string, bool> addDiagnosticLetter(Analysis a)
+        {
+            DiagnosticLetter dl = new DiagnosticLetter(this.manager, a, a.character, this.patient);
+            DiagnosticDatas dd;
+            Dictionary<string, bool> res = new Dictionary<string, bool>();
+            foreach(string s in this.indicators)
+            {
+                Type myType = typeof(DiagnosticLetter);
+                PropertyInfo myPropInfo = myType.GetProperty(s);
+                dd = (DiagnosticDatas)myPropInfo.GetValue(dl, null);
+                res.Add(s, dd.OK);
+            }
+
+            return res;
 
 
-        
+        }
     }
 }
-

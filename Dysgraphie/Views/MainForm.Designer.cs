@@ -90,6 +90,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.buttonAjoutBDD = new System.Windows.Forms.Button();
             this.buttonDiagnostic = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.Données.SuspendLayout();
@@ -672,7 +674,7 @@
             // 
             // buttonDiagnostic
             // 
-            this.buttonDiagnostic.Location = new System.Drawing.Point(87, 827);
+            this.buttonDiagnostic.Location = new System.Drawing.Point(141, 827);
             this.buttonDiagnostic.Name = "buttonDiagnostic";
             this.buttonDiagnostic.Size = new System.Drawing.Size(75, 23);
             this.buttonDiagnostic.TabIndex = 39;
@@ -680,12 +682,34 @@
             this.buttonDiagnostic.UseVisualStyleBackColor = true;
             this.buttonDiagnostic.Click += new System.EventHandler(this.buttonDiagnostic_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(33, 820);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 36);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Ajouter l\'analyse";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(29, 885);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(167, 23);
+            this.button3.TabIndex = 41;
+            this.button3.Text = "Commencer l\'acquisition";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1916, 983);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonDiagnostic);
             this.Controls.Add(this.buttonAjoutBDD);
             this.Controls.Add(this.Données);
@@ -770,5 +794,7 @@
         private System.Windows.Forms.ToolStripMenuItem séléctionnerUneBaseDeDonnéesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem créerUneBaseDeDonnéeToolStripMenuItem;
         private System.Windows.Forms.Button buttonDiagnostic;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
