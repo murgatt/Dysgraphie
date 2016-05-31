@@ -33,7 +33,6 @@
             this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enregistrerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +103,6 @@
             this.nouveauToolStripMenuItem,
             this.ouvrirToolStripMenuItem,
             this.enregistrerToolStripMenuItem,
-            this.enregistrerToolStripMenuItem1,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
@@ -129,12 +127,6 @@
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
             this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
-            // 
-            // enregistrerToolStripMenuItem1
-            // 
-            this.enregistrerToolStripMenuItem1.Name = "enregistrerToolStripMenuItem1";
-            this.enregistrerToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
-            this.enregistrerToolStripMenuItem1.Text = "Enregistrer sous";
             // 
             // quitterToolStripMenuItem
             // 
@@ -678,7 +670,6 @@
         private System.Windows.Forms.ToolStripMenuItem nouveauToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;

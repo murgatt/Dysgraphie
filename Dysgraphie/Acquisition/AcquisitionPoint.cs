@@ -51,6 +51,7 @@ namespace Dysgraphie.Acquisition
         public void Start()
         {
             Reset();
+            thread.IsBackground = true;
             thread.Start();
         }
         private void Reset()
