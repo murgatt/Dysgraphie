@@ -80,7 +80,7 @@ namespace Dysgraphie.Views
             //TO DO : passer en paramètre ou en attribut le DbManager
             DbManager manager = new DbManager("kikouDB");
 
-            child = new Child(manager.getCurrentChildID()+1, name, forename, birth, grade, laterality, gender);           
+            child = new Child(name, forename, birth, grade, laterality, gender);           
             
             path = this.pathInput.Text;
             String date = DateTime.Today.ToString("dd-MM-yyyy");
