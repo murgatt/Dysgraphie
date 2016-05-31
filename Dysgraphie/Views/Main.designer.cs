@@ -87,6 +87,11 @@
             this.picBoard = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.analysePanel = new System.Windows.Forms.Panel();
+            this.textBoxAverageSpeed = new System.Windows.Forms.TextBox();
+            this.textBoxHeightLetter = new System.Windows.Forms.TextBox();
+            this.textBoxWidthLetter = new System.Windows.Forms.TextBox();
+            this.textBoxPrintNumber = new System.Windows.Forms.TextBox();
+            this.textBoxDrawLength = new System.Windows.Forms.TextBox();
             this.textBoxBreakTime = new System.Windows.Forms.TextBox();
             this.textBoxDrawTime = new System.Windows.Forms.TextBox();
             this.textBoxTwist = new System.Windows.Forms.TextBox();
@@ -110,11 +115,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxAverageSpeed = new System.Windows.Forms.TextBox();
-            this.textBoxHeightLetter = new System.Windows.Forms.TextBox();
-            this.textBoxWidthLetter = new System.Windows.Forms.TextBox();
-            this.textBoxPrintNumber = new System.Windows.Forms.TextBox();
-            this.textBoxDrawLength = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -370,6 +370,7 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(83, 22);
             this.saveBtn.Text = "Enregistrer";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // toolStripSeparator5
             // 
@@ -699,6 +700,41 @@
             this.analysePanel.TabIndex = 4;
             this.analysePanel.Visible = false;
             // 
+            // textBoxAverageSpeed
+            // 
+            this.textBoxAverageSpeed.Location = new System.Drawing.Point(117, 391);
+            this.textBoxAverageSpeed.Name = "textBoxAverageSpeed";
+            this.textBoxAverageSpeed.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAverageSpeed.TabIndex = 63;
+            // 
+            // textBoxHeightLetter
+            // 
+            this.textBoxHeightLetter.Location = new System.Drawing.Point(117, 365);
+            this.textBoxHeightLetter.Name = "textBoxHeightLetter";
+            this.textBoxHeightLetter.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHeightLetter.TabIndex = 62;
+            // 
+            // textBoxWidthLetter
+            // 
+            this.textBoxWidthLetter.Location = new System.Drawing.Point(117, 339);
+            this.textBoxWidthLetter.Name = "textBoxWidthLetter";
+            this.textBoxWidthLetter.Size = new System.Drawing.Size(100, 20);
+            this.textBoxWidthLetter.TabIndex = 61;
+            // 
+            // textBoxPrintNumber
+            // 
+            this.textBoxPrintNumber.Location = new System.Drawing.Point(117, 313);
+            this.textBoxPrintNumber.Name = "textBoxPrintNumber";
+            this.textBoxPrintNumber.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrintNumber.TabIndex = 60;
+            // 
+            // textBoxDrawLength
+            // 
+            this.textBoxDrawLength.Location = new System.Drawing.Point(117, 287);
+            this.textBoxDrawLength.Name = "textBoxDrawLength";
+            this.textBoxDrawLength.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDrawLength.TabIndex = 59;
+            // 
             // textBoxBreakTime
             // 
             this.textBoxBreakTime.Location = new System.Drawing.Point(117, 261);
@@ -887,41 +923,6 @@
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 39;
             this.label2.Text = "Vitesse moyenne";
-            // 
-            // textBoxAverageSpeed
-            // 
-            this.textBoxAverageSpeed.Location = new System.Drawing.Point(117, 391);
-            this.textBoxAverageSpeed.Name = "textBoxAverageSpeed";
-            this.textBoxAverageSpeed.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAverageSpeed.TabIndex = 63;
-            // 
-            // textBoxHeightLetter
-            // 
-            this.textBoxHeightLetter.Location = new System.Drawing.Point(117, 365);
-            this.textBoxHeightLetter.Name = "textBoxHeightLetter";
-            this.textBoxHeightLetter.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHeightLetter.TabIndex = 62;
-            // 
-            // textBoxWidthLetter
-            // 
-            this.textBoxWidthLetter.Location = new System.Drawing.Point(117, 339);
-            this.textBoxWidthLetter.Name = "textBoxWidthLetter";
-            this.textBoxWidthLetter.Size = new System.Drawing.Size(100, 20);
-            this.textBoxWidthLetter.TabIndex = 61;
-            // 
-            // textBoxPrintNumber
-            // 
-            this.textBoxPrintNumber.Location = new System.Drawing.Point(117, 313);
-            this.textBoxPrintNumber.Name = "textBoxPrintNumber";
-            this.textBoxPrintNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPrintNumber.TabIndex = 60;
-            // 
-            // textBoxDrawLength
-            // 
-            this.textBoxDrawLength.Location = new System.Drawing.Point(117, 287);
-            this.textBoxDrawLength.Name = "textBoxDrawLength";
-            this.textBoxDrawLength.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDrawLength.TabIndex = 59;
             // 
             // Main
             // 

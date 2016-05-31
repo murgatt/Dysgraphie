@@ -62,6 +62,26 @@ namespace Dysgraphie.Utils
             
         }
 
+        public static void saveSequence(List<Analysis> analisysList, String url)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(url, false))
+            {
+                String str = "N°Pt\tSN\tT\tX\tY\tZ\tP\tAlt\tAzi\tTwi";
+                file.WriteLine(str);
+                foreach (Analysis a in analisysList)
+                {
+                    str = "///// Lettre : " + a.character + " /////";
+                    file.WriteLine(str);
+                    foreach (Point p in a.points)
+                    {
+                        str = p.id + "\t" + p.sn + "\t" + p.t + "\t" + p.x + "\t" + p.y + "\t" + p.z + "\t" + p.p + "\t" + p.alt + "\t" + p.azi + "\t" + p.twi;
+                        file.WriteLine(str);
+                    }
+                }
+            }
+                
+        }
+
     }
 }
 

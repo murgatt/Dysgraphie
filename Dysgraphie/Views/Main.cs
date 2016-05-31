@@ -13,6 +13,7 @@ using WintabDN;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Database;
 using Dysgraphie.Indicators;
+using Dysgraphie.Utils;
 
 namespace Dysgraphie.Views
 {
@@ -46,6 +47,11 @@ namespace Dysgraphie.Views
             InitDataCapture(m_TABEXTX, m_TABEXTY, true);
             m_logContext = OpenTestSystemContext();
             InitData();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            save();
         }
 
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
@@ -434,7 +440,6 @@ namespace Dysgraphie.Views
 
                 if (this.pointID == 0)
                 {
-                    Console.WriteLine("temps " + pkt.pkTime);
                     this.initTime = pkt.pkTime;
                 }
 
@@ -510,5 +515,12 @@ namespace Dysgraphie.Views
         }
         //-------------------------------------------------------------------------
 
+
+        private void save()
+        {
+            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\trace.txt");
+        }
+
+        
     }
 }
