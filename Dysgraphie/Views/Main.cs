@@ -518,7 +518,7 @@ namespace Dysgraphie.Views
 
         private void save()
         {
-            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\trace.txt");
+            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt");
         }
 
         
