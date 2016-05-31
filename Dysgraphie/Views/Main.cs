@@ -479,6 +479,11 @@ namespace Dysgraphie.Views
                 throw new Exception("FAILED to get packet data: " + ex.ToString());
             }
         }
+
+        private void eraseBtn_Click(object sender, EventArgs e)
+        {
+            this.picBoard.Invalidate();
+        }
         //-------------------------------------------------------------------------
 
     }

@@ -199,19 +199,19 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.testToolStripMenuItem.Text = "Test";
             // 
             // testToolStripMenuItem1
             // 
             this.testToolStripMenuItem1.Name = "testToolStripMenuItem1";
-            this.testToolStripMenuItem1.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
             this.testToolStripMenuItem1.Text = "Test";
             // 
             // testToolStripMenuItem2
             // 
             this.testToolStripMenuItem2.Name = "testToolStripMenuItem2";
-            this.testToolStripMenuItem2.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem2.Size = new System.Drawing.Size(96, 22);
             this.testToolStripMenuItem2.Text = "Test";
             // 
             // menuStrip1
@@ -296,6 +296,7 @@
             this.eraseBtn.Name = "eraseBtn";
             this.eraseBtn.Size = new System.Drawing.Size(103, 22);
             this.eraseBtn.Text = "Effacer le texte";
+            this.eraseBtn.Click += new System.EventHandler(this.eraseBtn_Click);
             // 
             // toolStripSeparator2
             // 
