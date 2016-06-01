@@ -45,6 +45,10 @@ namespace Dysgraphie.Views
             this.acquisition = new AcquisitionPoint();
             acquisition.Start();
 
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
+            {
+                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "data"));
+            }
             initToolStripMenuDB();
         }
 
@@ -63,10 +67,15 @@ namespace Dysgraphie.Views
                 addToolStripItemDB(dbName, first);
                 first = false;
             }
+            if(first)
+            {
+                choixDeLaBaseToolStripMenuItem.Enabled = false;
+            }
         }
 
         private void addToolStripItemDB(String itemName, bool check)
         {
+            choixDeLaBaseToolStripMenuItem.Enabled = true;
             ToolStripMenuItem newItem = new System.Windows.Forms.ToolStripMenuItem();
             newItem.Checked = check;
             newItem.Name = itemName.Replace(" ", "");
@@ -196,7 +205,14 @@ namespace Dysgraphie.Views
             String DBname = selectedDB + ".sqlite";
             String path = Path.Combine(Environment.CurrentDirectory, "data", DBname);
             String SQLiteStudioPath = Path.Combine(Environment.CurrentDirectory, "SQLiteStudio", "SQLiteStudio.exe");
-            Process.Start(SQLiteStudioPath, path);
+            if(File.Exists(path) && File.Exists(SQLiteStudioPath))
+            {
+                Process.Start(SQLiteStudioPath, path);
+            }
+            else
+            {
+                MessageBox.Show("Il semblerait que SQLiteStudio ne se trouve plus dans le répertoire de l'application ou que la base sélectionnée a été supprimée.\n\nVérifiez que le logiciel SQLiteStudio ainsi que tout ses composants sont présents dans le répertoire de l'application à l'intérieur du dossier SQLiteStudio.", "Erreur", MessageBoxButtons.OK);
+            }
         }
 
         private void TimerIncrement(object source, ElapsedEventArgs e)
@@ -334,6 +350,10 @@ namespace Dysgraphie.Views
 
         private void createBase(String dbName)
         {
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
+            {
+                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "data"));
+            }
             DbManager newDB = new DbManager(dbName);
             newDB.CreateDB();
             foreach (ToolStripMenuItem item in this.choixDeLaBaseToolStripMenuItem.DropDownItems)
