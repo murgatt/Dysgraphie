@@ -115,11 +115,6 @@ namespace Dysgraphie.Views
             restart();
         }
 
-        private void eraseBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void basiqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!this.basiqueToolStripMenuItem.Checked)
