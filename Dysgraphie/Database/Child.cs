@@ -25,8 +25,25 @@ namespace Dysgraphie.Database
         private string Lateralite;
 
 
-
         public Child(int ID, String name, String forename, DateTime birth, String grade, String laterality, String gender)
+        {
+            this.ID = ID;
+            this.Nom = name;
+            this.Prenom = forename;
+            this.DateN = birth;
+            this.Classe = grade;
+            this.Lateralite = laterality;
+            this.Genre = gender;
+            DateTime today = DateTime.Today;
+            this.Age = today.Year - birth.Year;
+            if (birth > today.AddYears(-this.Age))
+            {
+                Age--;
+            }
+        }
+
+
+        public Child(String name, String forename, DateTime birth, String grade, String laterality, String gender)
         {
             this.Nom = name;
             this.Prenom = forename;
@@ -57,6 +74,12 @@ namespace Dysgraphie.Database
         {
             return this.ID;
         }
+
+        public void setID(int id)
+        {
+            this.ID = id;
+        }
+
         public string GetNom()
         {
             return this.Nom;

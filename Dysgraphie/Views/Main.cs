@@ -508,12 +508,15 @@ namespace Dysgraphie.Views
             }
         }
 
+        //-------------------------------------------------------------------------
+
+
         private void eraseBtn_Click(object sender, EventArgs e)
         {
             this.picBoard.Invalidate();
             this.InitData();
         }
-        //-------------------------------------------------------------------------
+       
 
 
         private void save()
@@ -521,6 +524,19 @@ namespace Dysgraphie.Views
             OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt");
         }
 
-        
+        private void toolStripBDD_Click(object sender, EventArgs e)
+        {
+
+            DbManager manager = new DbManager("kikouDB");
+            ChildDatas cd;
+            int IdChild = manager.getCurrentChildID() + 1;
+            this.child.setID(IdChild);
+            if (!child.alreadySaved(manager)) child.AddChildInDB(manager);    
+            foreach(Analysis a in this.analysis)
+            {
+                cd = new ChildDatas(child.GetID(), a.character, a);
+                cd.saveDatas(manager);
+            }
+        }
     }
 }

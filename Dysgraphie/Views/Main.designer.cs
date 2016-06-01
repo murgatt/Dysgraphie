@@ -58,6 +58,8 @@
             this.restartBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.saveBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBDD = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.resultsBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -278,6 +280,8 @@
             this.restartBtn,
             this.toolStripSeparator4,
             this.saveBtn,
+            this.toolStripSeparator8,
+            this.toolStripBDD,
             this.toolStripSeparator5,
             this.resultsBtn,
             this.toolStripSeparator6,
@@ -371,6 +375,21 @@
             this.saveBtn.Size = new System.Drawing.Size(83, 22);
             this.saveBtn.Text = "Enregistrer";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripBDD
+            // 
+            this.toolStripBDD.Enabled = true;
+            this.toolStripBDD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBDD.Image")));
+            this.toolStripBDD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBDD.Name = "toolStripBDD";
+            this.toolStripBDD.Size = new System.Drawing.Size(113, 22);
+            this.toolStripBDD.Text = "Ajouter à la BDD";
+            this.toolStripBDD.Click += new System.EventHandler(this.toolStripBDD_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1046,5 +1065,7 @@
         private System.Windows.Forms.TextBox textBoxWidthLetter;
         private System.Windows.Forms.TextBox textBoxPrintNumber;
         private System.Windows.Forms.TextBox textBoxDrawLength;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripBDD;
     }
 }
