@@ -12,6 +12,7 @@ using Dysgraphie.Drawing;
 using WintabDN;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Database;
+using System.IO;
 
 namespace Dysgraphie.Views
 {
@@ -41,6 +42,31 @@ namespace Dysgraphie.Views
             m_logContext = OpenTestSystemContext();
             this.acquisition = new AcquisitionPoint();
             acquisition.Start();
+
+            initToolStripMenuDB();
+        }
+
+        private void initToolStripMenuDB()
+        {
+            String path = Path.Combine(Environment.CurrentDirectory, "data");
+            DirectoryInfo d = new DirectoryInfo(path);
+            bool first = true;
+            foreach (var file in d.GetFiles("*.sqlite"))
+            {
+                addToolStripItemDB(file.Name.Replace(".sqlite", ""), first);
+                first = false;
+            }
+        }
+
+        private void addToolStripItemDB(String itemName, bool check)
+        {
+            ToolStripMenuItem newItem = new System.Windows.Forms.ToolStripMenuItem();
+            newItem.Checked = check;
+            newItem.Name = itemName.Replace(" ", "");
+            newItem.Size = new System.Drawing.Size(152, 22);
+            newItem.Text = itemName;
+            newItem.Click += new System.EventHandler(this.database_Click);
+            this.choixDeLaBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {newItem});
         }
 
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,6 +157,30 @@ namespace Dysgraphie.Views
                 basicMode = false;
                 this.infoPanel.Visible = false;
                 this.analysePanel.Visible = true;
+            }
+        }
+
+        private void createBaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String dbName = "Base 1";
+            DialogResult dbResult = InputBox.ShowInputBox("Création d'une nouvelle base", "Nom de la base :", ref dbName);
+            if(dbResult == DialogResult.OK)
+            {
+                createBase(dbName);
+            }
+        }
+
+        private void database_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem dbItem = (ToolStripMenuItem)sender;
+            if(!dbItem.Checked)
+            {
+                foreach (ToolStripMenuItem item in this.choixDeLaBaseToolStripMenuItem.DropDownItems)
+                {
+                    item.Checked = false;
+                }
+                dbItem.Checked = true;
+                String dbName = dbItem.Text;
             }
         }
 
@@ -265,6 +315,17 @@ namespace Dysgraphie.Views
                 this.eraseBtn.Enabled = true;
                 this.timerLabel.Text = "00:00:00";
             }
+        }
+
+        private void createBase(String dbName)
+        {
+            DbManager newDB = new DbManager(dbName);
+            newDB.CreateDB();
+            foreach (ToolStripMenuItem item in this.choixDeLaBaseToolStripMenuItem.DropDownItems)
+            {
+                item.Checked = false;
+            }
+            addToolStripItemDB(dbName, true);
         }
 
         // Code tablette
@@ -484,6 +545,7 @@ namespace Dysgraphie.Views
                 throw new Exception("FAILED to get packet data: " + ex.ToString());
             }
         }
+
         //-------------------------------------------------------------------------
 
     }
