@@ -383,7 +383,6 @@
             // 
             // toolStripBDD
             // 
-            this.toolStripBDD.Enabled = true;
             this.toolStripBDD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBDD.Image")));
             this.toolStripBDD.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBDD.Name = "toolStripBDD";
@@ -404,6 +403,7 @@
             this.resultsBtn.Name = "resultsBtn";
             this.resultsBtn.Size = new System.Drawing.Size(74, 22);
             this.resultsBtn.Text = "Résultats";
+            this.resultsBtn.Click += new System.EventHandler(this.resultsBtn_Click);
             // 
             // toolStripSeparator6
             // 

@@ -29,6 +29,7 @@ namespace Dysgraphie.Views
         private Child child;
         private String path;
         private Boolean basicMode = true;
+        private DbManager manager = new DbManager("kikouDB");
 
         private List<Analysis> analysis;
         private AcquisitionPoint acquisition;
@@ -514,7 +515,8 @@ namespace Dysgraphie.Views
         private void eraseBtn_Click(object sender, EventArgs e)
         {
             this.picBoard.Invalidate();
-            this.InitData();
+            this.acquisition.Reset();
+            this.acquisition.analysis.character = this.sequence[this.nbTxt];
         }
        
 
@@ -527,7 +529,7 @@ namespace Dysgraphie.Views
         private void toolStripBDD_Click(object sender, EventArgs e)
         {
 
-            DbManager manager = new DbManager("kikouDB");
+            
             ChildDatas cd;
             int IdChild = manager.getCurrentChildID() + 1;
             this.child.setID(IdChild);
@@ -536,6 +538,26 @@ namespace Dysgraphie.Views
             {
                 cd = new ChildDatas(child.GetID(), a.character, a);
                 cd.saveDatas(manager);
+            }
+        }
+
+        private void resultsBtn_Click(object sender, EventArgs e)
+        {
+            Diagnostic d = new Diagnostic(manager, child, analysis);
+
+            Dictionary<string, int> indicators = d.resultsPerIndicator();
+
+            foreach (KeyValuePair<string, int> keyValInd in indicators)
+            {
+                Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString()+"/36");
+            }
+
+
+            Dictionary<char, int> letters = d.resultsPerLetter();
+
+            foreach (KeyValuePair<char, int> keyValLetter in letters)
+            {
+                Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString()+"/11");
             }
         }
     }

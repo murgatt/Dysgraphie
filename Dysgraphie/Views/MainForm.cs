@@ -337,7 +337,7 @@ namespace Dysgraphie.Views
             DbManager manager = new DbManager("kikouDB");            
             int IdChild = manager.getCurrentChildID() + 1;
             Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
-            this.diagnostic = new Diagnostic(manager, c);
+            //this.diagnostic = new Diagnostic(manager, c);
         }
     }
 }
