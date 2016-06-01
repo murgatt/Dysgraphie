@@ -13,6 +13,7 @@ using WintabDN;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Database;
 using System.IO;
+using System.Diagnostics;
 
 namespace Dysgraphie.Views
 {
@@ -28,6 +29,7 @@ namespace Dysgraphie.Views
         private Child child;
         private String path;
         private Boolean basicMode = true;
+        private String selectedDB;
 
         public Main()
         {
@@ -53,7 +55,12 @@ namespace Dysgraphie.Views
             bool first = true;
             foreach (var file in d.GetFiles("*.sqlite"))
             {
-                addToolStripItemDB(file.Name.Replace(".sqlite", ""), first);
+                String dbName = file.Name.Replace(".sqlite", "");
+                if (first)
+                {
+                    selectedDB = dbName;
+                }
+                addToolStripItemDB(dbName, first);
                 first = false;
             }
         }
@@ -180,8 +187,16 @@ namespace Dysgraphie.Views
                     item.Checked = false;
                 }
                 dbItem.Checked = true;
-                String dbName = dbItem.Text;
+                selectedDB = dbItem.Text;
             }
+        }
+
+        private void accéderAuxDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String DBname = selectedDB + ".sqlite";
+            String path = Path.Combine(Environment.CurrentDirectory, "data", DBname);
+            String SQLiteStudioPath = Path.Combine(Environment.CurrentDirectory, "SQLiteStudio", "SQLiteStudio.exe");
+            Process.Start(SQLiteStudioPath, path);
         }
 
         private void TimerIncrement(object source, ElapsedEventArgs e)

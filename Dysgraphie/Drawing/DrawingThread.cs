@@ -106,7 +106,7 @@ namespace Dysgraphie.Drawing
             Point currentP = new Point(p.X, this.picBox.Height - p.Y);
             if (previousP != Point.Empty && previousID == p.idPoint-1)
             {
-                pen.Width = (float)Math.Sqrt(p.pression/2)/4;
+                pen.Width = (float)Math.Sqrt(p.pression/2)/8;
                 this.g.DrawLine(pen, previousP, currentP);
             }
             previousP = currentP;

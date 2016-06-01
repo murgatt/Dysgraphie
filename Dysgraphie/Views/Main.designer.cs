@@ -83,6 +83,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.analysePanel = new System.Windows.Forms.Panel();
             this.picBoard = new System.Windows.Forms.PictureBox();
+            this.accéderAuxDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.infoPanel.SuspendLayout();
@@ -171,6 +172,7 @@
             // 
             this.donnéesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.choixDeLaBaseToolStripMenuItem,
+            this.accéderAuxDonnéesToolStripMenuItem,
             this.createBaseToolStripMenuItem});
             this.donnéesToolStripMenuItem.Name = "donnéesToolStripMenuItem";
             this.donnéesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -616,6 +618,13 @@
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
             // 
+            // accéderAuxDonnéesToolStripMenuItem
+            // 
+            this.accéderAuxDonnéesToolStripMenuItem.Name = "accéderAuxDonnéesToolStripMenuItem";
+            this.accéderAuxDonnéesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.accéderAuxDonnéesToolStripMenuItem.Text = "Accéder aux données";
+            this.accéderAuxDonnéesToolStripMenuItem.Click += new System.EventHandler(this.accéderAuxDonnéesToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -704,5 +713,6 @@
         private System.Windows.Forms.ToolStripLabel timerLabel;
         private System.Windows.Forms.Panel analysePanel;
         private System.Windows.Forms.PictureBox picBoard;
+        private System.Windows.Forms.ToolStripMenuItem accéderAuxDonnéesToolStripMenuItem;
     }
 }
