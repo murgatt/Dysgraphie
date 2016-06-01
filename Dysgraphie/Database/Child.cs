@@ -78,6 +78,12 @@ namespace Dysgraphie.Database
         {
             return this.ID;
         }
+
+        public void setID(int id)
+        {
+            this.ID = id;
+        }
+
         public string GetNom()
         {
             return this.Nom;

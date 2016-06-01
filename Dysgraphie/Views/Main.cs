@@ -12,6 +12,8 @@ using Dysgraphie.Drawing;
 using WintabDN;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Database;
+using Dysgraphie.Indicators;
+using Dysgraphie.Utils;
 
 namespace Dysgraphie.Views
 {
@@ -21,12 +23,16 @@ namespace Dysgraphie.Views
         private System.Timers.Timer timer = new System.Timers.Timer(1000);
         private TimeSpan temps;
         private System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-        private Char[] characters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        private Char[] characters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
         private List<char> sequence = new List<Char>();
         private int nbTxt = 0;
         private Child child;
         private String path;
         private Boolean basicMode = true;
+        private DbManager manager = new DbManager("kikouDB");
+
+        private List<Analysis> analysis;
+        private AcquisitionPoint acquisition;
 
         public Main()
         {
@@ -37,10 +43,16 @@ namespace Dysgraphie.Views
             this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
+
+            this.analysis = new List<Analysis>();
             InitDataCapture(m_TABEXTX, m_TABEXTY, true);
             m_logContext = OpenTestSystemContext();
-            this.acquisition = new AcquisitionPoint();
-            acquisition.Start();
+            InitData();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            save();
         }
 
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,6 +85,7 @@ namespace Dysgraphie.Views
 
         private void startBtn_Click(object sender, EventArgs e)
         {
+            
             switch (state)
             {
                 case "stopped":
@@ -184,6 +197,9 @@ namespace Dysgraphie.Views
             this.resultsBtn.Enabled = false;
             nbTxt = 0;
             this.textLabel.Text = sequence[nbTxt].ToString();
+
+            this.InitData();
+            this.acquisition.analysis.character = sequence[nbTxt];
         }
 
         private void Stop()
@@ -201,6 +217,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = true;
                 this.resultsBtn.Enabled = true;
                 this.nextBtn.Enabled = false;
+                this.InitData();
             }
         }
 
@@ -223,9 +240,16 @@ namespace Dysgraphie.Views
         private void nextTxt()
         {
             nbTxt++;
+
+            this.analysis.Add(this.acquisition.analysis);
+            this.acquisition.Reset();
+            this.picBoard.Invalidate();
+            
             if (nbTxt+1 <= sequence.Count)
             {
+                this.acquisition.analysis.character = sequence[nbTxt];
                 this.textLabel.Text = sequence[nbTxt].ToString();
+                
             }
             else
             {
@@ -263,7 +287,7 @@ namespace Dysgraphie.Views
                 this.restartBtn.Enabled = false;
                 this.saveBtn.Enabled = false;
                 this.eraseBtn.Enabled = true;
-                this.timerLabel.Text = "00:00:00";
+                this.timerLabel.Text = "00:00:00";               
             }
         }
 
@@ -271,7 +295,7 @@ namespace Dysgraphie.Views
 
         private CWintabContext m_logContext = null;
         private CWintabData m_wtData = null;
-        private AcquisitionPoint acquisition;
+        
 
         private int pointID = 0;
         private DrawingThread drawingThread;
@@ -291,8 +315,15 @@ namespace Dysgraphie.Views
         {
             drawingThread = new DrawingThread(this.picBoard);
             drawingThread.Start();
+
+            this.analysis = new List<Analysis>();
             this.acquisition = new AcquisitionPoint();
+
+            this.acquisition.Start();
         }
+
+        
+       
 
 
 
@@ -415,7 +446,6 @@ namespace Dysgraphie.Views
 
                 if (this.pointID == 0)
                 {
-                    Console.WriteLine("temps " + pkt.pkTime);
                     this.initTime = pkt.pkTime;
                 }
 
@@ -426,7 +456,7 @@ namespace Dysgraphie.Views
 
                     }
                     Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime - this.initTime), pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
-                    acquisition.AddPoint(p);
+                    this.acquisition.AddPoint(p);
                     this.pointID++;
 
                     if (pkt.pkNormalPressure != 0)
@@ -440,23 +470,22 @@ namespace Dysgraphie.Views
 
                     }
 
-                    /*
-                    textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
-                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime - this.initTime) / 1000).ToString();
-                    TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
-                    textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
-                    textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
-                    textBoxPression.Text = pkt.pkNormalPressure.ToString();
-                    textBoxX.Text = pkt.pkX.ToString();
-                    textBoxY.Text = pkt.pkY.ToString();
-                    textBoxZ.Text = pkt.pkZ.ToString();
-                    textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
-                    textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
-                    textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
-                    textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
-                    textBoxLettersHeight.Text = acquisition.analysis.lettersHeight.ToString();
-                    textBoxLettersWidth.Text = acquisition.analysis.lettersWidth.ToString();
-                    */
+                    this.textBoxX.Text = pkt.pkX.ToString();
+                    this.textBoxY.Text = pkt.pkY.ToString();
+                    this.textBoxZ.Text = pkt.pkZ.ToString();
+                    this.textBoxPression.Text = pkt.pkNormalPressure.ToString();
+                    this.textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
+                    this.textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
+                    this.textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
+                    this.textBoxDrawTime.Text = this.acquisition.getDrawTime().ToString();
+                    this.textBoxBreakTime.Text = this.acquisition.getBreakTime().ToString();
+                    this.textBoxDrawLength.Text = this.acquisition.getDrawLength().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxHeightLetter.Text = this.acquisition.analysis.lettersHeight.ToString();
+                    this.textBoxWidthLetter.Text = this.acquisition.analysis.lettersWidth.ToString();
+                    this.textBoxAverageSpeed.Text = this.acquisition.getAverageSpeed().ToString();
+                    
 
                 }
                 /*
@@ -484,7 +513,57 @@ namespace Dysgraphie.Views
                 throw new Exception("FAILED to get packet data: " + ex.ToString());
             }
         }
+
         //-------------------------------------------------------------------------
 
+
+        private void eraseBtn_Click(object sender, EventArgs e)
+        {
+            this.picBoard.Invalidate();
+            this.acquisition.Reset();
+            this.acquisition.analysis.character = this.sequence[this.nbTxt];
+        }
+       
+
+
+        private void save()
+        {
+            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt");
+        }
+
+        private void toolStripBDD_Click(object sender, EventArgs e)
+        {
+
+            
+            ChildDatas cd;
+            int IdChild = manager.getCurrentChildID() + 1;
+            this.child.setID(IdChild);
+            if (!child.alreadySaved(manager)) child.AddChildInDB(manager);    
+            foreach(Analysis a in this.analysis)
+            {
+                cd = new ChildDatas(child.GetID(), a.character, a);
+                cd.saveDatas(manager);
+            }
+        }
+
+        private void resultsBtn_Click(object sender, EventArgs e)
+        {
+            Diagnostic d = new Diagnostic(manager, child, analysis);
+
+            Dictionary<string, int> indicators = d.resultsPerIndicator();
+
+            foreach (KeyValuePair<string, int> keyValInd in indicators)
+            {
+                Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString()+"/36");
+            }
+
+
+            Dictionary<char, int> letters = d.resultsPerLetter();
+
+            foreach (KeyValuePair<char, int> keyValLetter in letters)
+            {
+                Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString()+"/11");
+            }
+        }
     }
 }
