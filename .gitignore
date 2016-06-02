@@ -50,3 +50,6 @@ Temporary Items
 Dysgraphie/obj
 Dysgraphie/bin
 .vs
+Dysgraphie/bin/Debug/SQLiteStudio/
+Dysgraphie/bin/Debug/data/
+Dysgraphie/bin/Debug/Data/

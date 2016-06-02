@@ -60,6 +60,7 @@ namespace Dysgraphie.Drawing
         public void Start()
         {
             Reset();
+            thread.IsBackground = true;
             thread.Start();
         }
 

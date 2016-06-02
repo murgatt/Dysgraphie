@@ -70,16 +70,14 @@ namespace Dysgraphie.Database
             this.Lateralite = Lateralite;
         }
 
+        public void SetID(int id)
+        {
+            this.ID = id;
+        }
         public int GetID()
         {
             return this.ID;
         }
-
-        public void setID(int id)
-        {
-            this.ID = id;
-        }
-
         public string GetNom()
         {
             return this.Nom;
