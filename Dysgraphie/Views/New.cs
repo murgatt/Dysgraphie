@@ -77,9 +77,6 @@ namespace Dysgraphie.Views
                 gender = "Garçon";
             }
 
-            //TO DO : passer en paramètre ou en attribut le DbManager
-            DbManager manager = new DbManager("kikouDB");
-
             child = new Child(name, forename, birth, grade, laterality, gender);           
             
             path = this.pathInput.Text;

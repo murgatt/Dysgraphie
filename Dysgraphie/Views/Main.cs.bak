@@ -555,22 +555,23 @@ namespace Dysgraphie.Views
 
                     }
 
-                    this.textBoxX.Text = pkt.pkX.ToString();
-                    this.textBoxY.Text = pkt.pkY.ToString();
-                    this.textBoxZ.Text = pkt.pkZ.ToString();
-                    this.textBoxPression.Text = pkt.pkNormalPressure.ToString();
-                    this.textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
-                    this.textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
-                    this.textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
-                    this.textBoxDrawTime.Text = this.acquisition.getDrawTime().ToString();
-                    this.textBoxBreakTime.Text = this.acquisition.getBreakTime().ToString();
-                    this.textBoxDrawLength.Text = this.acquisition.getDrawLength().ToString();
-                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
-                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
-                    this.textBoxHeightLetter.Text = this.acquisition.analysis.lettersHeight.ToString();
-                    this.textBoxWidthLetter.Text = this.acquisition.analysis.lettersWidth.ToString();
-                    this.textBoxAverageSpeed.Text = this.acquisition.getAverageSpeed().ToString();
-                    
+                    /*
+                    textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+                    textBoxTime.Text = (Convert.ToDouble(pkt.pkTime - this.initTime) / 1000).ToString();
+                    TextBoxTempsPause.Text = acquisition.getBreakTime().ToString();
+                    textBoxTempsTrace.Text = acquisition.getDrawTime().ToString();
+                    textBoxLongTrace.Text = acquisition.getDrawLength().ToString();
+                    textBoxPression.Text = pkt.pkNormalPressure.ToString();
+                    textBoxX.Text = pkt.pkX.ToString();
+                    textBoxY.Text = pkt.pkY.ToString();
+                    textBoxZ.Text = pkt.pkZ.ToString();
+                    textBoxAltitude.Text = pkt.pkOrientation.orAltitude.ToString();
+                    textBoxAzimuth.Text = pkt.pkOrientation.orAzimuth.ToString();
+                    textBoxTwist.Text = pkt.pkOrientation.orTwist.ToString();
+                    textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+                    textBoxLettersHeight.Text = acquisition.analysis.lettersHeight.ToString();
+                    textBoxLettersWidth.Text = acquisition.analysis.lettersWidth.ToString();
+                    */
 
                 }
                 /*
