@@ -12,7 +12,7 @@ using Dysgraphie.Drawing;
 using WintabDN;
 using Dysgraphie.Acquisition;
 using Dysgraphie.Database;
-
+using Dysgraphie.OutputFiles;
 namespace Dysgraphie.Views
 {
     public partial class Main : Form
@@ -478,6 +478,11 @@ namespace Dysgraphie.Views
             {
                 throw new Exception("FAILED to get packet data: " + ex.ToString());
             }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+
         }
         //-------------------------------------------------------------------------
 

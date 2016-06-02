@@ -43,7 +43,16 @@ namespace Dysgraphie.Database
         {
             string req = "SELECT max(ID) FROM Children";
             SQLiteCommand myCommand= new SQLiteCommand(req, this.m_dbConnection); ;
-            this.m_dbConnection.Open();
+            try
+            {
+                this.m_dbConnection.Open();
+            }
+            catch(System.Data.SQLite.SQLiteException e)
+            {
+                this.CreateDB();
+            }
+               
+            
 
             if (myCommand.ExecuteScalar().ToString() != "")
             {

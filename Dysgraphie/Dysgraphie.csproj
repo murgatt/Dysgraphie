@@ -82,6 +82,8 @@
     <Compile Include="Indicators\LettersWidth.cs" />
     <Compile Include="Indicators\LettersHeight.cs" />
     <Compile Include="Indicators\PrintNumber.cs" />
+    <Compile Include="OutputFiles\FilesLetterGenerator.cs" />
+    <Compile Include="OutputFiles\Letter.cs" />
     <Compile Include="OutputFiles\PdfGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

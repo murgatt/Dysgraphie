@@ -340,6 +340,7 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(83, 22);
             this.saveBtn.Text = "Enregistrer";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // toolStripSeparator5
             // 
