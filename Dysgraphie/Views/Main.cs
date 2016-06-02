@@ -67,15 +67,12 @@ namespace Dysgraphie.Views
                 addToolStripItemDB(dbName, first);
                 first = false;
             }
-            if(first)
-            {
-                choixDeLaBaseToolStripMenuItem.Enabled = false;
-            }
         }
 
         private void addToolStripItemDB(String itemName, bool check)
         {
             choixDeLaBaseToolStripMenuItem.Enabled = true;
+            accéderAuxDonnéesToolStripMenuItem.Enabled = true;
             ToolStripMenuItem newItem = new System.Windows.Forms.ToolStripMenuItem();
             newItem.Checked = check;
             newItem.Name = itemName.Replace(" ", "");
@@ -183,6 +180,7 @@ namespace Dysgraphie.Views
             if(dbResult == DialogResult.OK)
             {
                 createBase(dbName);
+                selectedDB = dbName;
             }
         }
 
@@ -205,8 +203,10 @@ namespace Dysgraphie.Views
             String DBname = selectedDB + ".sqlite";
             String path = Path.Combine(Environment.CurrentDirectory, "data", DBname);
             String SQLiteStudioPath = Path.Combine(Environment.CurrentDirectory, "SQLiteStudio", "SQLiteStudio.exe");
-            if(File.Exists(path) && File.Exists(SQLiteStudioPath))
+            if (File.Exists(path) && File.Exists(SQLiteStudioPath))
             {
+                path = "\"" + path + "\"";
+                SQLiteStudioPath = "\"" + SQLiteStudioPath + "\"";
                 Process.Start(SQLiteStudioPath, path);
             }
             else

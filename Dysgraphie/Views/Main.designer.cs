@@ -40,8 +40,24 @@
             this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.choixDeLaBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accéderAuxDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.startBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.eraseBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.stopBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.restartBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.resultsBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.timerLabel = new System.Windows.Forms.ToolStripLabel();
             this.infoPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,33 +82,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.createBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.eraseBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.stopBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.restartBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.saveBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.resultsBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.timerLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.analysePanel = new System.Windows.Forms.Panel();
             this.picBoard = new System.Windows.Forms.PictureBox();
-            this.accéderAuxDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,9 +180,25 @@
             // 
             // choixDeLaBaseToolStripMenuItem
             // 
+            this.choixDeLaBaseToolStripMenuItem.Enabled = false;
             this.choixDeLaBaseToolStripMenuItem.Name = "choixDeLaBaseToolStripMenuItem";
-            this.choixDeLaBaseToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.choixDeLaBaseToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.choixDeLaBaseToolStripMenuItem.Text = "Choix de la base";
+            // 
+            // accéderAuxDonnéesToolStripMenuItem
+            // 
+            this.accéderAuxDonnéesToolStripMenuItem.Enabled = false;
+            this.accéderAuxDonnéesToolStripMenuItem.Name = "accéderAuxDonnéesToolStripMenuItem";
+            this.accéderAuxDonnéesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.accéderAuxDonnéesToolStripMenuItem.Text = "Accéder aux données";
+            this.accéderAuxDonnéesToolStripMenuItem.Click += new System.EventHandler(this.accéderAuxDonnéesToolStripMenuItem_Click);
+            // 
+            // createBaseToolStripMenuItem
+            // 
+            this.createBaseToolStripMenuItem.Name = "createBaseToolStripMenuItem";
+            this.createBaseToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.createBaseToolStripMenuItem.Text = "Créer une base";
+            this.createBaseToolStripMenuItem.Click += new System.EventHandler(this.createBaseToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -204,6 +220,121 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1190, 50);
             this.panel1.TabIndex = 1;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startBtn,
+            this.toolStripSeparator7,
+            this.eraseBtn,
+            this.toolStripSeparator2,
+            this.stopBtn,
+            this.toolStripSeparator3,
+            this.restartBtn,
+            this.toolStripSeparator4,
+            this.saveBtn,
+            this.toolStripSeparator5,
+            this.resultsBtn,
+            this.toolStripSeparator6,
+            this.timerLabel});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // startBtn
+            // 
+            this.startBtn.Enabled = false;
+            this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
+            this.startBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(76, 22);
+            this.startBtn.Text = "Démarrer";
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // eraseBtn
+            // 
+            this.eraseBtn.Image = ((System.Drawing.Image)(resources.GetObject("eraseBtn.Image")));
+            this.eraseBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.eraseBtn.Name = "eraseBtn";
+            this.eraseBtn.Size = new System.Drawing.Size(103, 22);
+            this.eraseBtn.Text = "Effacer le texte";
+            this.eraseBtn.Click += new System.EventHandler(this.eraseBtn_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // stopBtn
+            // 
+            this.stopBtn.Enabled = false;
+            this.stopBtn.Image = ((System.Drawing.Image)(resources.GetObject("stopBtn.Image")));
+            this.stopBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stopBtn.Name = "stopBtn";
+            this.stopBtn.Size = new System.Drawing.Size(51, 22);
+            this.stopBtn.Text = "Stop";
+            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // restartBtn
+            // 
+            this.restartBtn.Enabled = false;
+            this.restartBtn.Image = ((System.Drawing.Image)(resources.GetObject("restartBtn.Image")));
+            this.restartBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.restartBtn.Name = "restartBtn";
+            this.restartBtn.Size = new System.Drawing.Size(104, 22);
+            this.restartBtn.Text = "Recommencer";
+            this.restartBtn.Click += new System.EventHandler(this.restartBtn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Enabled = false;
+            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
+            this.saveBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(83, 22);
+            this.saveBtn.Text = "Enregistrer";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // resultsBtn
+            // 
+            this.resultsBtn.Enabled = false;
+            this.resultsBtn.Image = ((System.Drawing.Image)(resources.GetObject("resultsBtn.Image")));
+            this.resultsBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.resultsBtn.Name = "resultsBtn";
+            this.resultsBtn.Size = new System.Drawing.Size(74, 22);
+            this.resultsBtn.Text = "Résultats";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // timerLabel
+            // 
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(49, 22);
+            this.timerLabel.Text = "00:00:00";
             // 
             // infoPanel
             // 
@@ -476,128 +607,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // createBaseToolStripMenuItem
-            // 
-            this.createBaseToolStripMenuItem.Name = "createBaseToolStripMenuItem";
-            this.createBaseToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.createBaseToolStripMenuItem.Text = "Créer une base";
-            this.createBaseToolStripMenuItem.Click += new System.EventHandler(this.createBaseToolStripMenuItem_Click);
-            // 
-            // startBtn
-            // 
-            this.startBtn.Enabled = false;
-            this.startBtn.Image = ((System.Drawing.Image)(resources.GetObject("startBtn.Image")));
-            this.startBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(76, 22);
-            this.startBtn.Text = "Démarrer";
-            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // eraseBtn
-            // 
-            this.eraseBtn.Image = ((System.Drawing.Image)(resources.GetObject("eraseBtn.Image")));
-            this.eraseBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.eraseBtn.Name = "eraseBtn";
-            this.eraseBtn.Size = new System.Drawing.Size(103, 22);
-            this.eraseBtn.Text = "Effacer le texte";
-            this.eraseBtn.Click += new System.EventHandler(this.eraseBtn_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // stopBtn
-            // 
-            this.stopBtn.Enabled = false;
-            this.stopBtn.Image = ((System.Drawing.Image)(resources.GetObject("stopBtn.Image")));
-            this.stopBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(51, 22);
-            this.stopBtn.Text = "Stop";
-            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // restartBtn
-            // 
-            this.restartBtn.Enabled = false;
-            this.restartBtn.Image = ((System.Drawing.Image)(resources.GetObject("restartBtn.Image")));
-            this.restartBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.restartBtn.Name = "restartBtn";
-            this.restartBtn.Size = new System.Drawing.Size(104, 22);
-            this.restartBtn.Text = "Recommencer";
-            this.restartBtn.Click += new System.EventHandler(this.restartBtn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Enabled = false;
-            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
-            this.saveBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(83, 22);
-            this.saveBtn.Text = "Enregistrer";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // resultsBtn
-            // 
-            this.resultsBtn.Enabled = false;
-            this.resultsBtn.Image = ((System.Drawing.Image)(resources.GetObject("resultsBtn.Image")));
-            this.resultsBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.resultsBtn.Name = "resultsBtn";
-            this.resultsBtn.Size = new System.Drawing.Size(74, 22);
-            this.resultsBtn.Text = "Résultats";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // timerLabel
-            // 
-            this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(49, 22);
-            this.timerLabel.Text = "00:00:00";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startBtn,
-            this.toolStripSeparator7,
-            this.eraseBtn,
-            this.toolStripSeparator2,
-            this.stopBtn,
-            this.toolStripSeparator3,
-            this.restartBtn,
-            this.toolStripSeparator4,
-            this.saveBtn,
-            this.toolStripSeparator5,
-            this.resultsBtn,
-            this.toolStripSeparator6,
-            this.timerLabel});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
             // analysePanel
             // 
             this.analysePanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -618,13 +627,6 @@
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
             // 
-            // accéderAuxDonnéesToolStripMenuItem
-            // 
-            this.accéderAuxDonnéesToolStripMenuItem.Name = "accéderAuxDonnéesToolStripMenuItem";
-            this.accéderAuxDonnéesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.accéderAuxDonnéesToolStripMenuItem.Text = "Accéder aux données";
-            this.accéderAuxDonnéesToolStripMenuItem.Click += new System.EventHandler(this.accéderAuxDonnéesToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,6 +644,8 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.infoPanel.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -650,8 +654,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).EndInit();
             this.ResumeLayout(false);
 
