@@ -291,6 +291,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = true;
                 this.resultsBtn.Enabled = true;
                 this.nextBtn.Enabled = false;
+                this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;
                 this.InitData();
             }
         }
@@ -343,6 +344,7 @@ namespace Dysgraphie.Views
             this.stopBtn.Enabled = false;
             this.saveBtn.Enabled = true;
             this.resultsBtn.Enabled = true;
+            this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;
             timer.Stop();
         }
 
@@ -361,6 +363,7 @@ namespace Dysgraphie.Views
                 this.restartBtn.Enabled = false;
                 this.saveBtn.Enabled = false;
                 this.eraseBtn.Enabled = true;
+                this.ajouterÀLaBaseToolStripMenuItem.Enabled = false;
                 this.timerLabel.Text = "00:00:00";
             }
         }
@@ -648,6 +651,19 @@ namespace Dysgraphie.Views
             foreach (KeyValuePair<char, int> keyValLetter in letters)
             {
                 Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString()+"/11");
+            }
+        }
+
+        private void ajouterÀLaBaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChildDatas cd;
+            int IdChild = manager.getCurrentChildID() + 1;
+            this.child.SetID(IdChild);
+            if (!child.alreadySaved(manager)) child.AddChildInDB(manager);
+            foreach (Analysis a in this.analysis)
+            {
+                cd = new ChildDatas(child.GetID(), a.character, a);
+                cd.saveDatas(manager);
             }
         }
     }

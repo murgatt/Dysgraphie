@@ -41,6 +41,7 @@
             this.donnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.choixDeLaBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accéderAuxDonnéesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterÀLaBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,8 +56,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.saveBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBDD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.resultsBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.timerLabel = new System.Windows.Forms.ToolStripLabel();
@@ -82,6 +81,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richtextBoxX = new System.Windows.Forms.RichTextBox();
+            this.nextBtn = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.analysePanel = new System.Windows.Forms.Panel();
@@ -114,7 +114,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.picBoard = new System.Windows.Forms.PictureBox();
-            this.nextBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -205,6 +204,7 @@
             this.donnéesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.choixDeLaBaseToolStripMenuItem,
             this.accéderAuxDonnéesToolStripMenuItem,
+            this.ajouterÀLaBaseToolStripMenuItem,
             this.createBaseToolStripMenuItem});
             this.donnéesToolStripMenuItem.Name = "donnéesToolStripMenuItem";
             this.donnéesToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
@@ -224,6 +224,14 @@
             this.accéderAuxDonnéesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.accéderAuxDonnéesToolStripMenuItem.Text = "Accéder aux données";
             this.accéderAuxDonnéesToolStripMenuItem.Click += new System.EventHandler(this.accéderAuxDonnéesToolStripMenuItem_Click);
+            // 
+            // ajouterÀLaBaseToolStripMenuItem
+            // 
+            this.ajouterÀLaBaseToolStripMenuItem.Enabled = false;
+            this.ajouterÀLaBaseToolStripMenuItem.Name = "ajouterÀLaBaseToolStripMenuItem";
+            this.ajouterÀLaBaseToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.ajouterÀLaBaseToolStripMenuItem.Text = "Ajouter à la base";
+            this.ajouterÀLaBaseToolStripMenuItem.Click += new System.EventHandler(this.ajouterÀLaBaseToolStripMenuItem_Click);
             // 
             // createBaseToolStripMenuItem
             // 
@@ -266,8 +274,6 @@
             this.toolStripSeparator4,
             this.saveBtn,
             this.toolStripSeparator8,
-            this.toolStripBDD,
-            this.toolStripSeparator5,
             this.resultsBtn,
             this.toolStripSeparator6,
             this.timerLabel});
@@ -351,20 +357,6 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripBDD
-            // 
-            this.toolStripBDD.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBDD.Image")));
-            this.toolStripBDD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBDD.Name = "toolStripBDD";
-            this.toolStripBDD.Size = new System.Drawing.Size(113, 22);
-            this.toolStripBDD.Text = "Ajouter à la BDD";
-            this.toolStripBDD.Click += new System.EventHandler(this.toolStripBDD_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
             // resultsBtn
             // 
             this.resultsBtn.Enabled = false;
@@ -404,7 +396,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 46);
+            this.groupBox3.Size = new System.Drawing.Size(231, 72);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Texte à tracer";
@@ -412,14 +404,16 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.textLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.nextBtn, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 27);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 53);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // textLabel
@@ -636,6 +630,19 @@
             this.richtextBoxX.Size = new System.Drawing.Size(225, 218);
             this.richtextBoxX.TabIndex = 0;
             this.richtextBoxX.Text = "";
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nextBtn.Enabled = false;
+            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nextBtn.Location = new System.Drawing.Point(75, 29);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(75, 21);
+            this.nextBtn.TabIndex = 0;
+            this.nextBtn.Text = "   Suivant";
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // richTextBox1
             // 
@@ -921,17 +928,6 @@
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
             // 
-            // nextBtn
-            // 
-            this.nextBtn.Enabled = false;
-            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
-            this.nextBtn.Location = new System.Drawing.Point(0, 0);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(66, 22);
-            this.nextBtn.TabIndex = 0;
-            this.nextBtn.Text = "Suivant";
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,7 +986,6 @@
         private System.Windows.Forms.ToolStripButton restartBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton saveBtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton resultsBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.Panel infoPanel;
@@ -1053,6 +1048,6 @@
         private System.Windows.Forms.TextBox textBoxPrintNumber;
         private System.Windows.Forms.TextBox textBoxDrawLength;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton toolStripBDD;
+        private System.Windows.Forms.ToolStripMenuItem ajouterÀLaBaseToolStripMenuItem;
     }
 }
