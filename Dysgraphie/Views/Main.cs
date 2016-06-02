@@ -32,7 +32,7 @@ namespace Dysgraphie.Views
         private String path;
         private Boolean basicMode = true;
         private String selectedDB;
-		private DbManager manager = new DbManager("kikouDB");
+		private DbManager manager;
         private List<Analysis> analysis;
         private AcquisitionPoint acquisition;
 
@@ -69,6 +69,7 @@ namespace Dysgraphie.Views
                 if (first)
                 {
                     selectedDB = dbName;
+                    manager = new DbManager(selectedDB);
                 }
                 addToolStripItemDB(dbName, first);
                 first = false;
@@ -187,6 +188,7 @@ namespace Dysgraphie.Views
             {
                 createBase(dbName);
                 selectedDB = dbName;
+                manager = new DbManager(selectedDB);
             }
         }
 
@@ -201,6 +203,7 @@ namespace Dysgraphie.Views
                 }
                 dbItem.Checked = true;
                 selectedDB = dbItem.Text;
+                manager = new DbManager(selectedDB);
             }
         }
 
@@ -350,7 +353,7 @@ namespace Dysgraphie.Views
 
         private void restart()
         {
-            DialogResult restartResult = MessageBox.Show("Etes-vous sûr de vouloir recommencer ? Les tracés non sauvegardés seront supprimés.", "Recommencer ?", MessageBoxButtons.YesNo);
+            DialogResult restartResult = MessageBox.Show("Etes-vous sûr de vouloir recommencer ? Les tracés seront supprimés.", "Recommencer ?", MessageBoxButtons.YesNo);
             if (restartResult == DialogResult.Yes)
             {
                 state = "stopped";
@@ -609,7 +612,10 @@ namespace Dysgraphie.Views
         {
             this.picBoard.Invalidate();
             this.acquisition.Reset();
-            this.acquisition.analysis.character = this.sequence[this.nbTxt];
+            if(this.sequence.Count != 0)
+            {
+                this.acquisition.analysis.character = this.sequence[this.nbTxt];
+            }
         }
        
 
