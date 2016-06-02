@@ -51,9 +51,11 @@ namespace Dysgraphie.Acquisition
         public void Start()
         {
             Reset();
+            thread.IsBackground = true;
             thread.Start();
         }
-        private void Reset()
+
+        public void Reset()
         {
             // LIST
             if (synchronizedList == null)
@@ -61,6 +63,7 @@ namespace Dysgraphie.Acquisition
                 synchronizedList = new List<Point>();
 
             }
+            this.analysis = new Analysis();
             synchronizedList.Clear();
 
             // THREAD

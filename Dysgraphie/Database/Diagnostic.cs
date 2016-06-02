@@ -18,11 +18,11 @@ namespace Dysgraphie.Database
 
         private Child patient;
 
-        public Diagnostic(DbManager manager, Child patient)
+        public Diagnostic(DbManager manager, Child patient, List<Analysis> analysisList)
         {
             this.patient = patient;
             this.manager = manager;
-            this.analysisList = new List<Analysis>();
+            this.analysisList = analysisList;
         }
 
         public Dictionary<string, int> resultsPerIndicator()
