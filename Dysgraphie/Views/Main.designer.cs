@@ -63,6 +63,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textLabel = new System.Windows.Forms.Label();
+            this.nextBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.genderLabel = new System.Windows.Forms.Label();
@@ -81,10 +82,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richtextBoxX = new System.Windows.Forms.RichTextBox();
-            this.nextBtn = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.analysePanel = new System.Windows.Forms.Panel();
+            this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
             this.textBoxAverageSpeed = new System.Windows.Forms.TextBox();
             this.textBoxHeightLetter = new System.Windows.Forms.TextBox();
             this.textBoxWidthLetter = new System.Windows.Forms.TextBox();
@@ -427,6 +428,19 @@
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "VALUE";
             // 
+            // nextBtn
+            // 
+            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nextBtn.Enabled = false;
+            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nextBtn.Location = new System.Drawing.Point(75, 29);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(75, 21);
+            this.nextBtn.TabIndex = 0;
+            this.nextBtn.Text = "   Suivant";
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
@@ -631,19 +645,6 @@
             this.richtextBoxX.TabIndex = 0;
             this.richtextBoxX.Text = "";
             // 
-            // nextBtn
-            // 
-            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nextBtn.Enabled = false;
-            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
-            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.nextBtn.Location = new System.Drawing.Point(75, 29);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(75, 21);
-            this.nextBtn.TabIndex = 0;
-            this.nextBtn.Text = "   Suivant";
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
@@ -658,6 +659,7 @@
             // 
             // analysePanel
             // 
+            this.analysePanel.Controls.Add(this.comboBoxCharacter);
             this.analysePanel.Controls.Add(this.textBoxAverageSpeed);
             this.analysePanel.Controls.Add(this.textBoxHeightLetter);
             this.analysePanel.Controls.Add(this.textBoxWidthLetter);
@@ -692,6 +694,51 @@
             this.analysePanel.Size = new System.Drawing.Size(231, 475);
             this.analysePanel.TabIndex = 4;
             this.analysePanel.Visible = false;
+            // 
+            // comboBoxCharacter
+            // 
+            this.comboBoxCharacter.FormattingEnabled = true;
+            this.comboBoxCharacter.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"});
+            this.comboBoxCharacter.Location = new System.Drawing.Point(69, 16);
+            this.comboBoxCharacter.Name = "comboBoxCharacter";
+            this.comboBoxCharacter.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCharacter.TabIndex = 64;
             // 
             // textBoxAverageSpeed
             // 
@@ -1049,5 +1096,6 @@
         private System.Windows.Forms.TextBox textBoxDrawLength;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem ajouterÀLaBaseToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxCharacter;
     }
 }
