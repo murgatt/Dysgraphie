@@ -739,6 +739,7 @@
             this.comboBoxCharacter.Name = "comboBoxCharacter";
             this.comboBoxCharacter.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCharacter.TabIndex = 64;
+            this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
             // 
             // textBoxAverageSpeed
             // 

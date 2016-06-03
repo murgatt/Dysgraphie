@@ -131,9 +131,9 @@ namespace Dysgraphie.Views
                 
 
                 DrawingPoint dp;
-                foreach(Analysis a in this.analysis)
-                {
-                    foreach (Datas.Point p in a.points)
+                Analysis a = this.analysis.ElementAt(0);
+                this.comboBoxCharacter.SelectedItem = Convert.ToString(a.character);
+                foreach (Datas.Point p in a.points)
                     {
                         double y = Convert.ToDouble(p.y);
                         double x = Convert.ToDouble(p.x);
@@ -145,7 +145,7 @@ namespace Dysgraphie.Views
                             drawingThread.AddPoint(dp);
                         }
                     }
-                }
+                
                     
             }
         }
@@ -704,6 +704,45 @@ namespace Dysgraphie.Views
                 cd = new ChildDatas(child.GetID(), a.character, a);
                 cd.saveDatas(manager);
             }
+        }
+
+        private void comboBoxCharacter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(this.comboBoxCharacter.Text);
+            this.picBoard.Invalidate();
+            foreach(Analysis a in this.analysis)
+            {
+                if(a.character == Convert.ToChar(this.comboBoxCharacter.Text))
+                {
+                    this.acquisition.analysis = a;
+                    this.textBoxDrawTime.Text = this.acquisition.getDrawTime().ToString();
+                    this.textBoxBreakTime.Text = this.acquisition.getBreakTime().ToString();
+                    this.textBoxDrawLength.Text = this.acquisition.getDrawLength().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxHeightLetter.Text = this.acquisition.analysis.lettersHeight.ToString();
+                    this.textBoxWidthLetter.Text = this.acquisition.analysis.lettersWidth.ToString();
+                    this.textBoxAverageSpeed.Text = this.acquisition.getAverageSpeed().ToString();
+                    
+
+                    DrawingPoint dp;
+                    foreach (Datas.Point p in acquisition.analysis.points)
+                    {
+                        double y = Convert.ToDouble(p.y);
+                        double x = Convert.ToDouble(p.x);
+
+                        if (p.p > 0)
+                        {
+
+                            dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                            drawingThread.AddPoint(dp);
+                        }
+                    }
+                    break;
+                }
+            }
+
+            
         }
     }
 }
