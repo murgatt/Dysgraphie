@@ -82,6 +82,58 @@ namespace Dysgraphie.Utils
                 
         }
 
+        public static List<Analysis> openSequence(String url)
+        {
+            List<Analysis> res = new List<Analysis>();
+            Analysis a = null;
+            String[] datas;
+            try
+            {
+
+                string[] lines = System.IO.File.ReadAllLines(url);
+                foreach (string line in lines)
+                {
+                    datas = line.Split('\t');
+
+                    int val;
+                    if (Int32.TryParse(datas[0], out val))
+                    {
+
+                        Datas.Point p = new Datas.Point(Int32.Parse(datas[0]), UInt32.Parse(datas[1]), Double.Parse(datas[2]), Int32.Parse(datas[3]), Int32.Parse(datas[4]), Int32.Parse(datas[5]), UInt32.Parse(datas[6]), Int32.Parse(datas[7]), Int32.Parse(datas[8]), Int32.Parse(datas[9]));
+                        a.addPoint(p);
+
+
+                    } else
+                    {
+                        
+                        datas = line.Split(' ');
+                        if (datas.Length > 1)
+                        {
+                            if(a != null)
+                            {
+                                a.analyse();
+                                res.Add(a);
+                            }
+                            a = new Analysis();
+                            a.character = Convert.ToChar(datas[3]);                            
+                        }
+                            
+                    }
+
+                }
+                a.analyse();
+                res.Add(a);
+
+                return res;
+            }
+
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Fichier introuvable");
+            }
+            return null;
+        }
+
     }
 }
 
