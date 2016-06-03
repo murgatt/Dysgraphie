@@ -62,10 +62,12 @@ namespace Dysgraphie.Utils
             
         }
 
-        public static void saveSequence(List<Analysis> analisysList, String url)
+        public static void saveSequence(List<Analysis> analisysList, String url, String commentary)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(url, false))
             {
+                file.WriteLine("Commentaires : "+commentary);
+                file.WriteLine();
                 String str = "N°Pt\tSN\tT\tX\tY\tZ\tP\tAlt\tAzi\tTwi";
                 file.WriteLine(str);
                 foreach (Analysis a in analisysList)
@@ -103,12 +105,13 @@ namespace Dysgraphie.Utils
                         a.addPoint(p);
 
 
-                    } else
-                    {
+                    } else {
                         
                         datas = line.Split(' ');
-                        if (datas.Length > 1)
-                        {
+
+
+                        if (datas.Length == 5)
+                        {                           
                             if(a != null)
                             {
                                 a.analyse();
@@ -125,6 +128,36 @@ namespace Dysgraphie.Utils
                 res.Add(a);
 
                 return res;
+            }
+
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Fichier introuvable");
+            }
+            return null;
+        }
+
+        public static string getSequenceCommentary(String url)
+        {
+            String[] datas;
+            try
+            {
+
+                string[] lines = System.IO.File.ReadAllLines(url);
+                foreach (string line in lines)
+                {
+
+                    datas = line.Split(':');
+
+
+                    if (datas[0] == "Commentaires ")
+                    {
+                        return datas[1];                            
+                    }
+                }
+                
+
+                return null;
             }
 
             catch (FileNotFoundException)

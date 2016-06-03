@@ -118,7 +118,8 @@ namespace Dysgraphie.Views
             {
                 this.picBoard.Invalidate();
                 this.analysis = OpenSaveTrace.openSequence(openFileDialog1.FileName);
-                
+                this.richtextBoxX.Text = OpenSaveTrace.getSequenceCommentary(openFileDialog1.FileName);
+
                 textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
                 this.textBoxBreakTime.Text = acquisition.getBreakTime().ToString();
                 this.textBoxDrawTime.Text = acquisition.getDrawTime().ToString();
@@ -126,6 +127,8 @@ namespace Dysgraphie.Views
                 this.textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
                 this.textBoxHeightLetter.Text = acquisition.getLettersHeight().ToString();
                 this.textBoxWidthLetter.Text = acquisition.getLettersWidth().ToString();
+
+                
 
                 DrawingPoint dp;
                 foreach(Analysis a in this.analysis)
@@ -652,7 +655,7 @@ namespace Dysgraphie.Views
 
         private void save()
         {
-            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt");
+            OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt", this.richtextBoxX.Text);
         }
 
         private void toolStripBDD_Click(object sender, EventArgs e)
