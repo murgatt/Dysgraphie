@@ -8,6 +8,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using Dysgraphie.Database;
+using Dysgraphie.Indicators;
 
 /* TUTORIEL ICI
  * http://dotnet.developpez.com/articles/itextsharp/
@@ -135,6 +136,15 @@ namespace Dysgraphie.OutputFiles
             }
 
         }
+
+        public void addChartCritere(List<Analysis> listAn)
+        {
+            foreach( Analysis simpleAnalyse in listAn)
+            {
+
+            }
+        }
+
         public void ClosePdf()
         {
             this.MyPdf.Close();
