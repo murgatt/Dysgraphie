@@ -137,12 +137,15 @@ namespace Dysgraphie.OutputFiles
 
         }
 
-        public void addChartCritere(List<Analysis> listAn)
+        public void addChartCritere(List<Analysis> listAn) // affiche un tableau des lettres avec leur moyenne d'analys
         {
-            foreach( Analysis simpleAnalyse in listAn)
+            PdfPTable tableau = new PdfPTable(2);
+            foreach ( Analysis simpleAnalyse in listAn)
             {
-
+                tableau.AddCell(new Phrase(simpleAnalyse.character));
+                tableau.AddCell(" methode pour recupéré la moyenne de la lettre "); // je ne connais pas la méthode ( cedric a laide )
             }
+            tableau.WriteSelectedRows(0, -1, 80, 400, this.canvas);
         }
 
         public void ClosePdf()
