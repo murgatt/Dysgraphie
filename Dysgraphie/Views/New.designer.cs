@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.nameInput = new System.Windows.Forms.TextBox();
             this.forenameInput = new System.Windows.Forms.TextBox();
+            this.birthInput = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.leftRadioBtn = new System.Windows.Forms.RadioButton();
@@ -54,7 +55,6 @@
             this.cancelBtn = new System.Windows.Forms.Button();
             this.validateBtn = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.birthInput = new System.Windows.Forms.DateTimePicker();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -189,6 +189,14 @@
             this.forenameInput.Size = new System.Drawing.Size(208, 20);
             this.forenameInput.TabIndex = 9;
             this.forenameInput.TextChanged += new System.EventHandler(this.input_Changed);
+            // 
+            // birthInput
+            // 
+            this.birthInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.birthInput.Location = new System.Drawing.Point(216, 67);
+            this.birthInput.Name = "birthInput";
+            this.birthInput.Size = new System.Drawing.Size(208, 20);
+            this.birthInput.TabIndex = 10;
             // 
             // groupBox5
             // 
@@ -370,14 +378,6 @@
             this.validateBtn.UseVisualStyleBackColor = true;
             this.validateBtn.Click += new System.EventHandler(this.validateBtn_Click);
             // 
-            // birthInput
-            // 
-            this.birthInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.birthInput.Location = new System.Drawing.Point(216, 67);
-            this.birthInput.Name = "birthInput";
-            this.birthInput.Size = new System.Drawing.Size(208, 20);
-            this.birthInput.TabIndex = 10;
-            // 
             // New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,7 +388,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "New";
-            this.Text = "New";
+            this.Text = "Nouveau";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

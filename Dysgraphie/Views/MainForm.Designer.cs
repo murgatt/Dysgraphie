@@ -75,7 +75,7 @@
             this.tabPageDonnees = new System.Windows.Forms.TabPage();
             this.tabPagePatient = new System.Windows.Forms.TabPage();
             this.comboBoxSymbole = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.labelY = new System.Windows.Forms.Label();
             this.comboBoxLateralite = new System.Windows.Forms.ComboBox();
             this.comboBoxGenre = new System.Windows.Forms.ComboBox();
             this.comboBoxClasse = new System.Windows.Forms.ComboBox();
@@ -476,7 +476,7 @@
             // 
             this.tabPagePatient.Controls.Add(this.dateTimePickerNaissance);
             this.tabPagePatient.Controls.Add(this.comboBoxSymbole);
-            this.tabPagePatient.Controls.Add(this.label22);
+            this.tabPagePatient.Controls.Add(this.labelY);
             this.tabPagePatient.Controls.Add(this.comboBoxLateralite);
             this.tabPagePatient.Controls.Add(this.comboBoxGenre);
             this.tabPagePatient.Controls.Add(this.comboBoxClasse);
@@ -541,14 +541,14 @@
             this.comboBoxSymbole.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSymbole.TabIndex = 13;
             // 
-            // label22
+            // labelY
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(7, 357);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(47, 13);
-            this.label22.TabIndex = 12;
-            this.label22.Text = "Symbole";
+            this.labelY.AutoSize = true;
+            this.labelY.Location = new System.Drawing.Point(7, 357);
+            this.labelY.Name = "labelY";
+            this.labelY.Size = new System.Drawing.Size(47, 13);
+            this.labelY.TabIndex = 12;
+            this.labelY.Text = "Symbole";
             // 
             // comboBoxLateralite
             // 
@@ -690,7 +690,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(167, 23);
             this.button3.TabIndex = 41;
-            this.button3.Text = "Commencer l\'acquisition";
+            this.button3.Text = "Commencer l\'currentAcquisition";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -783,7 +783,7 @@
         private System.Windows.Forms.TextBox textBoxPrenom;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox comboBoxSymbole;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label labelY;
         private System.Windows.Forms.ComboBox comboBoxLateralite;
         private System.Windows.Forms.ComboBox comboBoxGenre;
         private System.Windows.Forms.Button buttonAjoutBDD;

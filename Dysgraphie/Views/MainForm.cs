@@ -160,6 +160,7 @@ namespace Dysgraphie.Views
 
         public void MyWTPacketEventHandler(Object sender_I, MessageReceivedEventArgs eventArgs_I)
         {
+            
             //System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
             if (m_wtData == null)
             {
@@ -313,7 +314,7 @@ namespace Dysgraphie.Views
         {
             DbManager manager = new DbManager("kikouDB");
             int IdChild = manager.getCurrentChildID()+1;
-            Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
+            Child c = new Child(this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
             if (!c.alreadySaved(manager)) c.AddChildInDB(manager);
             ChildDatas cd = new ChildDatas(c.GetID(), Convert.ToChar(this.comboBoxSymbole.Text), this.acquisition.analysis);
             cd.saveDatas(manager);
@@ -337,7 +338,7 @@ namespace Dysgraphie.Views
             DbManager manager = new DbManager("kikouDB");            
             int IdChild = manager.getCurrentChildID() + 1;
             Child c = new Child(IdChild, this.textBoxNom.Text, this.textBoxPrenom.Text, this.dateTimePickerNaissance.Value, this.comboBoxClasse.Text, this.comboBoxGenre.Text, this.comboBoxLateralite.Text);
-            this.diagnostic = new Diagnostic(manager, c);
+            //this.diagnostic = new Diagnostic(manager, c);
         }
     }
 }

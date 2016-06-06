@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.IO;
 
 
 /* DB IS LIKE 
@@ -18,7 +19,13 @@ namespace Dysgraphie.Database
 
         public DbManager(String DBname)
         {
-            this.m_dbConnection = new SQLiteConnection("Data Source=Database/" + DBname + ".sqlite;Version=3;");
+            DBname += ".sqlite";
+            String path = Path.Combine(Environment.CurrentDirectory, "data", DBname);
+            if (!System.IO.File.Exists(path))
+            {
+                SQLiteConnection.CreateFile(path);
+            }
+            this.m_dbConnection = new SQLiteConnection("Data Source=" + path + ";Version=3;");
         }
 
         public void CreateDB()
