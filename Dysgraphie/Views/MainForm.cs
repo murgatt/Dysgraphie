@@ -160,6 +160,7 @@ namespace Dysgraphie.Views
 
         public void MyWTPacketEventHandler(Object sender_I, MessageReceivedEventArgs eventArgs_I)
         {
+            
             //System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
             if (m_wtData == null)
             {

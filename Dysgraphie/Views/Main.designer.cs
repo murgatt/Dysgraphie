@@ -1,4 +1,6 @@
-﻿namespace Dysgraphie.Views
+﻿using System.Windows.Forms;
+
+namespace Dysgraphie.Views
 {
     partial class Main
     {
@@ -63,6 +65,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textLabel = new System.Windows.Forms.Label();
+            this.nextBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.genderLabel = new System.Windows.Forms.Label();
@@ -81,10 +84,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richtextBoxX = new System.Windows.Forms.RichTextBox();
-            this.nextBtn = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.analysePanel = new System.Windows.Forms.Panel();
+            this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
             this.textBoxAverageSpeed = new System.Windows.Forms.TextBox();
             this.textBoxHeightLetter = new System.Windows.Forms.TextBox();
             this.textBoxWidthLetter = new System.Windows.Forms.TextBox();
@@ -247,7 +250,7 @@
             this.outilsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1190, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1622, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -258,7 +261,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1190, 50);
+            this.panel1.Size = new System.Drawing.Size(1622, 50);
             this.panel1.TabIndex = 1;
             // 
             // toolStrip1
@@ -279,7 +282,7 @@
             this.timerLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1190, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1622, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -386,7 +389,7 @@
             this.infoPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.infoPanel.Location = new System.Drawing.Point(0, 50);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(231, 475);
+            this.infoPanel.Size = new System.Drawing.Size(231, 842);
             this.infoPanel.TabIndex = 2;
             this.infoPanel.Visible = false;
             // 
@@ -427,11 +430,24 @@
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "VALUE";
             // 
+            // nextBtn
+            // 
+            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nextBtn.Enabled = false;
+            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nextBtn.Location = new System.Drawing.Point(75, 29);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(75, 21);
+            this.nextBtn.TabIndex = 0;
+            this.nextBtn.Text = "   Suivant";
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 82);
+            this.groupBox2.Location = new System.Drawing.Point(0, 449);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(231, 156);
             this.groupBox2.TabIndex = 2;
@@ -615,7 +631,7 @@
             // 
             this.groupBox1.Controls.Add(this.richtextBoxX);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 238);
+            this.groupBox1.Location = new System.Drawing.Point(0, 605);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(231, 237);
             this.groupBox1.TabIndex = 0;
@@ -631,19 +647,6 @@
             this.richtextBoxX.TabIndex = 0;
             this.richtextBoxX.Text = "";
             // 
-            // nextBtn
-            // 
-            this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nextBtn.Enabled = false;
-            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
-            this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.nextBtn.Location = new System.Drawing.Point(75, 29);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(75, 21);
-            this.nextBtn.TabIndex = 0;
-            this.nextBtn.Text = "   Suivant";
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
@@ -658,6 +661,7 @@
             // 
             // analysePanel
             // 
+            this.analysePanel.Controls.Add(this.comboBoxCharacter);
             this.analysePanel.Controls.Add(this.textBoxAverageSpeed);
             this.analysePanel.Controls.Add(this.textBoxHeightLetter);
             this.analysePanel.Controls.Add(this.textBoxWidthLetter);
@@ -689,9 +693,55 @@
             this.analysePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.analysePanel.Location = new System.Drawing.Point(231, 50);
             this.analysePanel.Name = "analysePanel";
-            this.analysePanel.Size = new System.Drawing.Size(231, 475);
+            this.analysePanel.Size = new System.Drawing.Size(231, 842);
             this.analysePanel.TabIndex = 4;
             this.analysePanel.Visible = false;
+            // 
+            // comboBoxCharacter
+            // 
+            this.comboBoxCharacter.FormattingEnabled = true;
+            this.comboBoxCharacter.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"});
+            this.comboBoxCharacter.Location = new System.Drawing.Point(69, 16);
+            this.comboBoxCharacter.Name = "comboBoxCharacter";
+            this.comboBoxCharacter.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCharacter.TabIndex = 64;
+            this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
             // 
             // textBoxAverageSpeed
             // 
@@ -923,7 +973,7 @@
             this.picBoard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBoard.Location = new System.Drawing.Point(231, 50);
             this.picBoard.Name = "picBoard";
-            this.picBoard.Size = new System.Drawing.Size(959, 475);
+            this.picBoard.Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Width);
             this.picBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
@@ -932,7 +982,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 525);
+            this.ClientSize = new System.Drawing.Size(1622, 892);
             this.Controls.Add(this.analysePanel);
             this.Controls.Add(this.picBoard);
             this.Controls.Add(this.infoPanel);
@@ -1049,5 +1099,6 @@
         private System.Windows.Forms.TextBox textBoxDrawLength;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem ajouterÀLaBaseToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxCharacter;
     }
 }

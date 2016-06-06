@@ -129,6 +129,17 @@ namespace Dysgraphie.Acquisition
             return analysis.averageSpeed;
         }
 
-        
+        public double getLettersHeight()
+        {
+            return analysis.lettersHeight;
+        }
+
+        public double getLettersWidth()
+        {
+            return analysis.lettersWidth;
+        }
+
+
+
     }
 }
