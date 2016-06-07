@@ -144,27 +144,27 @@ namespace Dysgraphie.Views
             // nouveauToolStripMenuItem
             // 
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.nouveauToolStripMenuItem_Click);
             // 
             // ouvrirToolStripMenuItem
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // enregistrerToolStripMenuItem
             // 
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -741,6 +741,7 @@ namespace Dysgraphie.Views
             this.comboBoxCharacter.Name = "comboBoxCharacter";
             this.comboBoxCharacter.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCharacter.TabIndex = 64;
+            this.comboBoxCharacter.Visible = false;
             this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
             // 
             // textBoxAverageSpeed
@@ -973,7 +974,7 @@ namespace Dysgraphie.Views
             this.picBoard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBoard.Location = new System.Drawing.Point(231, 50);
             this.picBoard.Name = "picBoard";
-            this.picBoard.Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Width);
+            this.picBoard.Size = new System.Drawing.Size(1391, 842);
             this.picBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;

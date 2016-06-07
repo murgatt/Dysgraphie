@@ -128,7 +128,18 @@ namespace Dysgraphie.Views
                 this.textBoxHeightLetter.Text = acquisition.getLettersHeight().ToString();
                 this.textBoxWidthLetter.Text = acquisition.getLettersWidth().ToString();
 
-                
+                this.analysePanel.Visible = true;
+                this.infoPanel.Visible = false;
+                this.basiqueToolStripMenuItem.Checked = false;
+                this.analyseToolStripMenuItem.Checked = true;
+                this.basicMode = false;
+                this.startBtn.Enabled = false;
+                this.eraseBtn.Enabled = false;
+                this.restartBtn.Enabled = false;
+                this.stopBtn.Enabled = false;
+                this.saveBtn.Enabled = false;
+                this.resultsBtn.Enabled = false;
+                this.comboBoxCharacter.Visible = true;
 
                 DrawingPoint dp;
                 Analysis a = this.analysis.ElementAt(0);
@@ -140,13 +151,10 @@ namespace Dysgraphie.Views
 
                         if (p.p > 0)
                         {
-
                             dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
                             drawingThread.AddPoint(dp);
                         }
                     }
-                
-                    
             }
         }
 
@@ -291,6 +299,20 @@ namespace Dysgraphie.Views
                 this.infoPanel.Visible = true;
             }
             this.startBtn.Enabled = true;
+            this.comboBoxCharacter.Visible = false;
+            this.picBoard.Invalidate();
+            this.acquisition.Reset();
+            if (this.sequence.Count != 0)
+            {
+                this.acquisition.analysis.character = this.sequence[this.nbTxt];
+            }
+            foreach(Control ctrl in this.analysePanel.Controls)
+            {
+                if(ctrl is TextBox)
+                {
+                    ctrl.Text = "";
+                }
+            }
         }
 
         private void Start()
@@ -675,21 +697,27 @@ namespace Dysgraphie.Views
 
         private void resultsBtn_Click(object sender, EventArgs e)
         {
-            Diagnostic d = new Diagnostic(manager, child, analysis);
-
-            Dictionary<string, int> indicators = d.resultsPerIndicator();
-
-            foreach (KeyValuePair<string, int> keyValInd in indicators)
+            GradeSelector gradeSelector = new GradeSelector(child.GetClasse());
+            DialogResult result = gradeSelector.ShowDialog();
+            if(result == DialogResult.OK)
             {
-                Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString()+"/36");
-            }
+                String grade = gradeSelector.grade;
+                Diagnostic d = new Diagnostic(manager, child, analysis);
+
+                Dictionary<string, int> indicators = d.resultsPerIndicator();
+
+                foreach (KeyValuePair<string, int> keyValInd in indicators)
+                {
+                    Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString() + "/36");
+                }
 
 
-            Dictionary<char, int> letters = d.resultsPerLetter();
+                Dictionary<char, int> letters = d.resultsPerLetter();
 
-            foreach (KeyValuePair<char, int> keyValLetter in letters)
-            {
-                Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString()+"/11");
+                foreach (KeyValuePair<char, int> keyValLetter in letters)
+                {
+                    Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString() + "/11");
+                }
             }
         }
 
