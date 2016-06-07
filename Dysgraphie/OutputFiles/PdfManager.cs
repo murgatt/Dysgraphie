@@ -26,7 +26,7 @@ namespace Dysgraphie.OutputFiles
             this.name = name;
         }
 
-        public void Create(Child child, Diagnostic d, string comment = null)
+        public void Create(Child child, Diagnostic d, string grade, string comment = null)
         {
             FileStream fs;
             if (savePath == "")
@@ -43,8 +43,10 @@ namespace Dysgraphie.OutputFiles
             MyPdf.Open();
 
             //titre
-            Chunk c = new Chunk("Diagnostic", FontFactory.GetFont(FontFactory.COURIER, 20, Font.BOLD));
+            Chunk c = new Chunk("Diagnostic\n", FontFactory.GetFont(FontFactory.COURIER, 20, Font.BOLD));
             Paragraph p = new Paragraph(c);
+            c = new Chunk("Ce diagnotic a été réalisé en comparaison d'écriture d'enfants de classe de "+grade, FontFactory.GetFont(FontFactory.COURIER, 10));
+            p.Add(c);
             p.Alignment = Element.ALIGN_CENTER;
             p.SpacingAfter = 12;
             MyPdf.Add(p);
