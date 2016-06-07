@@ -58,3 +58,4 @@ D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.MainForm.re
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.New.resources
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csproj.GenerateResource.Cache
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.GradeSelector.resources
+C:\Users\Propriétaire\Documents\Visual Studio 2015\Projects\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.GradeSelector.resources
