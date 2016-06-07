@@ -12,17 +12,19 @@ namespace Dysgraphie.Database
     {
         private DbManager manager;
         private List<Analysis> analysisList;
+        private string grade;
         private readonly string[] indicators = {"averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth", "averageTwist"};
         
 
 
         private Child patient;
 
-        public Diagnostic(DbManager manager, Child patient, List<Analysis> analysisList)
+        public Diagnostic(DbManager manager, Child patient, List<Analysis> analysisList, String grade)
         {
             this.patient = patient;
             this.manager = manager;
             this.analysisList = analysisList;
+            this.grade = grade;
         }
 
         public Dictionary<string, int> resultsPerIndicator()
@@ -85,7 +87,7 @@ namespace Dysgraphie.Database
 
         private Dictionary<string, bool> addDiagnosticLetter(Analysis a)
         {
-            DiagnosticLetter dl = new DiagnosticLetter(this.manager, a, a.character, this.patient);
+            DiagnosticLetter dl = new DiagnosticLetter(this.manager, a, a.character, this.patient, this.grade);
             DiagnosticDatas dd;
             Dictionary<string, bool> res = new Dictionary<string, bool>();
             foreach(string s in this.indicators)
