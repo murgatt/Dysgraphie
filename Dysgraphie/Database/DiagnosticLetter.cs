@@ -70,9 +70,9 @@ namespace Dysgraphie.Database
             String query;
             if (grade == null)
             {
-                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Lateralite = '" + this.patient.GetLateralite() + "' AND Classe = '" + this.patient.GetClasse() + "'";
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + this.patient.GetClasse() + "'";
             } else {
-                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Lateralite = '" + this.patient.GetLateralite() + "' AND Classe = '" + grade + "'";
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + grade + "'";
             }
 
             
