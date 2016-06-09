@@ -274,6 +274,8 @@ namespace Dysgraphie.Views
 
         private void Init()
         {
+            state = "stopped";
+            Console.WriteLine(state);
             Random r = new Random();
             List<char> c = new List<Char>();
             sequence.Clear();
@@ -303,6 +305,7 @@ namespace Dysgraphie.Views
             this.comboBoxCharacter.Visible = false;
             this.picBoard.Invalidate();
             this.acquisition.Reset();
+            nbTxt = 0;
             if (this.sequence.Count != 0)
             {
                 this.acquisition.analysis.character = this.sequence[this.nbTxt];
@@ -393,6 +396,7 @@ namespace Dysgraphie.Views
 
         private void end()
         {
+            state = "stopped";
             this.nextBtn.Enabled = false;
             this.textLabel.Text = "";
             this.restartBtn.Enabled = true;

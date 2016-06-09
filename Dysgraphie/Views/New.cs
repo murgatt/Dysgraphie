@@ -70,11 +70,11 @@ namespace Dysgraphie.Views
             }
             if (this.girlRadioBtn.Checked)
             {
-                gender = "Fille";
+                gender = "F";
             }
             else
             {
-                gender = "Garçon";
+                gender = "M";
             }
 
             child = new Child(name, forename, birth, grade, laterality, gender);           
