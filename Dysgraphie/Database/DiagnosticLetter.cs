@@ -30,7 +30,7 @@ namespace Dysgraphie.Database
 
         public char character { get; set; }
 
-        public DiagnosticLetter(DbManager manager, Analysis analysis, char c, Child patient)
+        public DiagnosticLetter(DbManager manager, Analysis analysis, char c, Child patient, string grade)
         {
             this.patient = patient;
             this.manager = manager;
@@ -49,7 +49,7 @@ namespace Dysgraphie.Database
             averageAzimuth= new DiagnosticDatas();
             averageTwist= new DiagnosticDatas();
 
-            this.calcul();
+            this.calcul(grade);
 
             this.TwoStandardDeviationFromMean(averageSpeed);
             this.TwoStandardDeviationFromMean(drawTime);
@@ -65,9 +65,17 @@ namespace Dysgraphie.Database
 
         }
 
-        public void calcul()
+        public void calcul(String grade = null)
         {
-            String query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Lateralite = '" + this.patient.GetLateralite() + "'";
+            String query;
+            if (grade == null)
+            {
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + this.patient.GetClasse() + "'";
+            } else {
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + grade + "'";
+            }
+
+            
 
             averageSpeed.mean = StatTools.mean(this.manager, query, "VitesseMoyenne");
             averageSpeed.standardDeviation = StatTools.standardDeviation(manager, query, "VitesseMoyenne");

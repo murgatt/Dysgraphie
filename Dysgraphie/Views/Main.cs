@@ -16,6 +16,7 @@ using System.IO;
 using System.Diagnostics;
 using Dysgraphie.Indicators;
 using Dysgraphie.Utils;
+using Dysgraphie.OutputFiles;
 
 namespace Dysgraphie.Views
 {
@@ -702,7 +703,7 @@ namespace Dysgraphie.Views
             if(result == DialogResult.OK)
             {
                 String grade = gradeSelector.grade;
-                Diagnostic d = new Diagnostic(manager, child, analysis);
+                Diagnostic d = new Diagnostic(manager, child, analysis, grade);
 
                 Dictionary<string, int> indicators = d.resultsPerIndicator();
 
@@ -718,6 +719,11 @@ namespace Dysgraphie.Views
                 {
                     Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString() + "/11");
                 }
+
+
+                PdfManager pdf = new PdfManager("diagnostic"+grade+".pdf", this.path);
+                pdf.Create(this.child, d, grade, this.richtextBoxX.Text);
+                pdf.ClosePdf();
             }
         }
 
