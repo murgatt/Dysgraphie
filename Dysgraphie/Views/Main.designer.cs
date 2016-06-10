@@ -30,6 +30,7 @@ namespace Dysgraphie.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +118,7 @@ namespace Dysgraphie.Views
             this.label20 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.picBoard = new System.Windows.Forms.PictureBox();
+            this.toolTipNext = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -144,27 +146,27 @@ namespace Dysgraphie.Views
             // nouveauToolStripMenuItem
             // 
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.nouveauToolStripMenuItem_Click);
             // 
             // ouvrirToolStripMenuItem
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // enregistrerToolStripMenuItem
             // 
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -399,7 +401,7 @@ namespace Dysgraphie.Views
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 72);
+            this.groupBox3.Size = new System.Drawing.Size(231, 91);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Texte à tracer";
@@ -416,7 +418,7 @@ namespace Dysgraphie.Views
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 53);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 72);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // textLabel
@@ -432,15 +434,17 @@ namespace Dysgraphie.Views
             // 
             // nextBtn
             // 
+            this.nextBtn.AccessibleDescription = "";
             this.nextBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nextBtn.Enabled = false;
             this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
             this.nextBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.nextBtn.Location = new System.Drawing.Point(75, 29);
             this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(75, 21);
+            this.nextBtn.Size = new System.Drawing.Size(75, 40);
             this.nextBtn.TabIndex = 0;
             this.nextBtn.Text = "   Suivant";
+            this.toolTipNext.SetToolTip(this.nextBtn, "Espace ou Droit");
             this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // groupBox2
@@ -988,10 +992,12 @@ namespace Dysgraphie.Views
             this.Controls.Add(this.picBoard);
             this.Controls.Add(this.infoPanel);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1000, 530);
             this.Name = "Main";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1101,5 +1107,6 @@ namespace Dysgraphie.Views
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem ajouterÀLaBaseToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBoxCharacter;
+        private ToolTip toolTipNext;
     }
 }

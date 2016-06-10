@@ -266,6 +266,14 @@ namespace Dysgraphie.Views
             }
         }
 
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.nextBtn.Enabled && (e.KeyCode == Keys.Space || e.KeyCode == Keys.Right))
+            {
+                nextTxt();
+            }
+        }
+
         private void TimerIncrement(object source, ElapsedEventArgs e)
         {
             temps += TimeSpan.FromMilliseconds(timer.Interval);
@@ -302,9 +310,9 @@ namespace Dysgraphie.Views
                 this.infoPanel.Visible = true;
             }
             this.startBtn.Enabled = true;
+            this.eraseBtn.Enabled = true;
             this.comboBoxCharacter.Visible = false;
-            this.picBoard.Invalidate();
-            this.acquisition.Reset();
+            erase();
             nbTxt = 0;
             if (this.sequence.Count != 0)
             {
@@ -324,6 +332,7 @@ namespace Dysgraphie.Views
             state = "started";
             this.startBtn.Image = ((System.Drawing.Image)(Properties.Resources.pause));
             this.startBtn.Text = "Pause";
+            this.eraseBtn.Enabled = true;
             this.stopBtn.Enabled = true;
             this.nextBtn.Enabled = true;
             temps = new TimeSpan();
@@ -379,8 +388,7 @@ namespace Dysgraphie.Views
             nbTxt++;
 
             this.analysis.Add(this.acquisition.analysis);
-            this.acquisition.Reset();
-            this.picBoard.Invalidate();
+            erase();
             
             if (nbTxt+1 <= sequence.Count)
             {
@@ -670,15 +678,18 @@ namespace Dysgraphie.Views
 
         private void eraseBtn_Click(object sender, EventArgs e)
         {
-            this.picBoard.Invalidate();
-            this.acquisition.Reset();
-            if(this.sequence.Count != 0)
+            erase();
+            if(state == "started" && this.sequence.Count != 0)
             {
                 this.acquisition.analysis.character = this.sequence[this.nbTxt];
             }
         }
        
-
+        private void erase()
+        {
+            this.picBoard.Invalidate();
+            this.acquisition.Reset();
+        }
 
         private void save()
         {
