@@ -26,7 +26,8 @@ namespace Dysgraphie.Views
         private System.Timers.Timer timer = new System.Timers.Timer(1000);
         private TimeSpan temps;
         private System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-        private Char[] characters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+        private Char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        private Char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         private List<char> sequence = new List<Char>();
         private int nbTxt = 0;
         private Child child;
@@ -50,7 +51,10 @@ namespace Dysgraphie.Views
             this.analysis = new List<Analysis>();
             InitDataCapture(m_TABEXTX, m_TABEXTY, true);
             m_logContext = OpenTestSystemContext();
+            
             InitData();
+
+
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
             {
@@ -287,11 +291,22 @@ namespace Dysgraphie.Views
             Random r = new Random();
             List<char> c = new List<Char>();
             sequence.Clear();
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < letters.Length; i++)
             {
-                c.Add(characters[i]);
+                c.Add(letters[i]);
             }
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < letters.Length; i++)
+            {
+                int nb = r.Next(c.Count - 1);
+                sequence.Add(c[nb]);
+                c.RemoveAt(nb);
+            }
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                c.Add(numbers[i]);
+            }
+            for (int i = 0; i < numbers.Length; i++)
             {
                 int nb = r.Next(c.Count - 1);
                 sequence.Add(c[nb]);
@@ -480,7 +495,8 @@ namespace Dysgraphie.Views
 
             this.analysis = new List<Analysis>();
             this.acquisition = new AcquisitionPoint();
-
+            
+            
             this.acquisition.Start();
         }
 
@@ -602,7 +618,7 @@ namespace Dysgraphie.Views
                 uint pktID = (uint)eventArgs_I.Message.WParam;
 
                 WintabPacket pkt = m_wtData.GetDataPacket((uint)eventArgs_I.Message.LParam, pktID);
-
+                pkt.pkCursor = 3;
                 if (this.pointID == 0)
                 {
                     this.initTime = pkt.pkTime;
