@@ -61,7 +61,6 @@
     <Compile Include="Acquisition\AcquisitionPoint.cs" />
     <Compile Include="Database\Child.cs" />
     <Compile Include="Database\ChildDatas.cs" />
-    <Compile Include="Database\Children.cs" />
     <Compile Include="Database\DbManager.cs" />
     <Compile Include="Database\Diagnostic.cs" />
     <Compile Include="Database\DiagnosticLetter.cs" />
@@ -99,12 +98,6 @@
     <Compile Include="Views\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\New.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,14 +120,10 @@
     <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\New.resx">
       <DependentUpon>New.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\DB.sqlite" />
-    <None Include="Database\readme.md" />
     <None Include="Graphics\readme.md" />
     <None Include="OutputFiles\readme.md" />
     <None Include="Properties\Settings.settings">

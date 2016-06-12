@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    //Représente une analyse (calcul des différents critères sur un tracé)
     class Analysis
     {
         private List<AbstractIndicator> indicators;

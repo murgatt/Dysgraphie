@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Utils
 {
+    //outils permettant d'ouvrir et sauvegarder une trace ou une séquence
     class OpenSaveTrace
     {
-        
+        //ouverture d'une trace
         public static Analysis openTrace(String url)
         {
             Analysis a = new Analysis();
@@ -46,6 +47,7 @@ namespace Dysgraphie.Utils
             return null;
         }
 
+        //sauvegarde d'une trace
         public static void saveTrace(Analysis a, String url)
         {
 
@@ -62,6 +64,7 @@ namespace Dysgraphie.Utils
             
         }
 
+        //sauvegarde d'une sequence
         public static void saveSequence(List<Analysis> analisysList, String url, String commentary)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(url, false))
@@ -84,6 +87,7 @@ namespace Dysgraphie.Utils
                 
         }
 
+        //ouverture d'une séquence
         public static List<Analysis> openSequence(String url)
         {
             List<Analysis> res = new List<Analysis>();

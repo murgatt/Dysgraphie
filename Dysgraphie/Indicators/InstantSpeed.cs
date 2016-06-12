@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    //Calcul de la vitesse instantanné en cm/s
     class InstantSpeed : AbstractIndicator
     {
         public InstantSpeed(List<Point> points, Analysis analysis) : base(points, analysis)
@@ -23,7 +24,7 @@ namespace Dysgraphie.Indicators
 
                 if (i == 1 || i == this.points.Count - 2 || i == 0 || i == this.points.Count - 1 )
                 {
-                    res.Add(0);
+                    res.Add(0); //Si le point est en bout ou en fin de tracé on lui attribut une vitesse de 0
                 } else
                 {
                     p = this.points.ElementAt(i);

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Database
 {
+    //Classe permettant le diagnostic global d'une personne
     class Diagnostic
     {
         private DbManager manager;
@@ -15,8 +16,6 @@ namespace Dysgraphie.Database
         private string grade;
         private readonly string[] indicators = {"averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth", "averageTwist"};
         
-
-
         private Child patient;
 
         public Diagnostic(DbManager manager, Child patient, List<Analysis> analysisList, String grade)
@@ -27,6 +26,7 @@ namespace Dysgraphie.Database
             this.grade = grade;
         }
 
+        //Renvoie la somme des résultats pour chacun des critères
         public Dictionary<string, int> resultsPerIndicator()
         {
             Dictionary<char, Dictionary<string, bool>> results = this.calcul();
@@ -50,6 +50,7 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //Renvoie la somme des résultats pour chacune des lettres
         public Dictionary<char, int> resultsPerLetter()
         {
             Dictionary<char, Dictionary<string, bool>> results = this.calcul();
@@ -68,11 +69,13 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //ajoute une analyse à la liste
         public void addAnalysis(Analysis a) 
         {
             this.analysisList.Add(a);
         }
 
+        //Calcul le tableau de critères validés pour chacune des lettres
         public Dictionary<char, Dictionary<string, bool>> calcul()
         {
             Dictionary<char, Dictionary<string, bool>> res = new Dictionary<char, Dictionary<string, bool>>();
@@ -85,6 +88,7 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //Ajoute le diagnostic pour une lettre
         private Dictionary<string, bool> addDiagnosticLetter(Analysis a)
         {
             DiagnosticLetter dl = new DiagnosticLetter(this.manager, a, a.character, this.patient, this.grade);

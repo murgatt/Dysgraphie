@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    //Calcul du nombre de blocs
     class PrintNumber : AbstractIndicator
     {
 
