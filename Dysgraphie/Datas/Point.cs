@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Datas
 {
+    //Représentation d'un point donné par la tablette
     class Point : IComparable<Point>
     {
-        public int id { get; }
-        public uint sn { get; }
-        public double t { get; }
-        public int x { get; }
-        public int y { get; }
-        public int z { get; }
-        public uint p { get; }
-        public int alt { get; }
-        public int azi { get; }
+        public int id { get; }  //identifiant
+        public uint sn { get; } //numéro de série
+        public double t { get; }    //temps en millisecondes
+        public int x { get; }   //coordonnées x
+        public int y { get; }   //coordonnées y
+        public int z { get; }   //coordonnées z
+        public uint p { get; }  //pression(0-1023)
+        public int alt { get; } //inclinaison du stylo
+        public int azi { get; } //angle du stylo
         public int twi { get; }
 
 
@@ -35,7 +36,6 @@ namespace Dysgraphie.Datas
             this.twi = twi;
         }
 
-      
 
         public int CompareTo(Point other)
         {

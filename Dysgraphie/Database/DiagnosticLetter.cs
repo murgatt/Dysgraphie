@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Database
 {
+    //Classe permettant le diagnostic d'une personne sur une lettre
     class DiagnosticLetter
     {
         private DbManager manager;
@@ -65,6 +66,7 @@ namespace Dysgraphie.Database
 
         }
 
+        //Calcul le diagnostic de chacun des critères     
         public void calcul(String grade = null)
         {
             String query;
@@ -122,7 +124,7 @@ namespace Dysgraphie.Database
             averageTwist.testValue = analysis.mean("twi");
         }
     
-
+        //Etablit la diagnostic (critère réussi, si la valeur se trouve à + ou - deux écart-type à la moyenne des valeur contenues dans la base de données)
         public void TwoStandardDeviationFromMean(DiagnosticDatas dd)
         {
             if(dd.testValue> dd.mean + 2 * dd.standardDeviation || dd.testValue < dd.mean - 2 * dd.standardDeviation) dd.OK = false;

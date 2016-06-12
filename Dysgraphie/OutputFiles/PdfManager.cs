@@ -14,6 +14,7 @@ using Dysgraphie.Database;
  */ 
 namespace Dysgraphie.OutputFiles
 {
+    //outils permettant d'éditer un pdf
     class PdfManager
     {
         private Document MyPdf;

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Database
 {
+    //Réprésente les données pour un caractère dessiné par un enfant
     class ChildDatas
     {
-        private int childID;
-        private char symbole;
+        private int childID;    //identifiant de l'enfant
+        private char symbole;   //symbole dessiné
+
+        //Critères calculés
         private double vitesseMoyenne;
         private double tempsTrace;
         private double tempsPause;
@@ -40,7 +43,7 @@ namespace Dysgraphie.Database
             this.twistMoyen = analyse.mean("twi");
         }
         
-
+        //ajoute les données à la BDD
         public void saveDatas(DbManager manager)
         {
             string req = "Insert into Datas values ('" + this.childID + "','" + this.symbole+ "','" + this.vitesseMoyenne+ "','" + this.tempsTrace+ "','" + this.tempsPause+ "','" + this.longueurTrace+ "','" + this.hauteurLettre+ "','" + this.largeurLettre+ "','" + this.nbBlocs + "','"+ this.pressionMoyenne + "','" + this.altitudeMoyenne + "','" + this.azimuthMoyen + "','" + this.twistMoyen + "' );";

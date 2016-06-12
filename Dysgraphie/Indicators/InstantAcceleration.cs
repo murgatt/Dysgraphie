@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    //Calcul des accélérations instantannées en cm/s²
     class InstantAcceleration : AbstractIndicator
     {
         public InstantAcceleration(List<Point> points, Analysis analysis) : base(points, analysis)
@@ -23,7 +24,7 @@ namespace Dysgraphie.Indicators
 
                 if (i == 1 || i == this.points.Count - 2 || i == 0 || i == this.points.Count - 1)
                 {
-                    res.Add(0);
+                    res.Add(0); //Si le point est en bout ou en fin de tracé on lui attribut une accélération de 0
                 }
                 else
                 {

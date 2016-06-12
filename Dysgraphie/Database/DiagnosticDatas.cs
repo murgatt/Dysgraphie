@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Database
 {
+    //Représente le diagnostic pour une lettre et un critère donnés
     class DiagnosticDatas
     {
-        public double mean { get; set; }
-        public double standardDeviation { get; set; }
-        public double testValue { get; set; }
-        public bool OK { get; set; }
+        public double mean { get; set; }    //Moyenne de la BDD
+        public double standardDeviation { get; set; }   //Ecart-type de la BDD
+        public double testValue { get; set; }   //Valeur calculée sur le test
+        public bool OK { get; set; }    //Vrai si le test est validé, sinon faux
 
         public String toString()
         {

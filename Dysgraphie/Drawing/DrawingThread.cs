@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace Dysgraphie.Drawing
 {
+    //Thread permettant de dessiner le tracé dans l'interface
     class DrawingThread
     {
         //Synchronized threads datas

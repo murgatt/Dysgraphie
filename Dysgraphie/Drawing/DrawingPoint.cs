@@ -1,5 +1,6 @@
 ﻿namespace Dysgraphie.Drawing
 {
+    //Représentation graphique d'un point
     public struct DrawingPoint
     {
         public int X, Y, idPoint ;

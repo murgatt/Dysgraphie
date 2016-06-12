@@ -9,6 +9,7 @@ using Dysgraphie.Indicators;
 
 namespace Dysgraphie.Acquisition
 {
+    // Cette classe permet d'enregistrer la liste des points acquis
     class AcquisitionPoint
     {
         public Analysis analysis { get; set; }
@@ -37,7 +38,7 @@ namespace Dysgraphie.Acquisition
 
 
 
-
+        //Permet d'ajouter un point à la liste
         public void AddPoint(Point p)
         {
             analysis.addPoint(p);
@@ -103,7 +104,7 @@ namespace Dysgraphie.Acquisition
         {
             analysis.analyse();
         }
-        
+                
         public double getBreakTime()
         {
             return analysis.breakTime;
