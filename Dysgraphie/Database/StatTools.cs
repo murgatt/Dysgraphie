@@ -41,7 +41,7 @@ namespace Dysgraphie.Database
                 ++count;
             }
             manager.DBDeconnexion();
-            return sum / count;
+            return Math.Sqrt(sum / count);
             
         }
     }

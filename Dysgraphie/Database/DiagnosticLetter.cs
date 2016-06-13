@@ -72,9 +72,9 @@ namespace Dysgraphie.Database
             String query;
             if (grade == null)
             {
-                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + this.patient.GetClasse() + "'";
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + this.patient.GetClasse() + "'AND Genre = '" + this.patient.GetGenre() + "'";
             } else {
-                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + grade + "'";
+                query = "SELECT * FROM Datas, Children WHERE Children.ID = Datas.ChildID AND Symbole ='" + this.character + "' AND Classe = '" + grade + "'AND Genre = '" + this.patient.GetGenre() + "'";
             }
 
             
@@ -127,8 +127,8 @@ namespace Dysgraphie.Database
         //Etablit la diagnostic (critère réussi, si la valeur se trouve à + ou - deux écart-type à la moyenne des valeur contenues dans la base de données)
         public void TwoStandardDeviationFromMean(DiagnosticDatas dd)
         {
-            if(dd.testValue> dd.mean + 2 * dd.standardDeviation || dd.testValue < dd.mean - 2 * dd.standardDeviation) dd.OK = false;
-            else dd.OK = true;
+            if(dd.testValue> dd.mean + 2 * dd.standardDeviation || dd.testValue < dd.mean - 2 * dd.standardDeviation) dd.OK = true;
+            else dd.OK = false;
         }
 
 
