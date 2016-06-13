@@ -377,8 +377,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = true;
                 this.resultsBtn.Enabled = true;
                 this.nextBtn.Enabled = false;
-                this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;
-                this.InitData();
+                this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;                
             }
         }
 
