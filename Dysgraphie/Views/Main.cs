@@ -759,6 +759,7 @@ namespace Dysgraphie.Views
                 PdfManager pdf = new PdfManager("diagnostic"+grade+".pdf", this.path);
                 pdf.Create(this.child, d, grade, this.richtextBoxX.Text);
                 pdf.ClosePdf();
+                Process.Start(this.path + "\\diagnostic" + grade + ".pdf");
             }
         }
 
