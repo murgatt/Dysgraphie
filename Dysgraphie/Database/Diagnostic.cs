@@ -69,6 +69,114 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        public Dictionary<string, double> Lettersmean(){
+            Dictionary<char, Dictionary<string, double>> results = this.valCalcul();
+            Dictionary<string, double> res = new Dictionary<string, double>();
+            Char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };            
+            
+
+            foreach (KeyValuePair<char, Dictionary<string, double>> keyValPerChar in results)
+            {
+                if (letters.Contains(keyValPerChar.Key))
+                {
+                    foreach (KeyValuePair<string, double> keyValPerIndicator in keyValPerChar.Value)
+                    {
+                        if (res.ContainsKey(keyValPerIndicator.Key))
+                        {
+                            res[keyValPerIndicator.Key] = res[keyValPerIndicator.Key] + keyValPerIndicator.Value;
+                        }
+                        else {
+                            res.Add(keyValPerIndicator.Key, keyValPerIndicator.Value);
+                        }
+
+                    }
+                }                                
+            }
+
+            Dictionary<string, double> res1 = new Dictionary<string, double>(res);
+
+            foreach (KeyValuePair<string, double> keyVal in res1)
+            {
+                res[keyVal.Key] = res[keyVal.Key] / Convert.ToDouble(letters.Count());
+            }
+            return res;
+        }
+
+        public int totalScore()
+        {
+            Dictionary<char, Dictionary<string, bool>> results = this.calcul();
+            int res = 0;            
+            Char[] numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+
+
+            foreach (KeyValuePair<char, Dictionary<string, bool>> keyValPerChar in results)
+            {
+                foreach (KeyValuePair<string, bool> keyValPerIndicator in keyValPerChar.Value)
+                {
+                    if (keyValPerIndicator.Value) res++;
+                    
+                }
+            }
+            return res;
+        }
+
+        public Dictionary<string, double> Numbersmean()
+        {
+            Dictionary<char, Dictionary<string, double>> results = this.valCalcul();
+            Dictionary<string, double> res = new Dictionary<string, double>();            
+            Char[] numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+
+
+            foreach (KeyValuePair<char, Dictionary<string, double>> keyValPerChar in results)
+            {
+                if (numbers.Contains(keyValPerChar.Key))
+                {
+                    foreach (KeyValuePair<string, double> keyValPerIndicator in keyValPerChar.Value)
+                    {
+                        if (res.ContainsKey(keyValPerIndicator.Key))
+                        {
+                            res[keyValPerIndicator.Key] = res[keyValPerIndicator.Key] + keyValPerIndicator.Value;
+                        }
+                        else {
+                            res.Add(keyValPerIndicator.Key, keyValPerIndicator.Value);
+                        }
+
+                    }
+                }
+            }
+
+            Dictionary<string, double> res1 = new Dictionary<string, double>(res);
+
+            foreach (KeyValuePair<string, double> keyVal in res1)
+            {
+                res[keyVal.Key] = res[keyVal.Key] / Convert.ToDouble(numbers.Count());
+            }
+            return res;
+        }
+
+        public Dictionary<char, Dictionary<string, double>> valCalcul()
+        {
+            Dictionary<char, Dictionary<string, double>> res = new Dictionary<char, Dictionary<string, double>>();
+
+            foreach (Analysis a in analysisList)
+            {
+                DiagnosticLetter dl = new DiagnosticLetter(this.manager, a, a.character, this.patient, this.grade);
+                DiagnosticDatas dd;
+                Dictionary<string, double> strDoub = new Dictionary<string, double>();
+                foreach (string s in this.indicators)
+                {
+                    Type myType = typeof(DiagnosticLetter);
+                    PropertyInfo myPropInfo = myType.GetProperty(s);
+                    dd = (DiagnosticDatas)myPropInfo.GetValue(dl, null);
+                    strDoub.Add(s, dd.testValue);
+                }                
+
+                res.Add(a.character, strDoub);
+            }
+
+            return res;
+        }
+
         //ajoute une analyse à la liste
         public void addAnalysis(Analysis a) 
         {

@@ -102,6 +102,7 @@ namespace Dysgraphie.Views
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
         {
             New n = new New();
+
             DialogResult result = n.ShowDialog();
             if(result == DialogResult.OK)
             {
@@ -145,6 +146,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = false;
                 this.resultsBtn.Enabled = false;
                 this.comboBoxCharacter.Visible = true;
+                this.resultsBtn.Enabled = true;
 
                 DrawingPoint dp;
                 Analysis a = this.analysis.ElementAt(0);
@@ -320,6 +322,8 @@ namespace Dysgraphie.Views
             this.gradeLabel.Text = child.GetClasse();
             this.lateralityLabel.Text = child.GetLateralite();
             this.genderLabel.Text = child.GetGenre();
+            this.ouvrirToolStripMenuItem.Enabled = true;
+
             if(basicMode)
             {
                 this.infoPanel.Visible = true;
@@ -327,6 +331,7 @@ namespace Dysgraphie.Views
             this.startBtn.Enabled = true;
             this.eraseBtn.Enabled = true;
             this.comboBoxCharacter.Visible = false;
+            this.ouvrirToolStripMenuItem.Enabled = true;
             erase();
             nbTxt = 0;
             if (this.sequence.Count != 0)
