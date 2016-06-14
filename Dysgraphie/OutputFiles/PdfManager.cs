@@ -80,7 +80,7 @@ namespace Dysgraphie.OutputFiles
             foreach (KeyValuePair<char, int> keyValLetter in letters)
             {
                 tab.AddCell(Convert.ToString(keyValLetter.Key));
-                tab.AddCell(keyValLetter.Value.ToString() + "/11");
+                tab.AddCell(keyValLetter.Value.ToString() + "/"+indicators.Count);
             }
             p.Add(tab);
             p.SpacingAfter = 12;
@@ -95,7 +95,7 @@ namespace Dysgraphie.OutputFiles
             foreach (KeyValuePair<string, int> keyValInd in indicators)
             {               
                 tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
-                tab.AddCell(keyValInd.Value.ToString() + "/36");
+                tab.AddCell(keyValInd.Value.ToString() + "/"+letters.Count);
             }
             
             p.Add(tab);
@@ -106,7 +106,7 @@ namespace Dysgraphie.OutputFiles
             p = new Paragraph();
             c = new Chunk("Score total \n", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
             p.Add(c);
-            c = new Chunk("Nombre total de critères non validés sur l'ensemble des lettres : "+d.totalScore().ToString()+"/"+(36*11).ToString(), FontFactory.GetFont(FontFactory.COURIER, 10));
+            c = new Chunk("Nombre total de critères non validés sur l'ensemble des lettres : "+d.totalScore().ToString()+"/"+(indicators.Count * letters.Count).ToString(), FontFactory.GetFont(FontFactory.COURIER, 10));
             p.Add(c);
 
             p.SpacingAfter = 12;

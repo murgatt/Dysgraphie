@@ -739,23 +739,7 @@ namespace Dysgraphie.Views
             {
                 String grade = gradeSelector.grade;
                 Diagnostic d = new Diagnostic(manager, child, analysis, grade);
-
-                Dictionary<string, int> indicators = d.resultsPerIndicator();
-
-                foreach (KeyValuePair<string, int> keyValInd in indicators)
-                {
-                    Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString() + "/36");
-                }
-
-
-                Dictionary<char, int> letters = d.resultsPerLetter();
-
-                foreach (KeyValuePair<char, int> keyValLetter in letters)
-                {
-                    Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString() + "/11");
-                }
-
-
+                
                 PdfManager pdf = new PdfManager("diagnostic"+grade+".pdf", this.path);
                 pdf.Create(this.child, d, grade, this.richtextBoxX.Text);
                 pdf.ClosePdf();
