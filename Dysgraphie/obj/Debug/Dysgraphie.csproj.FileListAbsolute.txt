@@ -53,7 +53,6 @@ D:\Documents\GitHub\Dysgraphie\Dysgraphie\bin\Debug\System.Data.SQLite.xml
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Properties.Resources.resources
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.Main.resources
-D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.MainForm.resources
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.New.resources
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.csproj.GenerateResource.Cache
 D:\Documents\GitHub\Dysgraphie\Dysgraphie\obj\Debug\Dysgraphie.Views.GradeSelector.resources

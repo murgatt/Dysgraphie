@@ -17,6 +17,7 @@ using System.Diagnostics;
 using Dysgraphie.Indicators;
 using Dysgraphie.Utils;
 using Dysgraphie.OutputFiles;
+using System.Xml.Serialization;
 
 namespace Dysgraphie.Views
 {
@@ -108,6 +109,7 @@ namespace Dysgraphie.Views
             {
                 child = n.child;
                 path = n.path;
+                Console.WriteLine(path);
                 Init();
             }
         }
@@ -116,42 +118,80 @@ namespace Dysgraphie.Views
         {
             openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "Charger un fichier";
+            openFileDialog1.Filter = "XML Files (*.xml)|*.xml|Text Files (.txt)|*.txt";
 
             // Show the Dialog.
             // If the user clicked OK in the dialog and
             // a .CUR file was selected, open it.
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.picBoard.Invalidate();
-                this.analysis = OpenSaveTrace.openSequence(openFileDialog1.FileName);
-                this.richtextBoxX.Text = OpenSaveTrace.getSequenceCommentary(openFileDialog1.FileName);
+                String traceFile = "";
+                string ext = Path.GetExtension(openFileDialog1.FileName);
+                if(ext == ".txt")
+                {
+                    traceFile = openFileDialog1.FileName;
+                    this.analysePanel.Visible = true;
+                    this.infoPanel.Visible = false;
+                    this.basiqueToolStripMenuItem.Checked = false;
+                    this.analyseToolStripMenuItem.Checked = true;
+                    this.basicMode = false;
+                    this.resultsBtn.Enabled = false;
+                    this.groupBoxTxt.Visible = false;
+                    child = null;
+                }
+                if(ext == ".xml")
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(Child));
+                    StreamReader reader = new StreamReader(openFileDialog1.FileName);
+                    child = (Child)serializer.Deserialize(reader);
+                    reader.Close();
 
-                textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
-                this.textBoxBreakTime.Text = acquisition.getBreakTime().ToString();
-                this.textBoxDrawTime.Text = acquisition.getDrawTime().ToString();
-                this.textBoxDrawLength.Text = acquisition.getDrawLength().ToString();
-                this.textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
-                this.textBoxHeightLetter.Text = acquisition.getLettersHeight().ToString();
-                this.textBoxWidthLetter.Text = acquisition.getLettersWidth().ToString();
+                    this.nameLabel.Text = child.Nom;
+                    this.forenameLabel.Text = child.Prenom;
+                    this.birthLabel.Text = child.DateN.ToString();
+                    this.ageLabel.Text = child.Age.ToString();
+                    this.gradeLabel.Text = child.Classe;
+                    this.lateralityLabel.Text = child.Lateralite;
+                    this.genderLabel.Text = child.Genre;
+                    this.richtextBoxX.Text = child.Commenaire;
+                    this.analysePanel.Visible = false;
+                    this.infoPanel.Visible = true;
+                    this.basiqueToolStripMenuItem.Checked = true;
+                    this.analyseToolStripMenuItem.Checked = false;
+                    this.basicMode = true;
+                    this.resultsBtn.Enabled = true;
+                    this.groupBoxTxt.Visible = false;
+                    this.path = Path.GetDirectoryName(openFileDialog1.FileName);
+                    traceFile = Path.Combine(this.path, "traces.txt");
+                }
+                if (File.Exists(traceFile))
+                {
+                    this.picBoard.Invalidate();
+                    this.analysis = OpenSaveTrace.openSequence(traceFile);
+                    this.richtextBoxX.Text = OpenSaveTrace.getSequenceCommentary(traceFile);
 
-                this.analysePanel.Visible = true;
-                this.infoPanel.Visible = false;
-                this.basiqueToolStripMenuItem.Checked = false;
-                this.analyseToolStripMenuItem.Checked = true;
-                this.basicMode = false;
-                this.startBtn.Enabled = false;
-                this.eraseBtn.Enabled = false;
-                this.restartBtn.Enabled = false;
-                this.stopBtn.Enabled = false;
-                this.saveBtn.Enabled = false;
-                this.resultsBtn.Enabled = false;
-                this.comboBoxCharacter.Visible = true;
-                this.resultsBtn.Enabled = true;
+                    textBoxPrintNumber.Text = acquisition.getNumberOfPrint().ToString();
+                    this.textBoxBreakTime.Text = acquisition.getBreakTime().ToString();
+                    this.textBoxDrawTime.Text = acquisition.getDrawTime().ToString();
+                    this.textBoxDrawLength.Text = acquisition.getDrawLength().ToString();
+                    this.textBoxAverageSpeed.Text = acquisition.getAverageSpeed().ToString();
+                    this.textBoxHeightLetter.Text = acquisition.getLettersHeight().ToString();
+                    this.textBoxWidthLetter.Text = acquisition.getLettersWidth().ToString();
 
-                DrawingPoint dp;
-                Analysis a = this.analysis.ElementAt(0);
-                this.comboBoxCharacter.SelectedItem = Convert.ToString(a.character);
-                foreach (Datas.Point p in a.points)
+                    this.startBtn.Enabled = false;
+                    this.eraseBtn.Enabled = false;
+                    this.restartBtn.Enabled = false;
+                    this.stopBtn.Enabled = false;
+                    this.saveBtn.Enabled = false;
+                    this.enregistrerToolStripMenuItem.Enabled = false;
+                    this.comboBoxCharacter.Visible = true;
+                    this.comboBoxCharacterInfo.Visible = true;
+
+                    DrawingPoint dp;
+                    Analysis a = this.analysis.ElementAt(0);
+                    this.comboBoxCharacter.SelectedItem = Convert.ToString(a.character);
+                    this.comboBoxCharacterInfo.SelectedItem = Convert.ToString(a.character);
+                    foreach (Datas.Point p in a.points)
                     {
                         double y = Convert.ToDouble(p.y);
                         double x = Convert.ToDouble(p.x);
@@ -162,6 +202,7 @@ namespace Dysgraphie.Views
                             drawingThread.AddPoint(dp);
                         }
                     }
+                }
             }
         }
 
@@ -258,13 +299,13 @@ namespace Dysgraphie.Views
         private void accéderAuxDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String DBname = selectedDB + ".sqlite";
-            String path = Path.Combine(Environment.CurrentDirectory, "data", DBname);
+            String DBpath = Path.Combine(Environment.CurrentDirectory, "data", DBname);
             String SQLiteStudioPath = Path.Combine(Environment.CurrentDirectory, "SQLiteStudio", "SQLiteStudio.exe");
-            if (File.Exists(path) && File.Exists(SQLiteStudioPath))
+            if (File.Exists(DBpath) && File.Exists(SQLiteStudioPath))
             {
-                path = "\"" + path + "\"";
+                DBpath = "\"" + DBpath + "\"";
                 SQLiteStudioPath = "\"" + SQLiteStudioPath + "\"";
-                Process.Start(SQLiteStudioPath, path);
+                Process.Start(SQLiteStudioPath, DBpath);
             }
             else
             {
@@ -322,7 +363,6 @@ namespace Dysgraphie.Views
             this.gradeLabel.Text = child.GetClasse();
             this.lateralityLabel.Text = child.GetLateralite();
             this.genderLabel.Text = child.GetGenre();
-            this.ouvrirToolStripMenuItem.Enabled = true;
 
             if(basicMode)
             {
@@ -331,7 +371,8 @@ namespace Dysgraphie.Views
             this.startBtn.Enabled = true;
             this.eraseBtn.Enabled = true;
             this.comboBoxCharacter.Visible = false;
-            this.ouvrirToolStripMenuItem.Enabled = true;
+            this.comboBoxCharacterInfo.Visible = false;
+            this.groupBoxTxt.Visible = true;
             erase();
             nbTxt = 0;
             if (this.sequence.Count != 0)
@@ -359,6 +400,7 @@ namespace Dysgraphie.Views
             timer.Start();
             this.restartBtn.Enabled = false;
             this.saveBtn.Enabled = false;
+            this.enregistrerToolStripMenuItem.Enabled = false;
             this.resultsBtn.Enabled = false;
             nbTxt = 0;
             this.textLabel.Text = sequence[nbTxt].ToString();
@@ -380,6 +422,7 @@ namespace Dysgraphie.Views
                 timer.Stop();
                 this.restartBtn.Enabled = true;
                 this.saveBtn.Enabled = true;
+                this.enregistrerToolStripMenuItem.Enabled = true;
                 this.resultsBtn.Enabled = true;
                 this.nextBtn.Enabled = false;
                 this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;                
@@ -433,6 +476,7 @@ namespace Dysgraphie.Views
             this.eraseBtn.Enabled = false;
             this.stopBtn.Enabled = false;
             this.saveBtn.Enabled = true;
+            this.enregistrerToolStripMenuItem.Enabled = true;
             this.resultsBtn.Enabled = true;
             this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;
             timer.Stop();
@@ -452,6 +496,7 @@ namespace Dysgraphie.Views
                 this.resultsBtn.Enabled = false;
                 this.restartBtn.Enabled = false;
                 this.saveBtn.Enabled = false;
+                this.enregistrerToolStripMenuItem.Enabled = false;
                 this.eraseBtn.Enabled = true;
                 this.ajouterÀLaBaseToolStripMenuItem.Enabled = false;
                 this.timerLabel.Text = "00:00:00";
@@ -713,7 +758,14 @@ namespace Dysgraphie.Views
 
         private void save()
         {
+            // Sauvegarde des traces
             OpenSaveTrace.saveSequence(this.analysis, this.path+"\\traces.txt", this.richtextBoxX.Text);
+
+            // Sauvegarde de l'enfant
+            XmlSerializer serializer = new XmlSerializer(typeof(Child));
+            StreamWriter writer = new StreamWriter(Path.Combine(this.path, "child.xml"), false);
+            serializer.Serialize(writer, child);
+            writer.Close();
         }
 
         private void toolStripBDD_Click(object sender, EventArgs e)
@@ -762,7 +814,7 @@ namespace Dysgraphie.Views
 
         private void comboBoxCharacter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(this.comboBoxCharacter.Text);
+            this.comboBoxCharacterInfo.SelectedItem = this.comboBoxCharacter.Text;
             this.picBoard.Invalidate();
             foreach(Analysis a in this.analysis)
             {
@@ -795,8 +847,48 @@ namespace Dysgraphie.Views
                     break;
                 }
             }
+        }
 
-            
+        private void comboBoxCharacterInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.comboBoxCharacter.SelectedItem = this.comboBoxCharacterInfo.Text;
+            this.picBoard.Invalidate();
+            foreach (Analysis a in this.analysis)
+            {
+                if (a.character == Convert.ToChar(this.comboBoxCharacterInfo.Text))
+                {
+                    this.acquisition.analysis = a;
+                    this.textBoxDrawTime.Text = this.acquisition.getDrawTime().ToString();
+                    this.textBoxBreakTime.Text = this.acquisition.getBreakTime().ToString();
+                    this.textBoxDrawLength.Text = this.acquisition.getDrawLength().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxPrintNumber.Text = this.acquisition.getNumberOfPrint().ToString();
+                    this.textBoxHeightLetter.Text = this.acquisition.analysis.lettersHeight.ToString();
+                    this.textBoxWidthLetter.Text = this.acquisition.analysis.lettersWidth.ToString();
+                    this.textBoxAverageSpeed.Text = this.acquisition.getAverageSpeed().ToString();
+
+
+                    DrawingPoint dp;
+                    foreach (Datas.Point p in acquisition.analysis.points)
+                    {
+                        double y = Convert.ToDouble(p.y);
+                        double x = Convert.ToDouble(p.x);
+
+                        if (p.p > 0)
+                        {
+
+                            dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                            drawingThread.AddPoint(dp);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dysgraphie.Database;
 using System.Data.SQLite;
+using System.Xml.Serialization;
 
 /* DB IS LIKE 
  * ID / Nom / Prenom / Age / Classe / Genre / Lateralite
@@ -14,17 +15,33 @@ using System.Data.SQLite;
 namespace Dysgraphie.Database
 {
     //Cette classe représente un enfant
+    [Serializable]
     public class Child
     {
-        private int ID;
-        private string Nom;
-        private string Prenom;
-        private DateTime DateN;
-        private int Age;
-        private string Classe;
-        private string Genre;
-        private string Lateralite;
+        [XmlAttribute()]
+        public int ID { get; set; }
+        [XmlAttribute()]
+        public string Nom { get; set; }
+        [XmlAttribute()]
+        public string Prenom { get; set; }
+        [XmlAttribute()]
+        public DateTime DateN { get; set; }
+        [XmlAttribute()]
+        public int Age { get; set; }
+        [XmlAttribute()]
+        public string Classe { get; set; }
+        [XmlAttribute()]
+        public string Genre { get; set; }
+        [XmlAttribute()]
+        public string Lateralite { get; set; }
+        [XmlAttribute()]
+        public string Commenaire { get; set; }
 
+        // Constructeur sans paramètres pour la sérialisation
+        public Child()
+        {
+            // Nothing
+        }
 
         public Child(int ID, String name, String forename, DateTime birth, String grade, String laterality, String gender)
         {
