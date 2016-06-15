@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    // Calcul du jerk en cm/s^3
     class InstantJerk : AbstractIndicator
     {
-        // Calcul du jerk en cm/s^3
+        
         public InstantJerk(List<Point> points, Analysis analysis) : base(points, analysis)
         { }
 
@@ -24,7 +25,7 @@ namespace Dysgraphie.Indicators
 
                 if (i == 1 || i == this.points.Count - 2 || i == 0 || i == this.points.Count - 1)
                 {
-                    res.Add(0);
+                    res.Add(0); //Si le point est en bout ou en fin de tracé on lui attribut un jerk de 0
                 }
                 else
                 {

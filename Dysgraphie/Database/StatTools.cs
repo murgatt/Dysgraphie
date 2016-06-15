@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Database
 {
+    //Classe static permettant de calculer des valeur statistiques sur la BDD
     class StatTools
     {
+        //Calcul de la moyenne
         public static double mean(DbManager manager, String query, String propertyName)
         {
             manager.DBConnexion();
@@ -24,6 +26,7 @@ namespace Dysgraphie.Database
             return sum/count;
         }
 
+        //Calcul de l'écart-type
         public static double standardDeviation(DbManager manager, String query, String propertyName)
         {
             double mean = StatTools.mean(manager, query, propertyName);
@@ -38,7 +41,7 @@ namespace Dysgraphie.Database
                 ++count;
             }
             manager.DBDeconnexion();
-            return sum / count;
+            return Math.Sqrt(sum / count);
             
         }
     }

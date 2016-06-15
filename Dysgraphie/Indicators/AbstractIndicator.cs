@@ -7,6 +7,7 @@ using Dysgraphie.Datas;
 
 namespace Dysgraphie.Indicators
 {
+    //Modèle pour un critères
     abstract class AbstractIndicator
     {
         protected List<Point> points;

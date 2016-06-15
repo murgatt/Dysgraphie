@@ -26,7 +26,8 @@ namespace Dysgraphie.Views
         private System.Timers.Timer timer = new System.Timers.Timer(1000);
         private TimeSpan temps;
         private System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-        private Char[] characters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+        private Char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        private Char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         private List<char> sequence = new List<Char>();
         private int nbTxt = 0;
         private Child child;
@@ -50,7 +51,10 @@ namespace Dysgraphie.Views
             this.analysis = new List<Analysis>();
             InitDataCapture(m_TABEXTX, m_TABEXTY, true);
             m_logContext = OpenTestSystemContext();
+            
             InitData();
+
+
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
             {
@@ -98,6 +102,7 @@ namespace Dysgraphie.Views
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
         {
             New n = new New();
+
             DialogResult result = n.ShowDialog();
             if(result == DialogResult.OK)
             {
@@ -141,6 +146,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = false;
                 this.resultsBtn.Enabled = false;
                 this.comboBoxCharacter.Visible = true;
+                this.resultsBtn.Enabled = true;
 
                 DrawingPoint dp;
                 Analysis a = this.analysis.ElementAt(0);
@@ -287,11 +293,22 @@ namespace Dysgraphie.Views
             Random r = new Random();
             List<char> c = new List<Char>();
             sequence.Clear();
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < letters.Length; i++)
             {
-                c.Add(characters[i]);
+                c.Add(letters[i]);
             }
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < letters.Length; i++)
+            {
+                int nb = r.Next(c.Count - 1);
+                sequence.Add(c[nb]);
+                c.RemoveAt(nb);
+            }
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                c.Add(numbers[i]);
+            }
+            for (int i = 0; i < numbers.Length; i++)
             {
                 int nb = r.Next(c.Count - 1);
                 sequence.Add(c[nb]);
@@ -305,6 +322,8 @@ namespace Dysgraphie.Views
             this.gradeLabel.Text = child.GetClasse();
             this.lateralityLabel.Text = child.GetLateralite();
             this.genderLabel.Text = child.GetGenre();
+            this.ouvrirToolStripMenuItem.Enabled = true;
+
             if(basicMode)
             {
                 this.infoPanel.Visible = true;
@@ -312,6 +331,7 @@ namespace Dysgraphie.Views
             this.startBtn.Enabled = true;
             this.eraseBtn.Enabled = true;
             this.comboBoxCharacter.Visible = false;
+            this.ouvrirToolStripMenuItem.Enabled = true;
             erase();
             nbTxt = 0;
             if (this.sequence.Count != 0)
@@ -362,8 +382,7 @@ namespace Dysgraphie.Views
                 this.saveBtn.Enabled = true;
                 this.resultsBtn.Enabled = true;
                 this.nextBtn.Enabled = false;
-                this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;
-                this.InitData();
+                this.ajouterÀLaBaseToolStripMenuItem.Enabled = true;                
             }
         }
 
@@ -480,7 +499,8 @@ namespace Dysgraphie.Views
 
             this.analysis = new List<Analysis>();
             this.acquisition = new AcquisitionPoint();
-
+            
+            
             this.acquisition.Start();
         }
 
@@ -602,7 +622,7 @@ namespace Dysgraphie.Views
                 uint pktID = (uint)eventArgs_I.Message.WParam;
 
                 WintabPacket pkt = m_wtData.GetDataPacket((uint)eventArgs_I.Message.LParam, pktID);
-
+                pkt.pkCursor = 3;
                 if (this.pointID == 0)
                 {
                     this.initTime = pkt.pkTime;
@@ -719,26 +739,11 @@ namespace Dysgraphie.Views
             {
                 String grade = gradeSelector.grade;
                 Diagnostic d = new Diagnostic(manager, child, analysis, grade);
-
-                Dictionary<string, int> indicators = d.resultsPerIndicator();
-
-                foreach (KeyValuePair<string, int> keyValInd in indicators)
-                {
-                    Console.WriteLine(keyValInd.Key + " : " + keyValInd.Value.ToString() + "/36");
-                }
-
-
-                Dictionary<char, int> letters = d.resultsPerLetter();
-
-                foreach (KeyValuePair<char, int> keyValLetter in letters)
-                {
-                    Console.WriteLine(keyValLetter.Key + " : " + keyValLetter.Value.ToString() + "/11");
-                }
-
-
+                
                 PdfManager pdf = new PdfManager("diagnostic"+grade+".pdf", this.path);
                 pdf.Create(this.child, d, grade, this.richtextBoxX.Text);
                 pdf.ClosePdf();
+                Process.Start(this.path + "\\diagnostic" + grade + ".pdf");
             }
         }
 

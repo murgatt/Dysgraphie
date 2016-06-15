@@ -13,6 +13,7 @@ using System.IO;
 
 namespace Dysgraphie.Database
 {
+    //Classe permettant la gestion de la base de données
     public class DbManager
     {
         public SQLiteConnection m_dbConnection { get; set; }
@@ -28,6 +29,7 @@ namespace Dysgraphie.Database
             this.m_dbConnection = new SQLiteConnection("Data Source=" + path + ";Version=3;");
         }
 
+        //Création de la base de données
         public void CreateDB()
         {          
             this.m_dbConnection.Open();
@@ -36,16 +38,19 @@ namespace Dysgraphie.Database
             this.m_dbConnection.Close();
         }
 
+        //Connexion avec la base
         public void DBConnexion()
         {
            this.m_dbConnection.Open();
         }
 
+        //Déconnexion avec la base
         public void DBDeconnexion()
         {
             this.m_dbConnection.Close();
         }
 
+        //Retourne le dernier identifiant d'enfant
         public int getCurrentChildID()
         {
             string req = "SELECT max(ID) FROM Children";
@@ -65,6 +70,7 @@ namespace Dysgraphie.Database
             }
         }
 
+        //Exécution d'une requete sans retour (update, insert...)
         public void NoQueryRequest(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, this.m_dbConnection);
@@ -77,6 +83,8 @@ namespace Dysgraphie.Database
                 Console.WriteLine("erreur lors de l'execution de NoQueryRequest : " + e);
             }
         }
+
+        //Exécution d'une requete avec retour (select)
         public SQLiteDataReader QueryRequest(string query)
         {
 

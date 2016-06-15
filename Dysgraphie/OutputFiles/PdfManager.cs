@@ -14,14 +14,19 @@ using Dysgraphie.Database;
  */ 
 namespace Dysgraphie.OutputFiles
 {
+    //outils permettant d'éditer un pdf
     class PdfManager
     {
         private Document MyPdf;
         private string savePath;
         private string name;
-        
+        private List<String> indicators;
+        private string[] criteres = {"Vitesse moyenne", "Temps d'écriture", "Temps de pause", "Longueur de la trace", "Hauteur de lettre", "Largeur de lettre", "Nombre de blocs", "Pression moyenne", "Altitude  moyenne", "Azimuth  moyen", "Twist moyen"};
+
         public  PdfManager(string name, string saveP)
         {
+            string[] indi = { "averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth", "averageTwist" };
+            indicators = new List<string>(indi);
             this.savePath = saveP;
             this.name = name;
         }
@@ -75,7 +80,7 @@ namespace Dysgraphie.OutputFiles
             foreach (KeyValuePair<char, int> keyValLetter in letters)
             {
                 tab.AddCell(Convert.ToString(keyValLetter.Key));
-                tab.AddCell(keyValLetter.Value.ToString() + "/11");
+                tab.AddCell(keyValLetter.Value.ToString() + "/"+indicators.Count);
             }
             p.Add(tab);
             p.SpacingAfter = 12;
@@ -88,14 +93,63 @@ namespace Dysgraphie.OutputFiles
             tab = new PdfPTable(2);
 
             foreach (KeyValuePair<string, int> keyValInd in indicators)
-            {
-                tab.AddCell(keyValInd.Key);
-                tab.AddCell(keyValInd.Value.ToString() + "/36");
+            {               
+                tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
+                tab.AddCell(keyValInd.Value.ToString() + "/"+letters.Count);
             }
             
             p.Add(tab);
             p.SpacingAfter = 12;
             MyPdf.Add(p);
+
+            //Score total
+            p = new Paragraph();
+            c = new Chunk("Score total \n", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
+            p.Add(c);
+            c = new Chunk("Nombre total de critères non validés sur l'ensemble des lettres : "+d.totalScore().ToString()+"/"+(indicators.Count * letters.Count).ToString(), FontFactory.GetFont(FontFactory.COURIER, 10));
+            p.Add(c);
+
+            p.SpacingAfter = 12;
+            MyPdf.Add(p);
+
+            //moyennes par critères pour les lettres
+            p = new Paragraph();
+            c = new Chunk("Moyennes par critères pour les lettres", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
+            p.Add(c);
+
+            Dictionary<string, double> meanIndicator = d.Lettersmean();
+            tab = new PdfPTable(2);
+            
+            
+            foreach (KeyValuePair<string, double> keyValInd in meanIndicator)
+            {
+                tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
+                tab.AddCell(keyValInd.Value.ToString());
+            }
+            
+            p.Add(tab);
+            p.SpacingAfter = 12;
+            MyPdf.Add(p);
+
+            //moyennes par critères pour les chiffres
+            p = new Paragraph();
+            c = new Chunk("Moyennes par critères pour les chiffres", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
+            p.Add(c);
+
+            meanIndicator = d.Numbersmean();
+            tab = new PdfPTable(2);
+
+
+            foreach (KeyValuePair<string, double> keyValInd in meanIndicator)
+            {
+                tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
+                tab.AddCell(keyValInd.Value.ToString());
+            }
+
+            p.Add(tab);
+            p.SpacingAfter = 12;
+            MyPdf.Add(p);
+
         }
 
         public void AddDataChild(Child c)

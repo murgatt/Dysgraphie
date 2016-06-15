@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Dysgraphie.Indicators
 {
+    //Hauteur du caractère en cm
     class LettersWidth : AbstractIndicator
     {
-        //Hauteur du caractère en cm
+        
         public LettersWidth(List<Point> points, Analysis analysis) : base(points, analysis) { }
 
 

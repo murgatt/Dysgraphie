@@ -13,6 +13,7 @@ using System.Data.SQLite;
 
 namespace Dysgraphie.Database
 {
+    //Cette classe représente un enfant
     public class Child
     {
         private int ID;
@@ -109,7 +110,7 @@ namespace Dysgraphie.Database
             return this.Lateralite;
         }
 
-
+        //Renvoie vrai si un enfant existe déjà dans la base, avec les même nom, prénom, classe, genre et latéralité, sinon faux
         public bool alreadySaved(DbManager dBmanager)
         {
             dBmanager.DBConnexion();
@@ -126,7 +127,7 @@ namespace Dysgraphie.Database
             return false;
         }
 
-
+        //Ajoute l'enfant à la base de données
         public void AddChildInDB(DbManager dBmanager)
         {
             dBmanager.DBConnexion();
