@@ -63,7 +63,7 @@ namespace Dysgraphie.Views
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.timerLabel = new System.Windows.Forms.ToolStripLabel();
             this.infoPanel = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxTxt = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textLabel = new System.Windows.Forms.Label();
             this.nextBtn = new System.Windows.Forms.Button();
@@ -119,17 +119,20 @@ namespace Dysgraphie.Views
             this.label2 = new System.Windows.Forms.Label();
             this.picBoard = new System.Windows.Forms.PictureBox();
             this.toolTipNext = new System.Windows.Forms.ToolTip(this.components);
+            this.comboBoxCharacterInfo = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.infoPanel.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxTxt.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.analysePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // fichierToolStripMenuItem
@@ -152,7 +155,6 @@ namespace Dysgraphie.Views
             // 
             // ouvrirToolStripMenuItem
             // 
-            this.ouvrirToolStripMenuItem.Enabled = false;
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
             this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
@@ -160,9 +162,11 @@ namespace Dysgraphie.Views
             // 
             // enregistrerToolStripMenuItem
             // 
+            this.enregistrerToolStripMenuItem.Enabled = false;
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
             this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
+            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
@@ -386,7 +390,8 @@ namespace Dysgraphie.Views
             // 
             // infoPanel
             // 
-            this.infoPanel.Controls.Add(this.groupBox3);
+            this.infoPanel.Controls.Add(this.tableLayoutPanel3);
+            this.infoPanel.Controls.Add(this.groupBoxTxt);
             this.infoPanel.Controls.Add(this.groupBox2);
             this.infoPanel.Controls.Add(this.groupBox1);
             this.infoPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -396,16 +401,16 @@ namespace Dysgraphie.Views
             this.infoPanel.TabIndex = 2;
             this.infoPanel.Visible = false;
             // 
-            // groupBox3
+            // groupBoxTxt
             // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 91);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Texte à tracer";
+            this.groupBoxTxt.Controls.Add(this.tableLayoutPanel2);
+            this.groupBoxTxt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBoxTxt.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxTxt.Name = "groupBoxTxt";
+            this.groupBoxTxt.Size = new System.Drawing.Size(231, 91);
+            this.groupBoxTxt.TabIndex = 3;
+            this.groupBoxTxt.TabStop = false;
+            this.groupBoxTxt.Text = "Texte à tracer";
             // 
             // tableLayoutPanel2
             // 
@@ -704,6 +709,7 @@ namespace Dysgraphie.Views
             // 
             // comboBoxCharacter
             // 
+            this.comboBoxCharacter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCharacter.FormattingEnabled = true;
             this.comboBoxCharacter.Items.AddRange(new object[] {
             "a",
@@ -984,6 +990,68 @@ namespace Dysgraphie.Views
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
             // 
+            // comboBoxCharacterInfo
+            // 
+            this.comboBoxCharacterInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBoxCharacterInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCharacterInfo.FormattingEnabled = true;
+            this.comboBoxCharacterInfo.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"});
+            this.comboBoxCharacterInfo.Location = new System.Drawing.Point(55, 3);
+            this.comboBoxCharacterInfo.Name = "comboBoxCharacterInfo";
+            this.comboBoxCharacterInfo.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCharacterInfo.TabIndex = 65;
+            this.comboBoxCharacterInfo.Visible = false;
+            this.comboBoxCharacterInfo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacterInfo_SelectedIndexChanged);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.comboBoxCharacterInfo, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 91);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(231, 34);
+            this.tableLayoutPanel3.TabIndex = 66;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1006,7 +1074,7 @@ namespace Dysgraphie.Views
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.infoPanel.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.groupBoxTxt.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1016,6 +1084,7 @@ namespace Dysgraphie.Views
             this.analysePanel.ResumeLayout(false);
             this.analysePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1068,7 +1137,7 @@ namespace Dysgraphie.Views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxTxt;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label textLabel;
         private System.Windows.Forms.Button nextBtn;
@@ -1109,5 +1178,7 @@ namespace Dysgraphie.Views
         private System.Windows.Forms.ToolStripMenuItem ajouterÀLaBaseToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBoxCharacter;
         private ToolTip toolTipNext;
+        private ComboBox comboBoxCharacterInfo;
+        private TableLayoutPanel tableLayoutPanel3;
     }
 }
