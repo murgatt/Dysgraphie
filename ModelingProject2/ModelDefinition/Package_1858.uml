@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="5e3a4b28-599a-47b9-9eb8-5c7d4a020d6e"
+  name="OutputFiles"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="13cf8564-a5c3-4889-aca6-4962c8c6b824"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DDysgraphie.OutputFiles"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="fdf429a2-7afd-4964-ab3d-4f557f0d7039"
+        name="PdfManager"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="9e446d9d-470c-4b67-a78f-bc40090d4105"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="6b3ef20a-1f1c-465d-b5fc-5b5b1e58dda2"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9e45bbdc-363b-4a5c-bda1-e3e8888d6d2d">
+                <propertyInstance
+                  Id="1644d187-2b46-4b08-868b-1cfd842d96b4"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="83c27391-c85f-4b8a-9719-59f13f7e3dab">
+                <propertyInstance
+                  Id="1adba9f0-d5f6-44f8-abf8-6ee4b5859699"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f67fff83-806d-4787-851c-e4773dc506c9">
+                <propertyInstance
+                  Id="4c0acc7e-2518-4d94-86bc-0911e591b860"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e17621eb-a884-4b50-a07c-7754e4f15785">
+                <propertyInstance
+                  Id="6ff4c660-8a38-497f-ae38-a07343310c49"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cadc98b7-036d-4d1f-8e3d-b4826bb8e32f">
+                <propertyInstance
+                  Id="cc595941-59d0-4c61-aab5-c82eca7c00a2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="43584164-8bd1-4ee0-8829-ae3a0c85edc3"
+            name="MyPdf"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e496a80d-7cb2-4f38-8ebd-84f9f9486485"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3DMyPdf"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="91dee6bf-d05c-4533-a5d6-e45c9bb210f3"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dfa1136b-ad72-47de-82b5-4e567679a607">
+                    <propertyInstance
+                      Id="14279e3f-590b-4ba1-bf97-fe84a47de7e7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="784a8ad0-457c-44a0-8ebf-94d87ffad1f6">
+                    <propertyInstance
+                      Id="682a29f4-23d1-4570-8fb7-076e9c27cfb7"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0e3f1588-595c-4374-b9db-5fa34b340c1f">
+                    <propertyInstance
+                      Id="fe906b33-049c-463f-8eae-859aa1eefcc9"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5800c11a-1ec2-49f6-a597-8383ca6202d6">
+                    <propertyInstance
+                      Id="abb16dc6-434b-4477-a1ae-9e29e309b035"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0c0e8d28-bc8a-48fe-9944-0b41a759ee89">
+                    <propertyInstance
+                      Id="e8fdc75d-e22b-4f89-b165-025bd36377a7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="c0d31e63-a5f3-48e7-8c61-07e0a0deaae0"
+                LastKnownName="Document"
+                LastKnownLocation="Package3_1858.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="31727a1c-4667-41a3-a72c-b26f1a0446ac"
+            name="savePath"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="87c815a4-eb26-4822-9cf1-c21955062e71"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3DsavePath"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2c907857-cf33-48e5-bcbd-615cad556d74"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3041cf9-a985-4204-a0fc-4f97e10bcca0">
+                    <propertyInstance
+                      Id="56a23e7c-1a2f-439e-918e-14fe4b17c779"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65befa1b-d1cf-4ab4-9922-452d982cf2f6">
+                    <propertyInstance
+                      Id="7ad0c8bf-8051-4a35-8d05-6021349c7ff7"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7130a20-49f6-4397-a82b-c05b1b239e4a">
+                    <propertyInstance
+                      Id="bfb965b6-1dcc-47f6-85f7-f9672e525657"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57784cf1-7ad0-4425-86df-ff7aa16d707a">
+                    <propertyInstance
+                      Id="bbb7f655-24f1-4972-8f18-d0aa331eebe5"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50b09712-2d15-4ff6-9cac-a56df16d066d">
+                    <propertyInstance
+                      Id="d0b52b54-66fb-4d13-8865-2214c208be99"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3656d145-a827-4239-a295-b6627a008288"
+            name="name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="86e9310a-63d9-4ed4-afd7-a4bbc08a6f61"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3Dname"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a5c27599-ff10-4bb1-90cf-97aefd2b537c"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d31ab0a1-0040-4abb-be3c-bbfccaeec724">
+                    <propertyInstance
+                      Id="3377207d-b748-4d53-b6c0-8c7c0cb9e021"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44383a77-3c7f-4338-9625-22bbab1b5be5">
+                    <propertyInstance
+                      Id="0d21b3e7-f76b-4283-913d-4d392747f776"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fbc96e58-f29d-4a75-a6ac-b18a5a74ee81">
+                    <propertyInstance
+                      Id="39b94eb0-fe80-4600-a330-b4afcf643c52"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bcec8129-04d7-4402-a69b-cf8e7c36f15c">
+                    <propertyInstance
+                      Id="bb221d43-dd29-4241-a228-e337e10a2586"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2909c12-6e60-469c-a81d-a568599fc21a">
+                    <propertyInstance
+                      Id="e67f5c42-da1e-4ad2-9b64-55f7e6bdbbf8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0a1b2703-7318-42b1-bc61-fab45db828f6"
+            name="indicators"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3a08bcb3-e3ba-4c27-8192-58e50caf0678"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3Dindicators"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="645df4d0-1922-4eb0-976e-b87658019e1b"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3db95a26-ead4-4f8e-b3b7-fc1a4ffe4c56">
+                    <propertyInstance
+                      Id="5a04fe0d-a222-49fe-ae2b-8b64a88c1978"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7dcb4c15-da53-4b59-a6f0-b174a5792d1c">
+                    <propertyInstance
+                      Id="206b685d-cd85-4bba-bee9-9dd849e19e6d"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9fd56bad-4a8f-446c-ad74-ae99e2d46191">
+                    <propertyInstance
+                      Id="9e544e6a-a591-41bb-8985-823267b0b7f4"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="950475a0-ea48-4ec9-909e-8f5fc0b61da3">
+                    <propertyInstance
+                      Id="b9851ac3-ed2a-4a2f-b87f-55d8123bd91f"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f25e4fee-b5cc-4f52-987a-4ca40cd34b03">
+                    <propertyInstance
+                      Id="495feb0a-802d-4b02-bca9-dd8bd0871a29"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="868eb55e-f82e-416c-9f4d-a9b513d38aca"
+                LastKnownName="List&lt;String‎&gt;"
+                LastKnownLocation="Package7_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ef095a04-3594-4f45-83f9-d0a626ddd98b"
+            name="criteres"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isOrdered="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="37735c5c-f994-4d9d-9d42-db671cad1fa8"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3Dcriteres"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f21ee7ff-0899-450c-9a49-a505670d4761"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8f4ab5b5-c768-4f64-81a9-35679129550a">
+                    <propertyInstance
+                      Id="0eaa9979-add8-4446-8783-81edeaabb5c7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="357803ce-3fa6-45f3-a25c-4dae6f993fcb">
+                    <propertyInstance
+                      Id="15f4fc2a-311e-418d-a9fc-696b3a7e6600"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f06cb6e5-d83c-45e8-a92d-374a4cf72e6f">
+                    <propertyInstance
+                      Id="83c8964e-341b-4dc3-86a2-a6ebb22cf022"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="448a2a8f-d506-41af-897a-0315bac2f716">
+                    <propertyInstance
+                      Id="8e94c0fe-f546-4b51-b99f-631da9c2caa4"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ffdc1798-1dd3-4577-a5ea-6f014055e394">
+                    <propertyInstance
+                      Id="bb324b28-d80b-4ba6-8267-8b21e00ca75b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <lowerValueInternal>
+              <literalString
+                Id="f970fed8-b7c6-408f-801a-c96e722890ed"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="975e373e-5c4e-44a2-b57b-544e817fb631"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="75f67aa7-772c-4523-846c-35eda2093f32"
+            name="PdfManager"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f5014213-11e6-4f76-9444-46b705f059e2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bccad6ff-7354-4bcf-883f-7eda6d149a24"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aaa7b787-7e25-4e80-9145-8ff03889fc0e">
+                    <propertyInstance
+                      Id="972a5909-4872-434c-b882-dece200137c5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4a560530-e0bd-4c9b-8d9d-124dfcf8775a">
+                    <propertyInstance
+                      Id="bee5e0df-fb87-4153-b16e-27dd89205841"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b404d410-7f98-4225-81db-52b7a4f9487c">
+                    <propertyInstance
+                      Id="7696002c-3ae5-411c-b902-178788d189b5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4d5e6adc-ab77-4d33-ae7a-26a239cc67dc">
+                    <propertyInstance
+                      Id="a637adc5-dad9-44c3-af37-1279abd7bef2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d7756b5-19de-44dc-94bc-dc91a17cf98e">
+                    <propertyInstance
+                      Id="3e64bc5d-8a4d-44df-8fe7-0c5b5210a35b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce91a123-5803-4d17-894b-47f4bbf4e689">
+                    <propertyInstance
+                      Id="9cbb3ecb-009a-4ecf-9ae7-09fcc722a752"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dd9dfe0c-aa5b-4f4c-b349-3a89a000fa6a"
+                  name="name"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a397ea6e-0ddf-43bf-97f4-e622bcac61d0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dname"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a3a2690d-d670-4c87-ae91-9e7e8789090a"
+                  name="saveP"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b447819b-7808-48bc-a717-b2a70bc12d6a"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DsaveP"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6f2c5cf3-8ba5-4ecb-bc95-7f97133d54e1"
+            name="Create"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="d7431dcc-3dcb-4980-866a-2e2467e8a848"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8af875bd-a3b2-45b9-a77d-fcf60095c846"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="569f5c6c-b2b9-45dc-a483-896c69255390">
+                    <propertyInstance
+                      Id="8a1e737c-a424-4218-9f67-f8164d535d0d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b671093-35cc-4dad-9ca0-1888f7b3b0c8">
+                    <propertyInstance
+                      Id="7b9dbe52-4480-4165-98e3-d8d2782f841a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="63e9fc8c-fbb4-4c79-954d-fb8490d221d4">
+                    <propertyInstance
+                      Id="dd97b910-1c3f-41af-be27-3bb837221014"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82b18559-1c47-4e2d-a47d-29453ca53997">
+                    <propertyInstance
+                      Id="01fcf660-6b47-40e0-a296-d9adab864796"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2182cfd-dbbd-46b4-8fa9-9ee460de2bf3">
+                    <propertyInstance
+                      Id="b8120243-7a3e-42d6-b567-2d4cb8a20431"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38c0a74f-4638-46a0-a161-a4b988695391">
+                    <propertyInstance
+                      Id="7b625c94-9afc-4dac-ad87-37ccc82e7ce9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4f06cb33-62d9-4b61-b974-8a4d4cfc816d"
+                  name="child"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="12cf226d-3c76-40ab-9446-186d9bc98306"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dchild"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f5f11ed1-86dd-4331-9cb7-b6614a68b160"
+                      LastKnownName="Child"
+                      LastKnownLocation="Package1_1858.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c42c27e0-5994-4496-83c2-4a38b0e75be5"
+                  name="d"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a1e39480-b4d9-4c7f-a883-27d6927e12c8"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dd"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="6b43b99a-e2a7-4b96-96ef-aa58f7a8270f"
+                      LastKnownName="Diagnostic"
+                      LastKnownLocation="Package1_1858.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b985b67e-04c2-46da-b7a7-40ab772721ca"
+                  name="grade"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="df1ad260-dc94-4344-96ca-e6d33e841cb7"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dgrade"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c39229b7-f0fd-484c-8bdd-eed3f16ae483"
+                  name="comment"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d2cfd8df-8a72-4efc-b891-be8b32235053"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcomment"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="566c6dd9-6fdc-4083-8584-2af3a945882e"
+            name="addDiagnostic"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1926908d-de35-4768-8c0e-f0751c5a5b1e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DaddDiagnostic OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dd1f08a8-4378-4800-8d75-6be2175195c3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ed5fc61-ffc1-4814-965e-269c857df9f0">
+                    <propertyInstance
+                      Id="d02080fa-38eb-415b-9278-e54af62590dc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39cfabc9-3b5b-498e-b089-67a7b3cf944f">
+                    <propertyInstance
+                      Id="12b1684b-755c-403b-ade7-ccb7971f2543"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ee34efda-0aef-4075-8a0b-74e5d5249d95">
+                    <propertyInstance
+                      Id="8670075b-49e0-42f0-b56e-09d70e06aa16"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b86f59b-b169-4fba-98d9-e48ee6e59d1f">
+                    <propertyInstance
+                      Id="31c05c7b-7427-4554-8cf8-3b39b0e9c313"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0e1e55c-d98a-4d8a-95f0-abc43a656c5c">
+                    <propertyInstance
+                      Id="b4bf8bc5-6d94-49fd-a15a-c8d77d5f1549"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d81b30f0-c133-42e0-8631-d2bf484747b7">
+                    <propertyInstance
+                      Id="d7d4bb12-a190-4676-a44f-20d92ab29bf2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="87b6a957-27ff-4224-ae56-670eec34a36f"
+                  name="d"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a80ba4fd-56a9-45df-b546-9a0ccf493be9"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DaddDiagnostic OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DDiagnostic)]) ParameterIdentifier%3Dd"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="6b43b99a-e2a7-4b96-96ef-aa58f7a8270f"
+                      LastKnownName="Diagnostic"
+                      LastKnownLocation="Package1_1858.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9456094e-c633-4390-9baf-49f2e239b6a6"
+            name="AddDataChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1e909b95-7486-4ebf-ba2e-3cb7bc93b0ae"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DAddDataChild OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="19cde8ff-1707-42d5-8b26-de7eb69bd6fe"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f13fe36-ab15-4a3a-b680-b8ae8b9163e5">
+                    <propertyInstance
+                      Id="39a91f7b-b0fb-44d0-85db-e45eb76c43bc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e07c5da8-aef6-4d6f-8a1d-e15f8fae96ff">
+                    <propertyInstance
+                      Id="4fc24940-0b18-47dc-8b9c-f811f15f6d17"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="933a146f-e10e-4415-83ae-cbfbaedad1c7">
+                    <propertyInstance
+                      Id="9ac35894-507f-42c3-bdc3-d0927fffc487"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="09d9a071-89d3-4149-b18c-528e1ef78fa1">
+                    <propertyInstance
+                      Id="502aec98-98a1-455d-9347-fe6edb398173"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b802f969-ced2-4a12-b414-a89d69802d86">
+                    <propertyInstance
+                      Id="060bd796-739c-4edf-89ce-f7143818a196"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5045114-a02a-4b05-9615-3fe7d5e649df">
+                    <propertyInstance
+                      Id="a552289d-b971-450f-bf8b-55e23b713e97"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1b1028e8-0600-4ead-8d76-d56e3b9e5d57"
+                  name="c"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="1f80eaeb-0d6d-4451-a6c6-6174de7e8906"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DAddDataChild OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Database Type%3DChild)]) ParameterIdentifier%3Dc"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f5f11ed1-86dd-4331-9cb7-b6614a68b160"
+                      LastKnownName="Child"
+                      LastKnownLocation="Package1_1858.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="78d2769d-0ed2-4b5a-98c5-c22a7e3e0ca0"
+            name="AddComment"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="73dd5eaf-b9ff-4bb2-88e5-02a78dba5570"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DAddComment OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="671e9d50-73a7-47a8-b9b3-680272d76f9b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a835ad81-2c88-411d-b13f-15c5d2d81374">
+                    <propertyInstance
+                      Id="0a02b8c6-02dc-42a4-b3ea-26fe4b184db7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74f255ef-7d3a-4ee2-8e44-2e06f7f4669f">
+                    <propertyInstance
+                      Id="19a65f32-2129-43ab-9c2c-ae48a05ea35d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c556114-f0dc-433c-bfe4-b25d0062ee05">
+                    <propertyInstance
+                      Id="f89650c0-0938-4232-9f6f-c9015929f756"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3246896-0f7f-4bc6-ae0f-d45ae55abf20">
+                    <propertyInstance
+                      Id="cdddfb29-4540-4e08-9cf5-1cc23d766e7d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ff60406-c401-4755-891b-e31e3e37c582">
+                    <propertyInstance
+                      Id="43d992a0-aa17-40fa-adda-be4df5291914"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="417dbc45-0559-4df3-bef9-2ceb74a1ee16">
+                    <propertyInstance
+                      Id="b1e41b70-9278-4469-aab3-6a2431f31eb6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8d7ad014-71ba-4e51-a3f1-cc2f3c15e504"
+                  name="t"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="55e9d5e1-cb8a-4711-9d6a-b8adfba9dc23"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3D(Name%3DAddComment OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dt"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a1d7f6a5-caf0-4fc6-a62a-d454da7dc7ee"
+            name="ClosePdf"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f8e198d1-8ff1-4ebb-b71b-b7b52e60808a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.OutputFiles Type%3DPdfManager Member%3DClosePdf"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f62fa35f-b7a9-47cc-8ed7-4c997d9711d1"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="485225a2-706b-47c3-b739-fd1334b9a732">
+                    <propertyInstance
+                      Id="639c1993-d1e9-4013-bf49-a40d3c01642d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6174718f-1ffe-427e-933e-2281f271b7f8">
+                    <propertyInstance
+                      Id="0487a782-215e-4592-9bdc-1d4a815f4710"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8003398-9b1f-4f92-9417-fd9769710c22">
+                    <propertyInstance
+                      Id="9ecfab5a-33da-4eb7-8c90-6fb8472bf7a5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ee986f4-b10a-487c-a429-6dd3432dd80f">
+                    <propertyInstance
+                      Id="65720d34-c5ad-499a-ae6a-7b1072274c77"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f15dd1b4-b37f-4ab4-9023-a4a366dc2309">
+                    <propertyInstance
+                      Id="16f64326-5eb9-4372-b7c4-0e7641392228"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="15dec157-252f-4344-9fba-6b72fd3951fd">
+                    <propertyInstance
+                      Id="fbe7bc7f-e2ff-4e81-97c5-f02a8db199c9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
