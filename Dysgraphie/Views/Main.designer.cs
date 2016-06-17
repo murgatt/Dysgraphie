@@ -63,6 +63,8 @@ namespace Dysgraphie.Views
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.timerLabel = new System.Windows.Forms.ToolStripLabel();
             this.infoPanel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBoxCharacterInfo = new System.Windows.Forms.ComboBox();
             this.groupBoxTxt = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textLabel = new System.Windows.Forms.Label();
@@ -119,12 +121,11 @@ namespace Dysgraphie.Views
             this.label2 = new System.Windows.Forms.Label();
             this.picBoard = new System.Windows.Forms.PictureBox();
             this.toolTipNext = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxCharacterInfo = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.infoPanel.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -132,7 +133,6 @@ namespace Dysgraphie.Views
             this.groupBox1.SuspendLayout();
             this.analysePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // fichierToolStripMenuItem
@@ -149,14 +149,14 @@ namespace Dysgraphie.Views
             // nouveauToolStripMenuItem
             // 
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.nouveauToolStripMenuItem_Click);
             // 
             // ouvrirToolStripMenuItem
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
@@ -164,14 +164,14 @@ namespace Dysgraphie.Views
             // 
             this.enregistrerToolStripMenuItem.Enabled = false;
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
             this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -400,6 +400,68 @@ namespace Dysgraphie.Views
             this.infoPanel.Size = new System.Drawing.Size(231, 842);
             this.infoPanel.TabIndex = 2;
             this.infoPanel.Visible = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.comboBoxCharacterInfo, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 91);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(231, 34);
+            this.tableLayoutPanel3.TabIndex = 66;
+            // 
+            // comboBoxCharacterInfo
+            // 
+            this.comboBoxCharacterInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBoxCharacterInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCharacterInfo.FormattingEnabled = true;
+            this.comboBoxCharacterInfo.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "n",
+            "o",
+            "p",
+            "q",
+            "r",
+            "s",
+            "t",
+            "u",
+            "v",
+            "w",
+            "x",
+            "y",
+            "z",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"});
+            this.comboBoxCharacterInfo.Location = new System.Drawing.Point(55, 3);
+            this.comboBoxCharacterInfo.Name = "comboBoxCharacterInfo";
+            this.comboBoxCharacterInfo.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCharacterInfo.TabIndex = 65;
+            this.comboBoxCharacterInfo.Visible = false;
+            this.comboBoxCharacterInfo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacterInfo_SelectedIndexChanged);
             // 
             // groupBoxTxt
             // 
@@ -990,68 +1052,6 @@ namespace Dysgraphie.Views
             this.picBoard.TabIndex = 3;
             this.picBoard.TabStop = false;
             // 
-            // comboBoxCharacterInfo
-            // 
-            this.comboBoxCharacterInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBoxCharacterInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCharacterInfo.FormattingEnabled = true;
-            this.comboBoxCharacterInfo.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f",
-            "g",
-            "h",
-            "i",
-            "j",
-            "k",
-            "l",
-            "m",
-            "n",
-            "o",
-            "p",
-            "q",
-            "r",
-            "s",
-            "t",
-            "u",
-            "v",
-            "w",
-            "x",
-            "y",
-            "z",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "0"});
-            this.comboBoxCharacterInfo.Location = new System.Drawing.Point(55, 3);
-            this.comboBoxCharacterInfo.Name = "comboBoxCharacterInfo";
-            this.comboBoxCharacterInfo.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxCharacterInfo.TabIndex = 65;
-            this.comboBoxCharacterInfo.Visible = false;
-            this.comboBoxCharacterInfo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacterInfo_SelectedIndexChanged);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.comboBoxCharacterInfo, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 91);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(231, 34);
-            this.tableLayoutPanel3.TabIndex = 66;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1061,6 +1061,7 @@ namespace Dysgraphie.Views
             this.Controls.Add(this.picBoard);
             this.Controls.Add(this.infoPanel);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1000, 530);
@@ -1074,6 +1075,7 @@ namespace Dysgraphie.Views
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.infoPanel.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBoxTxt.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -1084,7 +1086,6 @@ namespace Dysgraphie.Views
             this.analysePanel.ResumeLayout(false);
             this.analysePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
