@@ -1,0 +1,1628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="3d57f297-fa3a-4957-9403-0bec86004bf0"
+  name="Acquisition"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="95aba3d4-362c-4979-ab11-81b0455b1b20"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DDysgraphie.Acquisition"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="62c3254b-239e-4cfe-8330-73ac808787f4"
+        name="AcquisitionPoint"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="37b590fb-3e8f-4b20-96c0-9321fe21073e"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="cb1e3715-ca16-46ed-b36f-627cee62d744"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7d5d55a6-5f15-4c24-8e9b-06e7bcd5b6b0">
+                <propertyInstance
+                  Id="9673f17c-1043-4ecb-915e-bf19c6b09b5a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="69394b7f-f9b8-4df4-b8a0-88ae7c9e7a08">
+                <propertyInstance
+                  Id="c38c1720-e7ce-4ad5-9aa5-ed88a0e762cd"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fbf6dff8-0bda-437e-b0d6-4219163d9313">
+                <propertyInstance
+                  Id="5c016b71-b4d3-4ad5-9958-ab0792c07b6d"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ec6e16f2-e253-4227-ab04-0396041cea24">
+                <propertyInstance
+                  Id="551cb978-5f2e-4b0b-8661-4a2c7ded20fc"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1481250e-a77a-480d-8220-09f9118344ea">
+                <propertyInstance
+                  Id="cd1c3138-8695-48fb-8bfb-d991d7314d59"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="4b23083f-6a2e-41bb-a470-70d4cd48abf7"
+            isDerived="false"
+            sourceEndRoleName="AcquisitionPoint"
+            targetEndRoleName="analysis"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="81a7bb24-2d40-4379-8573-8f165d31c35a"
+              LastKnownName="Analysis"
+              LastKnownLocation="Package4_1857.uml" />
+            <description>La propriété analysis référence le type Analysis.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f74b7282-1bff-40ed-971f-6878d7ad9606"
+                  name="AcquisitionPoint"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="35c30f97-e56b-4bfa-a4dd-bc484fc317e6"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ae75faa7-1804-4ac8-ba3d-0dcd27a0d3d5"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d67f79b-4625-4541-9c95-d9ed75acc828"
+                  name="analysis"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f421a364-b2b1-41b5-8451-c974f814877b"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d4f83e7e-6b06-4286-a27d-c948633ffebf"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="a1e307ef-7c63-45b2-b8d7-766c52a7b7bd"
+            name="analysis"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="900f055d-1853-49c9-8986-52bdaffe1bfb"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3Danalysis"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cddd1f50-da8f-4a86-a7f4-5d235c9b33f3"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bab16b71-13c5-4c7a-88a5-596043ceacf0">
+                    <propertyInstance
+                      Id="ab214b09-b675-4c36-a8f7-bef94c00e9b1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="99dc1ce7-0310-4554-b7fb-ec6d6b2c0cc1">
+                    <propertyInstance
+                      Id="08553465-e2ba-4cc7-8b36-06713c194fd6"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0ad6fad-f9ba-474c-875e-f3b7fb2bdb2e">
+                    <propertyInstance
+                      Id="26b6fbaa-cca6-474f-bb74-388d47e79c7e"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6227546a-12bc-4b3d-b2bb-37c79f13ddc8">
+                    <propertyInstance
+                      Id="48efe3f7-fa80-42a9-9ca9-90cc8fd7003d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fefdf39-fc5c-40d4-bef8-d8365cb0a5d3">
+                    <propertyInstance
+                      Id="e6b17a3c-5612-4443-91d2-280dc4d1c288"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05b73129-7317-4ef3-a5c0-a387a7174f9f">
+                    <propertyInstance
+                      Id="9b04c0cf-bdef-4368-94ce-ebbb3e925467"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e55e2506-9028-4f19-863f-177cec6bf9c1">
+                    <propertyInstance
+                      Id="e724414c-d599-4cb8-859e-93f0996f3070"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="81a7bb24-2d40-4379-8573-8f165d31c35a"
+                LastKnownName="Analysis"
+                LastKnownLocation="Package4_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="15c10aef-65a7-4c68-a2cb-535df6bff429"
+            name="thread"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8607a66d-60c9-4bc2-b10e-0d443cd8bfd5"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3Dthread"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1033b0d9-dc89-4e2a-8ea8-c5a27b052fbb"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e17481d4-935e-4235-8c3c-ad11f01d4ba5">
+                    <propertyInstance
+                      Id="d9d55917-d994-4d93-9301-97ca0a4ec1c2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a8cdb29f-a938-4e8c-9897-8ad646dc9a67">
+                    <propertyInstance
+                      Id="433222b1-5c0a-40e1-920d-c75b725f7789"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e69f1ede-2dbb-4c3d-b68d-5745588f62c7">
+                    <propertyInstance
+                      Id="661b2e12-416b-4823-9dba-86bc49e52b1e"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43b04f0e-0008-42c7-99a4-2027017eebfe">
+                    <propertyInstance
+                      Id="4d4b3f04-3a18-449c-b4fc-e222d0736354"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="514328f8-39ff-4730-bca1-bc11089bb02b">
+                    <propertyInstance
+                      Id="c93164fa-72a6-4218-934b-2e9a3e31d941"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="0a78a0cf-4018-4ee0-b602-51faa800d202"
+                LastKnownName="Thread"
+                LastKnownLocation="Package5_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="18a859fc-924c-4a27-a1b0-2ddc781dc13a"
+            name="lockObject"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="fbcc702e-9ab7-482e-9598-8cc609eee1c3"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DlockObject"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="00d13411-7f6a-4126-b526-bf5a0ca366aa"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8e07ef4-b898-46e6-9523-971c585d9dfd">
+                    <propertyInstance
+                      Id="0571da28-a449-46c0-938a-52e9bf76372c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa321e7d-0973-480d-bcf7-dbfe38a49814">
+                    <propertyInstance
+                      Id="3cbf79cb-22de-4488-8057-24a00156372f"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b32f8e6f-b131-4597-a27f-646483c7aa65">
+                    <propertyInstance
+                      Id="cafeb23c-a301-4ded-a945-a24767987630"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fa1c60c-9e63-4ec8-993e-bf40ab986ea5">
+                    <propertyInstance
+                      Id="b14d6310-2823-40f1-9a3a-5211a2136895"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b1cae43-11ef-4875-8963-97d9290db0a4">
+                    <propertyInstance
+                      Id="367d4662-c20d-480d-82f4-8beefc3ad5fd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="3e5297fd-5047-4633-97f2-989b80ad24e3"
+                LastKnownName="Object"
+                LastKnownLocation="Package3_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="930a0409-ba4b-4220-a0b4-555d93985c63"
+            name="synchronizedList"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b81a5097-9991-461c-8651-bc796f3b67ec"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DsynchronizedList"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="29a6bc4a-18b8-4e6f-9819-bf942c9fbaa4"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dafd2b83-5f7c-4359-b66e-48af3d5511fb">
+                    <propertyInstance
+                      Id="af6b5ef0-cb67-4c4a-b929-95f94f6f69d1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ab1b00a-5c5f-4861-adf8-fdb838dd84f7">
+                    <propertyInstance
+                      Id="5e8f6543-06ba-450c-9bc9-c64e58d2e6d4"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47f41bbb-3c56-4545-8b95-cd75003db536">
+                    <propertyInstance
+                      Id="e4b930ba-3a0c-4bca-b426-99f519382f78"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a6f36fa-e5bd-4ed9-9791-aed51e281ea2">
+                    <propertyInstance
+                      Id="0655452c-9c05-4e93-a303-fb983bcf059b"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="058a4e3d-849c-4e71-b007-25d5b0e09114">
+                    <propertyInstance
+                      Id="f4604a83-6eef-4243-be1d-6eeb5bcf800d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="85e6d52a-760d-4623-b500-101102619cb3"
+                LastKnownName="List&lt;Point‎&gt;"
+                LastKnownLocation="Package7_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e9eb6acc-75f9-407f-9ca9-091f871b0ef4"
+            name="drawSpeed"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5567b6ba-3f8f-4aa1-8483-26c2929c2e0e"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DdrawSpeed"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0b83b5bc-9fdf-4d5a-8365-45fe4195f6b4"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="09a12b34-8cc9-40f2-b665-9da3b7084906">
+                    <propertyInstance
+                      Id="41c90856-6b5b-4d4c-ba85-b945ce9e0f9b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6d24ccd-fc14-49b4-ba05-76136ba568bf">
+                    <propertyInstance
+                      Id="7159616d-c25e-4f6a-b29c-ef473fc93d8f"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cfb65e29-b593-4942-be04-719e42b274b7">
+                    <propertyInstance
+                      Id="852691a3-fb48-4d22-8299-9104ac9d7106"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="354207b7-a492-4942-98d8-239184806539">
+                    <propertyInstance
+                      Id="326fe70c-eeb3-44ba-96c2-41880320b4f3"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8781f577-c8eb-4c70-ac80-f98273c9515b">
+                    <propertyInstance
+                      Id="5b62ba65-a896-4b6b-9f38-7ef406a7b4cc"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject2.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2585dd5e-2921-4f95-92f4-a72ecef031a3"
+            name="previousTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="05e44bf3-d7fb-4390-b2cd-6825e56e9e9e"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DpreviousTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3e04ff02-1f4b-4026-aa23-87567f4488cd"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2eba79f8-5b89-44ec-abc0-6cfabb3e4ab2">
+                    <propertyInstance
+                      Id="01ea52af-9fbb-4fb9-816f-81dba856ae24"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e609450c-6f98-40b5-a30c-afebdddee508">
+                    <propertyInstance
+                      Id="c2f9eaa9-be0e-4efb-a534-f77c8847363f"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da3c65d6-591c-44b5-980d-31eac387d71b">
+                    <propertyInstance
+                      Id="011940f6-a632-47c4-859f-66de18604fcc"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb6babbf-9b82-46ad-bfe4-5757d84e1859">
+                    <propertyInstance
+                      Id="02cc8888-21a5-410b-807c-a3efb712866a"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd36949c-4d79-46e6-aa65-cf7d1901a5e1">
+                    <propertyInstance
+                      Id="b4d210e0-b832-4147-b922-1b9033b58951"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="73d59322-53b0-4d80-8d23-df80ac6ab58d"
+                LastKnownName="Int64"
+                LastKnownLocation="Package3_1857.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="674d4b3b-d4e6-4676-9618-061b034d5517"
+            name="pauseTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ca03107c-420a-4c83-b13c-9e7d5b268902"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DpauseTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="edbd6b4c-630f-43ef-a1da-7d12485d1d6e"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b26766f-faea-444f-b92a-cf2bdf036c6b">
+                    <propertyInstance
+                      Id="32ad7458-9f15-48fc-a09f-8c8256c37daa"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6586462a-904d-4a4b-a4e4-92fcaac9c986">
+                    <propertyInstance
+                      Id="019f85f9-dca9-4012-a43f-fbab0634cc72"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d1a0067-6f66-4ad9-8e70-1dd74bdee7b3">
+                    <propertyInstance
+                      Id="3c1a5b50-ec62-4234-a42a-6e256a2f474e"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="457793cd-acd6-4426-9c81-8b65736d8ee8">
+                    <propertyInstance
+                      Id="80c8267a-0e63-4709-83ed-3b5cf8c109e9"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="677c1aff-aed2-42ea-a533-fbfb3d19fd87">
+                    <propertyInstance
+                      Id="ad1a2ad6-4923-4671-ae33-a48a587ab6df"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="73d59322-53b0-4d80-8d23-df80ac6ab58d"
+                LastKnownName="Int64"
+                LastKnownLocation="Package3_1857.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0dd51f2b-92e7-434a-beb3-1e12d0d5dca0"
+            name="AddPoint"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9bec9d13-4629-473f-a35f-c4a5914bb06e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3D(Name%3DAddPoint OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Datas Type%3DPoint)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="152fdd29-c4b7-4abb-8143-e3a3856632a8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="87394d0a-4537-44b0-a1b5-14029b0911d6">
+                    <propertyInstance
+                      Id="366599a8-5316-44b0-907a-bbec48d474e2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fee22892-96f2-49d0-b708-11d9764a0c7a">
+                    <propertyInstance
+                      Id="0b6f73a6-d810-4610-877c-f68f84715e48"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c172cadf-d4cc-4bc5-8548-910e325b37d5">
+                    <propertyInstance
+                      Id="1e91e2cd-cc23-42c3-9674-a0f1a3aef64e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e446382f-a8d9-4d19-b278-18ec75f8b7d4">
+                    <propertyInstance
+                      Id="8ac3d0d6-7fe7-4b8f-a517-ce1d570d5d88"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9a139bdb-31e9-467b-8094-8fd76d9695ef">
+                    <propertyInstance
+                      Id="5cf950ae-b202-4f46-96ca-e4ae3e4dec67"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b700d2a4-469d-4c2a-9844-1aeee3b79343">
+                    <propertyInstance
+                      Id="048b4ed1-2ae1-4705-a205-e45fb814db20"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e3949db9-bd0b-46c2-a1fd-42016d23c0bd"
+                  name="p"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="f54707d3-fa10-4d9e-bc96-6c2738212285"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3D(Name%3DAddPoint OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Datas Type%3DPoint)]) ParameterIdentifier%3Dp"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="bccf5300-f160-4221-98fc-5d1cb961874f"
+                      LastKnownName="Point"
+                      LastKnownLocation="Package2_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="384b5700-e7cf-4d67-a4c5-61f425b56edb"
+            name="Start"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="94fa3437-0223-4e75-a361-ee3122e2e447"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DStart"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="20733668-2ce2-480e-b672-ca0b8b0110f6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b6a34d9-7b02-4632-8c9a-e66c0c0a972a">
+                    <propertyInstance
+                      Id="e8b2725c-9738-4690-92f0-ee19c01048c0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="517daa8e-f214-499f-9d8e-a93f95c3b9d0">
+                    <propertyInstance
+                      Id="c73d0a88-2e93-4d43-867b-e330ec8c122c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="093cfed2-df37-4890-8e56-3b2acf0998e3">
+                    <propertyInstance
+                      Id="37d4ef25-95f4-4179-b999-3c749b8d3913"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f1598b67-2c3f-4f09-bc99-702c6f3ce73c">
+                    <propertyInstance
+                      Id="dc0e27f4-3959-4820-a482-fe913613e314"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d7ef958-62ef-4915-b32b-fe3d8ed6d3ba">
+                    <propertyInstance
+                      Id="663a9d3d-a496-4ef2-8d75-719d5353e443"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c9a3be8-915d-45a8-b323-1b0cf2a9ca2d">
+                    <propertyInstance
+                      Id="ced8f128-a1e4-480d-9c0a-ca0b2ed3ebaa"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="886aecc7-e06e-4305-840f-73dde5b64627"
+            name="Reset"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="94ea9d06-1922-49af-8563-e5a472357da7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DReset"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6c3d52af-72c5-4157-83eb-4b2137d654da"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fa22e6a-d284-4e9e-9e82-00db707d9759">
+                    <propertyInstance
+                      Id="b0fff2be-23e3-40e5-ad58-5632a14401dd"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8107ed9d-0718-4885-8ca4-b18b3a22a9de">
+                    <propertyInstance
+                      Id="25bca63b-1ff7-4333-8740-b3c952380775"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a5688fe-cd88-411f-a82e-52f4de1b7161">
+                    <propertyInstance
+                      Id="9156128d-a711-435e-b583-378be3bf86c1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7de99e2a-2774-440f-97b0-a186fbe33129">
+                    <propertyInstance
+                      Id="068418d6-238a-4b56-9bf3-026d76bdc85d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="614f0af0-941b-449e-8441-d69b9f7ad6e4">
+                    <propertyInstance
+                      Id="f1803f5a-4e82-48cd-9b46-1fd5dbd5316e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec74a0cf-1a77-48be-84f3-60d509c7e59e">
+                    <propertyInstance
+                      Id="bce45036-0975-4f92-acd5-4ee0bdede6be"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="c53e61dc-e905-409a-8952-f9381e403b6a"
+            name="Calcul"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="c4543c45-6174-4f4e-b8a5-6f781156a595"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DCalcul"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2b33f51a-cf97-4a7c-8072-512a0b9213d3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5ae31a4-2bbf-4545-8a11-7f99271e1085">
+                    <propertyInstance
+                      Id="7ba6218e-1d69-400c-8d84-ad0120e375fb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8bc9d9a-a39b-42b9-bd97-408deb1b6c6a">
+                    <propertyInstance
+                      Id="24cddc5b-b33f-41cb-ac00-ac684ed38d88"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="419091b3-16ca-45b0-b8cf-8d9fae13ac1f">
+                    <propertyInstance
+                      Id="1f7890f3-8113-4540-b715-8c90c62f2dca"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c652c338-5011-49ca-a30a-21b752314651">
+                    <propertyInstance
+                      Id="0bc43da2-b631-4a9e-a8d8-0d381c1dd607"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fe70fb6-d3c5-4fd4-b0a0-3354afd2a10e">
+                    <propertyInstance
+                      Id="155b97c4-b287-462a-9c32-a97572c3117c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2beb723a-f9e9-4a73-a05a-c10377b491d9">
+                    <propertyInstance
+                      Id="5b894363-f160-4a78-ac75-6c8ac3fe238c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="0a21b6e8-3c7a-4497-80e0-aa56b3d6c9c4"
+            name="calculDonnees"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="fcd6a138-2761-4d51-bd5c-94aa04241994"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3D(Name%3DcalculDonnees OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Datas Type%3D(Name%3DPoint ArrayRank%3D1 ParentType%3DPoint))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bb16adcd-c021-49b5-bab3-a9c4ab55d6b5"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b3bc442c-c1ca-43a4-80e0-13c08dd3a259">
+                    <propertyInstance
+                      Id="7a8d91d7-8337-4401-bed4-f0aeedb61c97"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b125686-8c12-42c7-a3cd-58f4e6e616d5">
+                    <propertyInstance
+                      Id="a1276be6-fa66-4b75-886f-e89bf8ca7634"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9fa05c7-615c-4a10-8089-64c7781763a9">
+                    <propertyInstance
+                      Id="5286cc5b-06a8-48b6-aadf-d5d364fc5007"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d82bfa89-f393-4b8e-82a1-9e563a1505fa">
+                    <propertyInstance
+                      Id="01af89f0-0423-4d67-9a62-f976c7585784"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="acb2e9d3-ef40-453a-9e5a-f269e98e4dbd">
+                    <propertyInstance
+                      Id="07864468-a4a6-494c-804e-efb8c5730aec"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf843dd8-acd6-4837-a8c6-ab057ee728d0">
+                    <propertyInstance
+                      Id="5569d1dc-6e45-4734-9d31-a9319c064991"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="71d136f9-e5ba-48af-966d-a6269d378540"
+                  name="copyList"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="36b0f65c-c432-4834-a6c9-e28c7f6f51ec"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3D(Name%3DcalculDonnees OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Datas Type%3D(Name%3DPoint ArrayRank%3D1 ParentType%3DPoint))]) ParameterIdentifier%3DcopyList"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7e97135f-d91c-48eb-a795-d98b0af0857b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a6713160-73d5-4ea0-8445-20c5d8de075e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="bccf5300-f160-4221-98fc-5d1cb961874f"
+                      LastKnownName="Point"
+                      LastKnownLocation="Package2_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1854bf5b-98e7-48a8-8c22-26d9072d93f2"
+            name="getBreakTime"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b57f381c-65ac-4303-857d-7f3808e3ed90"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetBreakTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="15f3d0a1-bc23-4e8a-9c57-ce2e140875f7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2f0eef5-a777-441c-bcb3-bf0c3091dfe7">
+                    <propertyInstance
+                      Id="e4ce8747-1320-4457-9a60-4b3dd7c64527"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="81ef4934-250d-4f41-959d-63f1084c4cc9">
+                    <propertyInstance
+                      Id="7d829106-1914-4d79-8061-45a129234642"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16e70c2e-e50c-462e-8018-87df94e2cc80">
+                    <propertyInstance
+                      Id="d480da05-e607-4bbc-9225-37e0abf2f187"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="244b3206-297a-47dd-b5ca-0970e3de96f8">
+                    <propertyInstance
+                      Id="73ae77f4-868a-49aa-8c72-202c5e5acb83"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b561cade-967a-4820-bee4-c899354d4732">
+                    <propertyInstance
+                      Id="c337d563-66be-43de-a482-c2cb55dd4bd4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd6148b5-f6ae-481f-867b-6f694739098e">
+                    <propertyInstance
+                      Id="15aa3340-c7a0-454c-afdb-7b6c3aa29724"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6a916a82-2f92-40c2-9c13-e2ba02d37d05"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a3f0b9fb-d7d8-4835-9f42-83f2eb0cb1c4"
+            name="getDrawLength"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f3638839-a901-4671-9dbc-7dc360ccf148"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetDrawLength"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3762d2ea-9606-4899-a253-68da745e2957"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2322f836-f9dd-43d3-b205-3ae2ad4ac8d4">
+                    <propertyInstance
+                      Id="c0b3bc1d-75d7-44a7-af71-fd52f2dbf61f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fcc9ab31-dded-4a23-a0d2-b57bb25463ce">
+                    <propertyInstance
+                      Id="6cd03eaa-5d11-4a58-8324-bec797aa2650"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d18cb3f8-7426-4813-823b-116862acd592">
+                    <propertyInstance
+                      Id="47ec7aa9-9796-428c-a2c0-a7252e5c2351"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e1f0d40-913a-42f6-95af-d781cc98f41c">
+                    <propertyInstance
+                      Id="26612a16-c265-4601-87b7-d87b951d3b3f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8acfa031-db7d-444a-93f5-ce1dc8c7df63">
+                    <propertyInstance
+                      Id="5e8bef3f-8930-496e-9d8d-7be596a0320b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c9c28c4d-a09a-473f-94c8-72393398db8c">
+                    <propertyInstance
+                      Id="a7ea3820-7119-40f6-b43d-4901c27f472f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="43591f45-4c09-4234-8ed1-3b99bc6c0cb0"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7088042c-eedb-49fa-aa07-88bc7053e373"
+            name="getDrawTime"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="d6c303da-3e1e-43cd-b31c-4da5d9b8f8be"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetDrawTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="43b85b61-271f-490e-af69-3e866973d358"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e7d13ffa-bea5-4597-b106-26d1cd920f54">
+                    <propertyInstance
+                      Id="d85b18b3-8462-4c5c-aa51-260ed9df30c0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="76e930a2-2853-4712-9ce0-5ff409af1b49">
+                    <propertyInstance
+                      Id="c16e3c70-0768-4dbb-a24c-5e77ff34cc8a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4fea47e-fb4c-4a53-a1fe-1e81494219df">
+                    <propertyInstance
+                      Id="05f95b79-2fa0-4ae8-8d83-079b21f214e1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d6543acc-7e28-4d6b-8e6e-654d4a0fec4a">
+                    <propertyInstance
+                      Id="0b02f895-7a22-45f2-9448-9831dde72cf0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="94c412da-9357-4715-9662-4587268de8fc">
+                    <propertyInstance
+                      Id="a4492adc-0799-435d-9eda-13e0db79d352"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e6dbc157-0b8f-45f1-b610-41617473c75c">
+                    <propertyInstance
+                      Id="f0430ca0-1abc-4b9b-b46c-e03c58b43d66"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b83405ff-752d-462c-a3f5-77aead596529"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8bccf8ec-d42a-4577-b73d-6c352284f933"
+            name="getNumberOfPrint"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3be48d8e-08b1-4878-9084-247e3c822906"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetNumberOfPrint"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b7c1a553-0018-4171-b94a-d129d73b1af9"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a80b6cf9-654e-4f69-a745-95ed5d1a21c9">
+                    <propertyInstance
+                      Id="e0610464-df8e-43f5-b9fb-b72c6e5d1731"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27394ea5-17ff-4858-8e8c-9bf4e360a2a3">
+                    <propertyInstance
+                      Id="086f9564-aeea-445e-9df5-0c5f430897bd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b61972b4-e8ff-4556-9e2f-c2a2efb2e35e">
+                    <propertyInstance
+                      Id="ca65e820-eff1-48f2-81b8-d1ae66f9dede"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b773b26e-a442-47a5-b190-8c44d619ef04">
+                    <propertyInstance
+                      Id="f4432395-761f-423b-9d3b-97ced187a37e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08f9ecf7-67be-449f-a8f3-d93a8cba5243">
+                    <propertyInstance
+                      Id="3398453c-1937-4259-bd86-afca68176b00"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aee0785c-a080-4186-8bc6-134efe1c9e15">
+                    <propertyInstance
+                      Id="5271bd26-a810-432a-a87b-27ad77093a9d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b0483f5a-d83c-433d-96b5-c590b1c03963"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProject2.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f08f9d39-2b7b-4ec8-ac3d-d58463a0afb3"
+            name="getAverageSpeed"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="424e9668-3d95-46b9-90ae-5f382d63e32e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetAverageSpeed"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="08593ca7-f73d-4044-843b-c67b50c9967a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="498b2617-1c4f-4068-9752-c4a144ae20fd">
+                    <propertyInstance
+                      Id="96e1e936-127a-4d5f-9ce9-d25fbef0bca6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86f4ec30-7d0f-4087-b421-1372deffd27b">
+                    <propertyInstance
+                      Id="9803b090-316f-435f-847b-cf538549c3e6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6374fc9e-b5de-46a2-a216-62558656f590">
+                    <propertyInstance
+                      Id="58ac763c-4b3a-413c-953e-657039395f8f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c86f6ea5-8036-44fc-ac6d-0f6a7d7882c9">
+                    <propertyInstance
+                      Id="2b0b48c1-58c8-4770-ba77-9385deb798c7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae883b39-2853-4353-b6ec-31dceab6895e">
+                    <propertyInstance
+                      Id="2d3776ed-44b8-4764-bff9-bc79eb2e0b1c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae676613-7926-411b-80b3-5912f6da3a63">
+                    <propertyInstance
+                      Id="6f747a90-8ccd-4d7a-8af6-efa8c6ac81c8"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b5ddd952-680f-4b64-80f1-cbfd1de7aef5"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="35a28f4f-6a0e-47fa-ae0b-6ef10f3610a3"
+            name="getLettersHeight"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="cfb86fbd-39ce-4866-b19d-d6ec1b34a99f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetLettersHeight"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="19b6d9f4-ea43-4068-b974-f6ce1944222c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="034b75c4-c677-4c9f-9715-788333a0e560">
+                    <propertyInstance
+                      Id="690f51b3-fb4d-4400-8c9e-d971242610fa"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a3145fa-bf00-46af-b0ca-436545863016">
+                    <propertyInstance
+                      Id="3a224351-5822-4b52-a4f3-2a1294bd3be3"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69ff8faa-acc5-44d7-93c8-cf5c76fb1240">
+                    <propertyInstance
+                      Id="705b8571-2d91-4ea5-95d5-468355301470"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1163d2d7-d6c2-4896-b915-2ce7e5efe3a9">
+                    <propertyInstance
+                      Id="bbd79f63-00f1-43be-99d5-a10395469f5e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b63affae-b80c-4eb1-9b3c-876b16d3ba9e">
+                    <propertyInstance
+                      Id="121bc363-f061-4ad1-a4b2-e73ff695e858"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fa70ce1-f5e1-4268-9305-8b0e0aba2693">
+                    <propertyInstance
+                      Id="cf4e21e0-ec8b-4690-a83d-989f90798839"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="be049ab2-32bc-4356-86e3-2c9b28faf04c"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="27e869d0-f5bb-4ade-976c-1169b9f9c313"
+            name="getLettersWidth"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8d8b8b28-13ef-468c-9b9c-053e5508ae86"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3DgetLettersWidth"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ac53f4ca-765b-4a3b-9a31-bfedd346b41b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91697068-3602-4c93-8bca-c491ab894001">
+                    <propertyInstance
+                      Id="5f116e14-32c6-4f55-927f-c2d687287931"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="97032185-cb9e-4010-b4ad-920b0614f572">
+                    <propertyInstance
+                      Id="6274f923-ad1e-4c03-ae75-edf93a2d40bd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3542f555-e07a-4910-be42-ce428960578a">
+                    <propertyInstance
+                      Id="817d1e54-9d26-432a-a7f8-ef1f7b4cd65d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a1abe153-4b05-49c1-93f3-a450b01e8b51">
+                    <propertyInstance
+                      Id="2474a8b7-70cc-4562-a9e3-760be6bdc63f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45da739c-0e27-4d7a-9520-d2618fb7c9b9">
+                    <propertyInstance
+                      Id="6508879d-a3e6-4985-8c5b-2b05032d3e8f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00a671ca-356c-4a69-904b-164057da8f89">
+                    <propertyInstance
+                      Id="41dae9b3-ea60-4756-b3a3-ee35166b8274"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3c3f2e47-9565-42d9-ab13-1d083bc7c645"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d53843c5-0f6d-427f-87b8-0941791178f2"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_1857.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="781a028a-267e-4cf2-9edf-7153ee9f3710"
+            name="AcquisitionPoint"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5a4e1c67-9939-40e4-95f1-a6120e718fd3"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FPropriétaire%2FDocuments%2FVisual Studio 2015%2FProjects%2FDysgraphie%2FDysgraphie%2Fbin%2FDebug%2FDysgraphie.exe&quot; Namespace%3DDysgraphie.Acquisition Type%3DAcquisitionPoint Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4df975e5-3a51-4802-a0d4-d74073acf049"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd996dae-477e-460b-8bab-157930b0efe7">
+                    <propertyInstance
+                      Id="0979842f-044b-495c-a2d6-0558823f2ba2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7fd39834-c1be-43e2-b35c-89eadb128b92">
+                    <propertyInstance
+                      Id="0f2e4889-1f23-4d08-952d-a6db702a28a8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d27c13fc-d49d-4317-8073-a3d5a4fc56b1">
+                    <propertyInstance
+                      Id="ed241778-1150-4325-9883-a63d6df232f6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3059b30d-9ccc-457c-afe1-0d2756a29518">
+                    <propertyInstance
+                      Id="19925ac5-10bd-4d0e-8537-0680182d23d7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="040b0fee-44ec-4c92-a015-903d7ea50231">
+                    <propertyInstance
+                      Id="79251ff4-2180-475d-94cd-7320fffca019"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="55da78dd-d7d0-45d4-a8c0-e103e617294c">
+                    <propertyInstance
+                      Id="a4516a56-e971-46e8-a8e9-4e00a7a81bdb"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
