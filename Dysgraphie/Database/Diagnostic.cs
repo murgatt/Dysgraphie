@@ -14,7 +14,8 @@ namespace Dysgraphie.Database
         private DbManager manager;
         private List<Analysis> analysisList;
         private string grade;
-        private readonly string[] indicators = {"averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth", "averageTwist"};
+        //On supprime le twist de la liste des critère car la tablette renvoie toujours 0
+        private readonly string[] indicators = {"averageSpeed", "drawTime", "breakTime", "drawLength", "lettersHeight", "lettersWidth", "printNumber", "averagePression", "averageAltitude", "averageAzimuth"};
         
         private Child patient;
 
@@ -106,7 +107,6 @@ namespace Dysgraphie.Database
         {
             Dictionary<char, Dictionary<string, bool>> results = this.calcul();
             int res = 0;            
-            Char[] numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
 
             foreach (KeyValuePair<char, Dictionary<string, bool>> keyValPerChar in results)

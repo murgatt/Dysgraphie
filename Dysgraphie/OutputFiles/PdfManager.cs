@@ -66,16 +66,37 @@ namespace Dysgraphie.OutputFiles
 
         public void addDiagnostic(Diagnostic d)
         {
-            //diagnostic par lettres
+            //Score total
             Paragraph p = new Paragraph();
             Chunk c;
+            Dictionary<string, int> indicators = d.resultsPerIndicator();
+
+            Dictionary<char, int> letters = d.resultsPerLetter();
+
+            c = new Chunk("Score total \n", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
+            p.Add(c);
+            c = new Chunk("Nombre total de critères non validés sur l'ensemble des lettres : ", FontFactory.GetFont(FontFactory.COURIER, 10));
+            p.Add(c);
+            c = new Chunk(d.totalScore().ToString() + "/" + (indicators.Count * letters.Count).ToString(), FontFactory.GetFont(FontFactory.COURIER, 12, Font.BOLD));
+            p.Add(c);
+            p.SpacingAfter = 12;
+            MyPdf.Add(p);
+            MyPdf.NewPage();
+
+            //titre annexe
+            c = new Chunk("Resultats Annexes\n", FontFactory.GetFont(FontFactory.COURIER, 20, Font.BOLD));
+            p = new Paragraph(c);                       
+            p.Alignment = Element.ALIGN_CENTER;
+            p.SpacingAfter = 12;
+            MyPdf.Add(p);
+
+            //diagnostic par lettres
+            p = new Paragraph();
             c = new Chunk("Diagnostic par lettres", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
             p.Add(c);
             PdfPTable tab = new PdfPTable(2);
 
-            Dictionary<string, int> indicators = d.resultsPerIndicator();
-
-            Dictionary<char, int> letters = d.resultsPerLetter();
+            
 
             foreach (KeyValuePair<char, int> keyValLetter in letters)
             {
@@ -102,15 +123,7 @@ namespace Dysgraphie.OutputFiles
             p.SpacingAfter = 12;
             MyPdf.Add(p);
 
-            //Score total
-            p = new Paragraph();
-            c = new Chunk("Score total \n", FontFactory.GetFont(FontFactory.COURIER, 14, Font.BOLD));
-            p.Add(c);
-            c = new Chunk("Nombre total de critères non validés sur l'ensemble des lettres : "+d.totalScore().ToString()+"/"+(indicators.Count * letters.Count).ToString(), FontFactory.GetFont(FontFactory.COURIER, 10));
-            p.Add(c);
-
-            p.SpacingAfter = 12;
-            MyPdf.Add(p);
+            
 
             //moyennes par critères pour les lettres
             p = new Paragraph();
@@ -124,7 +137,7 @@ namespace Dysgraphie.OutputFiles
             foreach (KeyValuePair<string, double> keyValInd in meanIndicator)
             {
                 tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
-                tab.AddCell(keyValInd.Value.ToString());
+                tab.AddCell(keyValInd.Value.ToString("F"));
             }
             
             p.Add(tab);
@@ -143,7 +156,7 @@ namespace Dysgraphie.OutputFiles
             foreach (KeyValuePair<string, double> keyValInd in meanIndicator)
             {
                 tab.AddCell(this.criteres.ElementAt(this.indicators.IndexOf(keyValInd.Key)));
-                tab.AddCell(keyValInd.Value.ToString());
+                tab.AddCell(keyValInd.Value.ToString("F"));
             }
 
             p.Add(tab);
