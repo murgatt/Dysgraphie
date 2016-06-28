@@ -126,7 +126,6 @@
     <EmbeddedResource Include="Views\New.resx">
       <DependentUpon>New.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Database\DB.sqlite" />
     <None Include="OutputFiles\readme.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
