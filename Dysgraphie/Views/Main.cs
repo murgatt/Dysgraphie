@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 
 namespace Dysgraphie.Views
 {
+    //Interface principale
     public partial class Main : Form
     {
         private String state = "stopped";
@@ -536,7 +537,7 @@ namespace Dysgraphie.Views
         private const Int32 m_TABEXTY = 10000;
         private uint initTime;
 
-        
+        //Initialisation des données concernant l'acquisition des points
         private void InitData()
         {
             drawingThread = new DrawingThread(this.picBoard);
@@ -575,7 +576,7 @@ namespace Dysgraphie.Views
             }
         }
 
-
+        //Initialisation de la tablette
         private void InitDataCapture(int ctxWidth_I = m_TABEXTX, int ctxHeight_I = m_TABEXTY, bool ctrlSysCursor_I = true)
         {
             try
@@ -601,7 +602,7 @@ namespace Dysgraphie.Views
             }
         }
 
-
+        //initialisation du context
         private CWintabContext OpenTestSystemContext(int width_I = m_TABEXTX, int height_I = m_TABEXTY, bool ctrlSysCursor = true)
         {
             bool status = false;
@@ -654,6 +655,7 @@ namespace Dysgraphie.Views
             return logContext;
         }
 
+        //evenement déclanché lorsque le stylet est détecté par la tablette
         public void MyWTPacketEventHandler(Object sender_I, MessageReceivedEventArgs eventArgs_I)
         {
             //System.Diagnostics.Debug.WriteLine("Received WT_PACKET event");
@@ -667,7 +669,8 @@ namespace Dysgraphie.Views
                 uint pktID = (uint)eventArgs_I.Message.WParam;
 
                 WintabPacket pkt = m_wtData.GetDataPacket((uint)eventArgs_I.Message.LParam, pktID);
-                pkt.pkCursor = 3;
+                
+                //initialisation du temps
                 if (this.pointID == 0)
                 {
                     this.initTime = pkt.pkTime;
@@ -679,6 +682,7 @@ namespace Dysgraphie.Views
                     {
 
                     }
+                    //ajout du point à liste
                     Datas.Point p = new Datas.Point(this.pointID, pkt.pkSerialNumber, Convert.ToDouble(pkt.pkTime - this.initTime), pkt.pkX, pkt.pkY, pkt.pkZ, pkt.pkNormalPressure, pkt.pkOrientation.orAltitude, pkt.pkOrientation.orAzimuth, pkt.pkOrientation.orTwist);
                     this.acquisition.AddPoint(p);
                     this.pointID++;
@@ -688,12 +692,14 @@ namespace Dysgraphie.Views
                         double y = Convert.ToDouble(pkt.pkY);
                         double x = Convert.ToDouble(pkt.pkX);
 
+                        //dessin du dernier point acquis
                         DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
                         drawingThread.AddPoint(dp);
 
 
                     }
 
+                    //affichage des données en temps réel
                     this.textBoxX.Text = pkt.pkX.ToString();
                     this.textBoxY.Text = pkt.pkY.ToString();
                     this.textBoxZ.Text = pkt.pkZ.ToString();
@@ -712,25 +718,7 @@ namespace Dysgraphie.Views
                     
 
                 }
-                /*
-                if (this.acquisition.analysis.instantSpeed != null && pointID % 100 == 0)
-                {
-                    double som = 0;
-                    foreach (double v in this.acquisition.analysis.instantSpeed)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Vitesse calculée : " + som / this.acquisition.analysis.instantSpeed.Count);
-
-                    som = 0;
-                    foreach (double v in this.acquisition.analysis.instantAcceleration)
-                    {
-                        som += v;
-                    }
-                    Console.WriteLine("Accélération calculée : " + som / this.acquisition.analysis.instantAcceleration.Count);
-                }
-                */
-
+                
             }
             catch (Exception ex)
             {
@@ -750,6 +738,7 @@ namespace Dysgraphie.Views
             }
         }
        
+        //efface la trace dessinée
         private void erase()
         {
             this.picBoard.Invalidate();
@@ -768,10 +757,9 @@ namespace Dysgraphie.Views
             writer.Close();
         }
 
+        
         private void toolStripBDD_Click(object sender, EventArgs e)
-        {
-
-            
+        {            
             ChildDatas cd;
             int IdChild = manager.getCurrentChildID() + 1;
             this.child.SetID(IdChild);
@@ -783,13 +771,14 @@ namespace Dysgraphie.Views
             }
         }
 
+        //Edition et ouverture du PDF
         private void resultsBtn_Click(object sender, EventArgs e)
         {
             GradeSelector gradeSelector = new GradeSelector(child.GetClasse());
             DialogResult result = gradeSelector.ShowDialog();
             if(result == DialogResult.OK)
             {
-                String grade = gradeSelector.grade;
+                String grade = gradeSelector.grade; //selection de la classe avec laquelle comparer les données acquises
                 Diagnostic d = new Diagnostic(manager, child, analysis, grade);
                 
                 PdfManager pdf = new PdfManager("diagnostic"+grade+".pdf", this.path);
@@ -799,6 +788,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        //ajout des données acquises à la base de données
         private void ajouterÀLaBaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChildDatas cd;
@@ -812,10 +802,11 @@ namespace Dysgraphie.Views
             }
         }
 
+        //chargement de données
         private void comboBoxCharacter_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.comboBoxCharacterInfo.SelectedItem = this.comboBoxCharacter.Text;
-            this.picBoard.Invalidate();
+            this.picBoard.Invalidate(); //efface le dessin en cours
             foreach(Analysis a in this.analysis)
             {
                 if(a.character == Convert.ToChar(this.comboBoxCharacter.Text))
@@ -830,7 +821,7 @@ namespace Dysgraphie.Views
                     this.textBoxWidthLetter.Text = this.acquisition.analysis.lettersWidth.ToString();
                     this.textBoxAverageSpeed.Text = this.acquisition.getAverageSpeed().ToString();
                     
-
+                    //dessin du dossier chargé
                     DrawingPoint dp;
                     foreach (Datas.Point p in acquisition.analysis.points)
                     {
@@ -840,7 +831,7 @@ namespace Dysgraphie.Views
                         if (p.p > 0)
                         {
 
-                            dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                            dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), p.p, p.id);
                             drawingThread.AddPoint(dp);
                         }
                     }
@@ -877,7 +868,7 @@ namespace Dysgraphie.Views
                         if (p.p > 0)
                         {
 
-                            dp = new DrawingPoint(Convert.ToInt32(x / 65024 * picBoard.Size.Width), Convert.ToInt32(y / 40640 * picBoard.Size.Height), p.p, p.id);
+                            dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), p.p, p.id);
                             drawingThread.AddPoint(dp);
                         }
                     }

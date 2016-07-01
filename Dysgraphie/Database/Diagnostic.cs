@@ -58,8 +58,10 @@ namespace Dysgraphie.Database
             Dictionary<char, int> res = new Dictionary<char, int>();
             int sum = 0;
 
+            //calcul du resultat pour chacune des lettres
             foreach (KeyValuePair<char, Dictionary<string, bool>> keyValPerChar in results)
             {
+                //calcul du resultat sur chacun des critères
                 foreach (KeyValuePair<string, bool> keyValPerIndicator in keyValPerChar.Value)
                 {
                     if (keyValPerIndicator.Value) ++sum;                    
@@ -70,6 +72,7 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //renvoie la moyenne de chacun des critères pour les lettres
         public Dictionary<string, double> Lettersmean(){
             Dictionary<char, Dictionary<string, double>> results = this.valCalcul();
             Dictionary<string, double> res = new Dictionary<string, double>();
@@ -103,6 +106,7 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //calcul du score total
         public int totalScore()
         {
             Dictionary<char, Dictionary<string, bool>> results = this.calcul();
@@ -120,6 +124,7 @@ namespace Dysgraphie.Database
             return res;
         }
 
+        //renvoie la moyenne de chacun des critères pour les chiffres
         public Dictionary<string, double> Numbersmean()
         {
             Dictionary<char, Dictionary<string, double>> results = this.valCalcul();
@@ -183,7 +188,17 @@ namespace Dysgraphie.Database
             this.analysisList.Add(a);
         }
 
-        //Calcul le tableau de critères validés pour chacune des lettres
+        //Calcul le tableau associatif de critères validés pour chacune des lettres de la forme suivante :
+        /*{
+            'a' =>{
+                    'vitesse Moyenne' => true,
+                    'largeur de lettre' => false,
+                    ...
+                  }
+                    
+            'b' =>  {...}
+            ...
+        }*/
         public Dictionary<char, Dictionary<string, bool>> calcul()
         {
             Dictionary<char, Dictionary<string, bool>> res = new Dictionary<char, Dictionary<string, bool>>();
