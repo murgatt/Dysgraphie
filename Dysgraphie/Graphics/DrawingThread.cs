@@ -102,6 +102,7 @@ namespace Dysgraphie.Drawing
             }
         }
 
+        //affichage d'un point
         private void DrawSinglePoint(DrawingPoint p)
         {
             Point currentP = new Point(p.X, this.picBox.Height - p.Y);

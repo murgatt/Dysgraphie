@@ -55,8 +55,13 @@ namespace Dysgraphie.OutputFiles
             p.Alignment = Element.ALIGN_CENTER;
             p.SpacingAfter = 12;
             MyPdf.Add(p);
+            //ajout des données concernant l'enfant
             AddDataChild(child);
+
+            //ajout du reste du diagnostic
             addDiagnostic(d);
+
+            //ajout du commentaire s'il est non vide
             if(comment != null && comment !="")
             {
                 AddComment(comment);
@@ -187,6 +192,8 @@ namespace Dysgraphie.OutputFiles
             MyPdf.Add(p);
 
         }
+
+        //ajout du commentaire
         public void AddComment(string t)
         {
             Paragraph p = new Paragraph();
@@ -201,7 +208,7 @@ namespace Dysgraphie.OutputFiles
         }
         
 
-        
+        //fermeture du PDF
         public void ClosePdf()
         {
             this.MyPdf.Close();            
