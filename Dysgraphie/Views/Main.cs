@@ -24,19 +24,36 @@ namespace Dysgraphie.Views
     //Interface principale
     public partial class Main : Form
     {
+        // Etat du test stopped, paused, started
         private String state = "stopped";
+
+        // Timer pour le test
         private System.Timers.Timer timer = new System.Timers.Timer(1000);
         private TimeSpan temps;
+
+        // Accès aux resources
         private System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+
+        // Suite de caractères
         private Char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         private Char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         private List<char> sequence = new List<Char>();
         private int nbTxt = 0;
+
+        // Les données de l'enfant et chemin du répertoire de travail
         private Child child;
         private String path;
+
+        // Mode basique ou analyse
         private Boolean basicMode = true;
+
+        // Base sélectionnée
         private String selectedDB;
+
+        // Gestion de la DB
 		private DbManager manager;
+
+        // Pour l'acquisition des données et l'analyse des critères
         private List<Analysis> analysis;
         private AcquisitionPoint acquisition;
 
@@ -46,7 +63,6 @@ namespace Dysgraphie.Views
             timer.Elapsed += new ElapsedEventHandler(TimerIncrement);
 
             InitData();
-            this.FormClosing += new FormClosingEventHandler(TestForm_FormClosing);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
 
@@ -56,8 +72,6 @@ namespace Dysgraphie.Views
             
             InitData();
 
-
-
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
             {
                 Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "data"));
@@ -65,6 +79,7 @@ namespace Dysgraphie.Views
             initToolStripMenuDB();
         }
 
+        // Parser les DB et les afficher dans le menu
         private void initToolStripMenuDB()
         {
             String path = Path.Combine(Environment.CurrentDirectory, "data");
@@ -83,6 +98,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Ajout d'une DB en élément  du menu
         private void addToolStripItemDB(String itemName, bool check)
         {
             choixDeLaBaseToolStripMenuItem.Enabled = true;
@@ -96,11 +112,13 @@ namespace Dysgraphie.Views
             this.choixDeLaBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {newItem});
         }
 
+        // Handler du bouton enregistrer
 		private void saveBtn_Click(object sender, EventArgs e)
         {
             save();
         }
 
+        // Handler du bouton nouveau ouvrir la vue New
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
         {
             New n = new New();
@@ -115,6 +133,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton ouvrir et gestion des données à charger
         private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog();
@@ -154,7 +173,7 @@ namespace Dysgraphie.Views
                     this.gradeLabel.Text = child.Classe;
                     this.lateralityLabel.Text = child.Lateralite;
                     this.genderLabel.Text = child.Genre;
-                    this.richtextBoxX.Text = child.Commenaire;
+                    this.richtextBoxX.Text = child.Commentaire;
                     this.analysePanel.Visible = false;
                     this.infoPanel.Visible = true;
                     this.basiqueToolStripMenuItem.Checked = true;
@@ -207,13 +226,16 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton quitter
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Handler du bouton commencer (on gère les états)
         private void startBtn_Click(object sender, EventArgs e)
         {
+            erase();
             switch (state)
             {
                 case "stopped":
@@ -228,16 +250,19 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton stop
         private void stopBtn_Click(object sender, EventArgs e)
         {
             Stop();
         }
 
+        // Handler du bouton next
         private void nextBtn_Click(object sender, EventArgs e)
         {
             nextTxt();
         }
 
+        // Handler du bouton recommencer
         private void restartBtn_Click(object sender, EventArgs e)
         {
             restart();
@@ -258,6 +283,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler des checkbox button du menu pour le choix du mode 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!this.analyseToolStripMenuItem.Checked)
@@ -270,9 +296,13 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler pour la création d'une DB
         private void createBaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Nom par défaut
             String dbName = "Base 1";
+
+            // Ouvrir la dialog pour le choix du nom
             DialogResult dbResult = InputBox.ShowInputBox("Création d'une nouvelle base", "Nom de la base :", ref dbName);
             if(dbResult == DialogResult.OK)
             {
@@ -282,6 +312,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler sur un bouton d'une DB à choisir dans le menu
         private void database_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem dbItem = (ToolStripMenuItem)sender;
@@ -297,6 +328,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler pour visualiser les données de DB : ouvrir SQLiteStudio
         private void accéderAuxDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String DBname = selectedDB + ".sqlite";
@@ -314,6 +346,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler des touches droite et espace
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             if (this.nextBtn.Enabled && (e.KeyCode == Keys.Space || e.KeyCode == Keys.Right))
@@ -322,12 +355,14 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Incrémenter le timer toutes les secondes
         private void TimerIncrement(object source, ElapsedEventArgs e)
         {
             temps += TimeSpan.FromMilliseconds(timer.Interval);
             this.timerLabel.Text = temps.ToString();
         }
 
+        // Initialiser la vue, les états et les données
         private void Init()
         {
             state = "stopped";
@@ -389,6 +424,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Démarrer le test
         private void Start()
         {
             state = "started";
@@ -410,6 +446,7 @@ namespace Dysgraphie.Views
             this.acquisition.analysis.character = sequence[nbTxt];
         }
 
+        // Arrêter le test
         private void Stop()
         {
             if(state != "stopped")
@@ -430,6 +467,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Reprendre le test
         private void Continue()
         {
             state = "started";
@@ -438,6 +476,7 @@ namespace Dysgraphie.Views
             timer.Start();
         }
 
+        // Mettre en pause le test
         private void Pause()
         {
             state = "paused";
@@ -446,6 +485,7 @@ namespace Dysgraphie.Views
             this.startBtn.Text = "Reprendre";
         }
 
+        // Passer au caractère suivant
         private void nextTxt()
         {
             nbTxt++;
@@ -465,6 +505,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Terminer le test
         private void end()
         {
             state = "stopped";
@@ -483,6 +524,7 @@ namespace Dysgraphie.Views
             timer.Stop();
         }
 
+        // Recommencer le test
         private void restart()
         {
             DialogResult restartResult = MessageBox.Show("Etes-vous sûr de vouloir recommencer ? Les tracés seront supprimés.", "Recommencer ?", MessageBoxButtons.YesNo);
@@ -504,6 +546,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Créer une nouvelle base
         private void createBase(String dbName)
         {
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "data")))
@@ -519,7 +562,7 @@ namespace Dysgraphie.Views
             addToolStripItemDB(dbName, true);
         }
 
-        // Code tablette
+        // Code tablette //
 
         private CWintabContext m_logContext = null;
         private CWintabData m_wtData = null;
@@ -548,13 +591,6 @@ namespace Dysgraphie.Views
             
             
             this.acquisition.Start();
-        }
-
-
-
-        private void TestForm_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-            CloseCurrentContext();
         }
 
         private void CloseCurrentContext()
@@ -695,8 +731,6 @@ namespace Dysgraphie.Views
                         //dessin du dernier point acquis
                         DrawingPoint dp = new DrawingPoint(Convert.ToInt32(x / m_logContext.InExtX * picBoard.Size.Width), Convert.ToInt32(y / m_logContext.InExtY * picBoard.Size.Height), pkt.pkNormalPressure, this.pointID);
                         drawingThread.AddPoint(dp);
-
-
                     }
 
                     //affichage des données en temps réel
@@ -728,7 +762,7 @@ namespace Dysgraphie.Views
 
         //-------------------------------------------------------------------------
 
-
+        // Handler du bouton effacer
         private void eraseBtn_Click(object sender, EventArgs e)
         {
             erase();
@@ -745,6 +779,7 @@ namespace Dysgraphie.Views
             this.acquisition.Reset();
         }
 
+        // Sauvegarder le test dans le répertoire de travail
         private void save()
         {
             // Sauvegarde des traces
@@ -840,6 +875,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler de la combobox du choix de caractère quand on ouvre un fichier
         private void comboBoxCharacterInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.comboBoxCharacter.SelectedItem = this.comboBoxCharacterInfo.Text;
@@ -877,6 +913,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton enregistrer de la barre d'outil
         private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             save();
