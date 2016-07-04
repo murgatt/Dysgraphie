@@ -37,14 +37,15 @@ namespace Dysgraphie.Database
         [XmlAttribute()]
         public string Lateralite { get; set; }
         [XmlAttribute()]
-        public string Commenaire { get; set; }
+        public string Commentaire { get; set; }
 
         // Constructeur sans paramètres pour la sérialisation
         public Child()
         {
-            // Nothing
+            // Do Nothing
         }
 
+        // Constructeur avec tous les attributs
         public Child(int ID, String name, String forename, DateTime birth, String grade, String laterality, String gender)
         {
             this.ID = ID;
@@ -62,7 +63,7 @@ namespace Dysgraphie.Database
             }
         }
 
-
+        // Constructeur sans l'ID
         public Child(String name, String forename, DateTime birth, String grade, String laterality, String gender)
         {
             this.Nom = name;
@@ -79,7 +80,7 @@ namespace Dysgraphie.Database
             }
         }
 
-
+        // Modifieur
         public void EditChild( string Nom, string Prenom, int Age, string Classe, string Genre, string Lateralite)
         {
             this.Nom = Nom;
@@ -90,6 +91,7 @@ namespace Dysgraphie.Database
             this.Lateralite = Lateralite;
         }
 
+        // Setters & Getters
         public void SetID(int id)
         {
             this.ID = id;

@@ -8,6 +8,7 @@ using System.Drawing;
 
 namespace Dysgraphie.Views
 {
+    // Dialog popup générique avec champ texte
     class InputBox
     {
         public static DialogResult ShowInputBox(string title, string promptText, ref string value)

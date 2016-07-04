@@ -12,9 +12,9 @@ using Dysgraphie.Database;
 
 namespace Dysgraphie.Views
 {
+    // Vue pour la création d'un nouveau test
     public partial class New : Form
     {
-
         private String name;
         private String forename;
         private DateTime birth;
@@ -29,6 +29,7 @@ namespace Dysgraphie.Views
             InitializeComponent();
         }
 
+        // Handler bouton parcourir : ouvrir une dialog
         private void browsBtn_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
@@ -37,11 +38,13 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton annuler, on ferme
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Handler de tous les input de la vue, on valide ou non les infos
         private void input_Changed(object sender, EventArgs e)
         {
             if (this.nameInput.Text != "" && this.forenameInput.Text != "" && this.gradeSelect.Text != "" && this.pathInput.Text != "" && (this.leftRadioBtn.Checked || this.rightRadioBtn.Checked) && (this.girlRadioBtn.Checked || this.boyRadioBtn.Checked))
@@ -54,6 +57,7 @@ namespace Dysgraphie.Views
             }
         }
 
+        // Handler du bouton valider, on créer l'enfant avec les données qui vont bien
         private void validateBtn_Click(object sender, EventArgs e)
         {
             name = this.nameInput.Text;
