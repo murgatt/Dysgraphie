@@ -15,6 +15,8 @@ using System.Xml.Serialization;
 namespace Dysgraphie.Database
 {
     //Cette classe représente un enfant
+
+    //Elle est serialisée dans un document xml
     [Serializable]
     public class Child
     {

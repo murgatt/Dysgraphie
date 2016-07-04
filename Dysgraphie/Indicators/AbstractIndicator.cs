@@ -19,6 +19,7 @@ namespace Dysgraphie.Indicators
             this.analysis = analysis;
         }
 
+        //Méthode permettant de calculer la valeur du critère, qui est stockée dans un attribut de la variable analysis
         public abstract void calcul();
 
     }
