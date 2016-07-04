@@ -1066,7 +1066,7 @@ namespace Dysgraphie.Views
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1000, 530);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Dysgraphie";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
